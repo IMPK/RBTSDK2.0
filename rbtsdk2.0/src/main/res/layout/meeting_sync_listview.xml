@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+        android:id="@+id/no_meetings_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:minWidth="72dp"
+        android:minHeight="32dp"
+        android:text="No Upcoming Meeting"
+        android:visibility="gone" />
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/pb_meeting"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/todays_meeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/todays_meeting_text"
+            style="@style/App.TextView.meeting_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="Today's all the meetings" />
+
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/todays_meeting_schedule"
+            style="@style/App.Switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp" />
+
+    </RelativeLayout>
+
+   <!-- <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="256dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">-->
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:visibility="gone"
+        android:id="@+id/overall_meeting_list">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/currentMeetingRecylerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@android:color/white"
+                android:nestedScrollingEnabled="false"
+                android:scrollbars="vertical"
+                android:visibility="visible" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/upcomingMeetingRecylerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@android:color/white"
+                android:nestedScrollingEnabled="false"
+                android:scrollbars="vertical"
+                android:visibility="visible" />
+    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+      <!--  </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+-->
+    <!-- <RelativeLayout
+         android:id="@+id/childRecyclerViewLayout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:visibility="visible"
+         android:layout_below="@id/currentMeetingRecylerView">
+
+
+
+         <com.onmobile.rbt.baseline.util.customview.RegularTextView
+             android:id="@+id/viewLessView"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:clickable="true"
+             android:layout_marginTop="10dp"
+             android:layout_marginBottom="4dp"
+             android:textColor="#525252"
+             android:textSize="12dp"
+             android:layout_below="@id/childRecyclerView"
+             android:layout_centerHorizontal="true"
+             android:gravity="center"
+             android:text="@string/view_less_meetings"/>
+
+         <ImageView
+
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@+id/childRecyclerView"
+             android:layout_toEndOf="@id/viewLessView"
+             android:layout_marginTop="16dp"
+             android:layout_marginEnd="10dp"
+             app:srcCompat="@drawable/ic_arrow_down"/>
+
+     </RelativeLayout>-->
+
+</LinearLayout>

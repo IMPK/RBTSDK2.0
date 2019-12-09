@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/snackBar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    tools:context="com.onmobile.rbt.baseline.activities.DiscoverActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false">
+
+        <View
+            android:id="@+id/background_view1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="1"
+            android:background="@drawable/bg_gradient_trending" />
+
+        <View
+            android:id="@+id/background_view2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0" />
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:fitsSystemWindows="true"
+            android:minHeight="?actionBarSize"
+            app:elevation="@dimen/toolbar_default_elevation">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/App.Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+        <com.onmobile.rbt.baseline.util.customview.BoldTextView
+            android:id="@+id/tv_toolbar_title"
+            style="@style/App.TextView.Stack.Layout.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginTop="54dp"
+            android:textAlignment="viewStart"
+            android:text="@string/title_discover" />
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_toolbar_title"
+            android:layout_marginTop="@dimen/activity_margin_half"
+            android:clipToPadding="false" />
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

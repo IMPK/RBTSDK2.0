@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.onmobile.rbt.baseline.activities.HomeActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:fitsSystemWindows="true">
+
+        <include layout="@layout/toolbar_enhanced" />
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_home_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/snackBar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!--<FrameLayout
+                android:id="@+id/layout_container_main"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.onmobile.rbt.baseline.widget.HomeViewPager
+                    android:id="@+id/viewpager_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="-4dp"
+                    android:layout_weight="1" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@drawable/shade_bottom_top_light_grey" />
+            </LinearLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_nav_view_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itemBackground="@color/bottom_navigation_background"
+            app:itemIconTint="@color/bottom_navigation_icon_color"
+            app:itemTextColor="@color/bottom_navigation_txt_color"
+            app:menu="@menu/menu_bottom_main" />
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

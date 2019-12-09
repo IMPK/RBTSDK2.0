@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="prebuy_track_aud_card_height_width">220dp</dimen>
+    <dimen name="track_aud_card_gap">54dp</dimen>
+    <dimen name="prebuy_track_translate_offset">72dp</dimen>
+    <dimen name="prebuy_text_artist_margin_top">32dp</dimen>
+    <dimen name="prebuy_text_track_margin_top">8dp</dimen>
+    <dimen name="prebuy_visualizer_margin">16dp</dimen> <!--24dp-->
+    <dimen name="prebuy_player_control_margin_top">16dp</dimen> <!--24dp-->
+    <dimen name="prebuy_player_control_shuffle_margin_top">20dp</dimen> <!--28dp-->
+    <dimen name="prebuy_player_control_padding_bottom">16dp</dimen>
+    <dimen name="prebuy_player_control_button_width_height">40dp</dimen>
+    <dimen name="prebuy_player_control_progress_width_height">32dp</dimen>
+
+    <dimen name="track_aud_card_head_button_diff">16dp</dimen>
+    <dimen name="track_aud_card_head_action_button_diff">48dp</dimen>
+
+    <dimen name="track_aud_card_shadow_width">172dp</dimen>
+    <dimen name="track_aud_card_shadow_height">24dp</dimen>
+</resources>

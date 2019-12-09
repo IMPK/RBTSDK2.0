@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/snackBar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.onmobile.rbt.baseline.activities.MusicShuffleSeeAllActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:fitsSystemWindows="true">
+
+        <include layout="@layout/toolbar_enhanced" />
+    </android.support.design.widget.AppBarLayout>
+
+    <!--<LinearLayout
+        android:id="@+id/tab_parent_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.onmobile.rbt.baseline.util.TabLayout
+            android:id="@+id/tabs_layout"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginEnd="@dimen/activity_margin_half"
+            android:layout_marginStart="@dimen/activity_margin_half"
+            android:layout_marginTop="@dimen/activity_margin_half"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/tabs_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>-->
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>

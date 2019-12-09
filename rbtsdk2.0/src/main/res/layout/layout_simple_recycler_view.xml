@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/track_child_margin">
+
+        <com.onmobile.rbt.baseline.util.customview.BoldTextView
+            android:id="@+id/tv_item_title_store_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="start"
+            android:maxLines="1"
+            android:paddingStart="@dimen/track_child_margin"
+            android:paddingEnd="@dimen/track_child_margin"
+            android:text="@string/dummy"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/btn_item_see_all_store_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/track_child_margin"
+            android:paddingTop="4dp"
+            android:paddingEnd="@dimen/track_child_margin"
+            android:paddingBottom="8dp"
+            android:text="@string/see_all"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <!--<com.onmobile.rbt.baseline.widget.EnhancedWrapContentViewPager
+        android:id="@+id/viewpager_item_content_store_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />-->
+
+    <!--<FrameLayout
+        android:id="@+id/root_pager_store_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_frag_store_item_child"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginStart="@dimen/track_child_margin"
+        android:layout_marginEnd="@dimen/track_child_margin"
+        android:background="#cccccc" />
+
+</LinearLayout>

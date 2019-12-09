@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/gift_not_activated_layout_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_store_item_child"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="@dimen/track_card_item_corner_radius"
+        app:cardElevation="@dimen/track_card_elevation"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="138dp"
+                android:background="@drawable/bg_gradient_banner">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginEnd="27dp"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="76dp"
+                        android:layout_height="76dp"
+                        app:srcCompat="@drawable/ic_gift_76dp"
+                        android:layout_gravity="center_vertical"/>
+
+                    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+                        android:id="@+id/child_plan_not_activated_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:layout_marginStart="27dp"/>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#F5F2F2"
+                >
+
+                <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                    android:id="@+id/tv_activate"
+                    style="@style/App.TextView.Button"
+                    android:layout_width="110dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/plan_activate"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

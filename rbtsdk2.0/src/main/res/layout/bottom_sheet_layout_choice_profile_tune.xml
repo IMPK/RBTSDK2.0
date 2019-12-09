@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/layout_data_loading_profile_tune"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/plan_attr_choice_background"
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/bottom_sheet_content_padding"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_voice_accent_24dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_shimmer_layout_0dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_time_accent_24dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_shimmer_layout_0dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_language_accent_24dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_shimmer_layout_0dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/bottom_sheet_content_margin"
+                android:background="@drawable/bg_shimmer_layout_0dp" />
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:layout_width="120dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_shimmer_layout_0dp" />
+
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/ic_circle_accent_border_48dp"
+                android:backgroundTint="@color/shimmer_base_color">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_play_accent_16dp"
+                    app:tint="@color/shimmer_base_color" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_data_content_profile_tune"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/plan_attr_choice_background"
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/bottom_sheet_content_padding"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/voice_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_voice_accent_24dp" />
+
+                    <com.onmobile.rbt.baseline.util.customview.LightTextView
+                        android:id="@+id/tv_voice_choice_profile_tune"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dummy"
+                        android:theme="@style/App.TextView.SingleLine" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/time_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_time_accent_24dp" />
+
+                    <com.onmobile.rbt.baseline.util.customview.LightTextView
+                        android:id="@+id/tv_duration_choice_profile_tune"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dummy"
+                        android:theme="@style/App.TextView.SingleLine" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/language_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_language_accent_24dp" />
+
+                    <com.onmobile.rbt.baseline.util.customview.LightTextView
+                        android:id="@+id/tv_language_choice_profile_tune"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/dummy"
+                        android:theme="@style/App.TextView.SingleLine" />
+                </LinearLayout>
+
+                <!--<com.onmobile.rbt.baseline.util.customview.LightTextView
+                    android:id="@+id/tv_voice_choice_profile_tune"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="4dp"
+                    android:drawableStart="@drawable/ic_voice_accent_24dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/dummy"
+                    android:theme="@style/App.TextView.SingleLine" />
+
+                <com.onmobile.rbt.baseline.util.customview.LightTextView
+                    android:id="@+id/tv_duration_choice_profile_tune"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="4dp"
+                    android:drawableStart="@drawable/ic_time_accent_24dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/dummy"
+                    android:theme="@style/App.TextView.SingleLine" />
+
+                <com.onmobile.rbt.baseline.util.customview.LightTextView
+                    android:id="@+id/tv_language_choice_profile_tune"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="4dp"
+                    android:drawableStart="@drawable/ic_language_accent_24dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/dummy"
+                    android:theme="@style/App.TextView.SingleLine" />-->
+            </LinearLayout>
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_voice_profile_tune"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/bottom_sheet_content_margin"
+                android:gravity="center"
+                android:paddingStart="@dimen/bottom_sheet_content_padding"
+                android:paddingEnd="@dimen/bottom_sheet_content_padding"
+                android:text="@string/dummy"
+                android:textColor="@color/txt_secondary"
+                android:theme="@style/App.TextView.SingleLine" />
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_profile_name_profile_tune"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingStart="@dimen/bottom_sheet_content_padding"
+                android:paddingEnd="@dimen/bottom_sheet_content_padding"
+                android:text="@string/dummy"
+                android:textColor="@color/txt_nametune_title"
+                android:textSize="20sp"
+                android:theme="@style/App.TextView.SingleLine" />
+
+            <FrameLayout
+                android:id="@+id/layout_play_profile_tune"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/ic_circle_accent_border_48dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/iv_play_profile_tune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_play_accent_16dp" />
+
+                <android.support.v4.widget.ContentLoadingProgressBar
+                    android:id="@+id/progress_play_profile_tune"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/caller_choice_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/regular_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_sheet_content_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingStart="@dimen/bottom_sheet_content_padding"
+            android:paddingEnd="@dimen/bottom_sheet_content_padding"
+            android:text="@string/title_shuffle_choice"
+            android:textColor="@color/bottom_sheet_sub_item_title"
+            android:textSize="12sp" />
+
+        <com.onmobile.rbt.baseline.widget.LabeledView
+            android:layout_below="@+id/regular_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/bottom_sheet_content_padding"
+            android:paddingEnd="@dimen/bottom_sheet_content_padding"
+            app:bottomDivider="false"
+            app:label="@string/title_all_the_callers"
+            app:leftPadding="0dp"
+            app:rightPadding="0dp"
+            app:switchColorDisabled="@color/colorAccent"
+            app:switchStatus="true"
+            app:switcher="true"
+            app:userInteraction="false" />
+    </LinearLayout>
+</LinearLayout>

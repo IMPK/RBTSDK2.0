@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_music_shuffle_item_child"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/track_child_item_margin"
+    android:paddingTop="4dp"
+    android:paddingEnd="@dimen/track_child_item_margin"
+    android:paddingBottom="4dp">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="@dimen/shuffle_disc_width"
+            android:layout_height="@dimen/shuffle_disc_height"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="@dimen/shuffle_disc_out_margin">
+
+            <!--<android.support.v7.widget.CardView
+                android:id="@+id/card_disc_music_shuffle_item_child"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="54dp"
+                android:innerRadius="0dp"
+                android:shape="ring"
+                android:thicknessRatio="1.9"
+                app:cardCornerRadius="44dp">-->
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_preview_disc_music_shuffle_item_child"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/default_album_art_circle" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/disc_cover" />
+
+            <View
+                android:layout_width="@dimen/shuffle_disc_cut_width"
+                android:layout_height="@dimen/shuffle_disc_cut_height"
+                android:layout_gravity="center"
+                android:background="@drawable/disc_cut" />
+
+            <!--</android.support.v7.widget.CardView>-->
+        </FrameLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_cover_music_shuffle_item_child"
+            android:layout_width="@dimen/shuffle_cover_width"
+            android:layout_height="@dimen/shuffle_cover_height"
+            android:layout_gravity="start|center_vertical"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/card_fake_elevation"
+            app:cardElevation="@dimen/track_card_elevation"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_preview_music_shuffle_item_child"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/shuffle_cover_border_size"
+                android:adjustViewBounds="true"
+                android:background="@color/white"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/default_album_art" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_rbt_selected_music_shuffle_item_child"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="end|top"
+                android:layout_margin="4dp"
+                app:srcCompat="@drawable/ic_rbt_selected" />
+
+        </android.support.v7.widget.CardView>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_mood_title_music_shuffle_item_child"
+            style="@style/App.TextView.SingleLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/dummy"
+            android:textAlignment="viewStart"
+            android:textColor="@color/artist_txt" />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_track_title_music_shuffle_item_child"
+            style="@style/App.TextView.SingleLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textAlignment="viewStart"
+            android:textSize="14sp" />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_set_music_shuffle_item_child"
+            style="@style/App.TextView.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/set_small" />
+    </LinearLayout>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/ib_option_shuffle_item_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="4dp"
+        app:srcCompat="@drawable/ic_more_vert_gray_24dp" />
+
+</LinearLayout>

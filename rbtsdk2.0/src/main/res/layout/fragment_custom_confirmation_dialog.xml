@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:paddingTop="32dp"
+    android:paddingBottom="32dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:descendantFocusability="beforeDescendants"
+                android:fillViewport="true"
+                android:overScrollMode="never"
+                android:padding="@dimen/activity_padding"
+                android:requiresFadingEdge="vertical|horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <include
+                        layout="@layout/app_intro_icon_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                        android:id="@+id/tv_confirmation_dialog_title"
+                        style="@style/App.TextView.SingleLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/activity_margin_half"
+                        android:paddingStart="@dimen/activity_padding_half"
+                        android:paddingEnd="@dimen/activity_padding_half"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:textSize="17sp" />
+
+                    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                        android:id="@+id/tv_confirmation_dialog_message"
+                        style="@style/App.TextView.Multiline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:autoLink="all"
+                        android:paddingStart="@dimen/activity_padding_half"
+                        android:paddingEnd="@dimen/activity_padding_half"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:textColorLink="@color/colorAccent"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_height"
+                android:background="@color/stack_line_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btn_confirmation_dialog_negative"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:text="@string/no"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="@dimen/divider_height"
+                    android:layout_height="match_parent"
+                    android:background="@color/stack_line_color" />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btn_confirmation_dialog_positive"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:text="@string/yes"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</FrameLayout>

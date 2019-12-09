@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_language_filter"
+        android:enabled="true"
+        android:orderInCategory="1"
+        android:title="@string/label_change_content_language"
+        app:actionLayout="@layout/layout_menu_search_language_filter"
+        app:showAsAction="withText|ifRoom" />
+</menu>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/banner_viewpager_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:visibility="gone">
+
+        <com.onmobile.rbt.baseline.widget.EnhancedWrapContentViewPager
+            android:id="@+id/banner_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="184dp"
+            android:overScrollMode="never" />
+
+        <!--<LinearLayout
+            android:id="@+id/indicator_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/banner_viewpager"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+        </LinearLayout>-->
+
+        <com.onmobile.rbt.baseline.widget.pageindicator.PageIndicator
+            android:id="@+id/indicator_banner_home_store"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/banner_viewpager"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/activity_margin_half"
+            android:gravity="center" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

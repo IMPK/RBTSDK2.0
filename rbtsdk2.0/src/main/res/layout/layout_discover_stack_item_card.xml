@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_stack_discover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="@dimen/stack_item_card_corner_radius"
+        app:cardElevation="@dimen/stack_item_elevation"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/frame_stack_discover"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/layout_button_discover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_height"
+                    android:layout_marginEnd="@dimen/activity_margin"
+                    android:layout_marginStart="@dimen/activity_margin"
+                    android:background="@color/stack_line_color" />
+
+                <!--<android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btn_gotostore_trending_stack_discover"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/go_to_store"
+                    android:textAllCaps="false"
+                    android:textSize="12sp"
+                    android:theme="@style/Base.Widget.AppCompat.Button.Small" />-->
+
+                <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                    android:id="@+id/tv_button_next_discover"
+                    style="@style/App.TextView.NoBorder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingTop="12dp"
+                    android:text="@string/go_to_store" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="@dimen/stack_layout_margin_start_end_others"
+            android:layout_marginStart="@dimen/stack_layout_margin_start_end_others"
+            android:layout_marginTop="8dp">
+
+            <RelativeLayout
+                android:id="@+id/title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/option_stack_discover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:padding="4dp"
+                    app:srcCompat="@drawable/ic_more_vert_gray_24dp" />
+
+                <com.onmobile.rbt.baseline.util.customview.BoldTextView
+                    android:id="@+id/card_title_text"
+                    style="@style/App.TextView.Card.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="0dp" />
+            </RelativeLayout>
+
+            <com.onmobile.rbt.baseline.util.customview.MediumTextView
+                android:id="@+id/card_sub_title_text"
+                style="@style/App.TextView.Card.Sub.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/title_layout"
+                android:layout_centerVertical="true"
+                android:paddingEnd="8dp"
+                android:paddingStart="0dp" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>

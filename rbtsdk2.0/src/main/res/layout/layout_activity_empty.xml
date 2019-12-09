@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/empty_activity_parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/activity_empty_bg"
+    android:visibility="gone">
+
+    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/empty_activity_info1"
+        android:textSize="@dimen/empty_activity_info1"
+        android:text="@string/empty_activity_info1"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="46dp"/>
+
+    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/empty_activity_info2"
+        android:textSize="@dimen/empty_activity_info2"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/empty_activity_info2"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="8dp"/>
+
+    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+        android:id="@+id/empty_activity_go_to_store"
+        style="@style/App.TextView.Button"
+        android:layout_width="165dp"
+        android:layout_height="46dp"
+        android:background="@drawable/bg_fill_textview_no_activity"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="@string/go_to_store"
+        android:textSize="@dimen/empty_activity_go_to_store"/>
+
+</LinearLayout>

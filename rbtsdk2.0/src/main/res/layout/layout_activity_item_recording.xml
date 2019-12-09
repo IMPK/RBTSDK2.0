@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+
+    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+        android:id="@+id/end_date_textview"
+        style="@style/App.TextView.Activity.Rbt.End.Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/user_activity_item_height"
+        android:layout_below="@id/end_date_textview">
+
+        <View
+            android:id="@+id/divider"
+            style="@style/App.TextView.Activity.Rbt.divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_rbt_divider"
+            android:layout_alignParentBottom="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/divider">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_rbt_imageview"
+                android:layout_width="87dp"
+                android:layout_height="87dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/default_album_art"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="1dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/rbt_imageview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:clickable="false"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/bg_gradient_trending" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/iv_recording_anim"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:padding="6dp"
+                    android:tint="@color/white"
+                    app:srcCompat="@drawable/splash_ring_loader" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_circle_fill_white_22dp"
+                    android:clickable="false">
+
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/ib_play_activity_rbt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="false"
+                        android:padding="6dp"
+                        app:srcCompat="@drawable/ic_play_accent_10dp" />
+
+                    <android.support.v4.widget.ContentLoadingProgressBar
+                        android:id="@+id/progress_play_activity_rbt"
+                        style="@style/Widget.AppCompat.ProgressBar"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="9dp"
+                android:layout_toEndOf="@id/card_rbt_imageview"
+                android:minHeight="79dp">
+
+
+                <RelativeLayout
+                    android:id="@+id/right_layout"
+                    android:layout_width="50dp"
+                    android:layout_height="79dp"
+                    android:layout_alignParentEnd="true">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:padding="4dp"
+                        app:srcCompat="@drawable/ic_more_activity_24dp" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/switch_button"
+                        style="@style/App.Switch"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentBottom="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/right_layout">
+
+                    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                        android:id="@+id/title"
+                        style="@style/App.TextView.Activity.Rbt.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                        android:id="@+id/subtitle"
+                        style="@style/App.TextView.Activity.Rbt.SubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title"
+                        android:layout_marginTop="4dp" />
+
+                    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                        android:id="@+id/caller_textview"
+                        style="@style/App.TextView.Activity.Rbt.Caller"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subtitle"
+                        android:layout_marginTop="4dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/caller_textview"
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal">
+
+                        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                            android:id="@+id/rbt_status"
+                            style="@style/App.TextView.Activity.Rbt.SetDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/activity_margin_half"
+                            android:textColor="@color/black"
+                            android:textSize="9sp"
+                            android:visibility="gone" />
+
+                        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                            android:id="@+id/setdate_textview"
+                            style="@style/App.TextView.Activity.Rbt.SetDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

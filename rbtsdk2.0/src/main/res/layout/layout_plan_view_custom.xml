@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_plans_bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_margin"
+    android:paddingTop="@dimen/activity_margin">
+
+    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+        android:id="@+id/tv_header_plans_bottom_sheet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:gravity="start"
+        android:paddingEnd="@dimen/bottom_sheet_content_padding"
+        android:paddingStart="@dimen/bottom_sheet_content_padding"
+        android:text="@string/available_plans_title"
+        android:textColor="@color/plan_layout_header"
+        android:theme="@style/App.TextView.SingleLine" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:fillViewport="true"
+            android:scrollbarSize="0dp">
+
+            <LinearLayout
+                android:id="@+id/rg_plans_bottom_sheet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="center_vertical"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingEnd="0dp"
+                android:paddingStart="12dp"
+                android:paddingTop="2dp" />
+        </HorizontalScrollView>
+
+        <!--<LinearLayout
+            android:id="@+id/rg_plans_loading_bottom_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="0dp"
+            android:paddingStart="@dimen/bottom_sheet_content_padding">
+
+            <View
+                android:layout_width="@dimen/multiline_radio_button_width"
+                android:layout_height="@dimen/multiline_radio_button_height"
+                android:layout_marginEnd="@dimen/multiline_radio_margin_end"
+                android:background="@drawable/bg_shimmer_layout_4dp" />
+
+            <View
+                android:layout_width="@dimen/multiline_radio_button_width"
+                android:layout_height="@dimen/multiline_radio_button_height"
+                android:layout_marginEnd="@dimen/multiline_radio_margin_end"
+                android:background="@drawable/bg_shimmer_layout_4dp" />
+
+            <View
+                android:layout_width="@dimen/multiline_radio_button_width"
+                android:layout_height="@dimen/multiline_radio_button_height"
+                android:background="@drawable/bg_shimmer_layout_4dp" />
+        </LinearLayout>-->
+
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/pb_plans_loading_bottom_sheet"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center" />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_error_plans_bottom_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingEnd="@dimen/activity_padding"
+            android:paddingStart="@dimen/activity_padding"
+            android:text="@string/loading"
+            android:theme="@style/App.TextView.Multiline"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+        android:id="@+id/tv_footer_plans_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="start"
+        android:paddingEnd="@dimen/bottom_sheet_content_padding"
+        android:paddingStart="@dimen/bottom_sheet_content_padding"
+        android:text="@string/available_plans_desc"
+        android:textColor="@color/plan_layout_footer"
+        android:theme="@style/App.TextView.Multiline" />
+</LinearLayout>

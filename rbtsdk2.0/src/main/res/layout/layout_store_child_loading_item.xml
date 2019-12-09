@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_store_item_child"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="@dimen/track_card_min_width"
+    android:minHeight="@dimen/track_card_min_height"
+    android:orientation="vertical">
+
+    <com.onmobile.rbt.baseline.widget.AspectRatioCardView
+        android:id="@+id/card_store_item_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        app:cardBackgroundColor="@color/shimmer_base_color"
+        app:cardCornerRadius="@dimen/track_card_item_corner_radius"
+        app:cardElevation="@dimen/track_card_elevation"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <View
+            android:id="@+id/iv_preview_store_item_child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/shimmer_base_color" />
+    </com.onmobile.rbt.baseline.widget.AspectRatioCardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <View
+                android:layout_gravity="start"
+                android:id="@+id/tv_artist_store_item_child"
+                android:layout_width="80dp"
+                android:layout_height="12dp"
+                android:background="@drawable/bg_shimmer_layout_2dp" />
+
+            <View
+                android:layout_gravity="start"
+                android:id="@+id/tv_track_store_item_child"
+                android:layout_width="120dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/bg_shimmer_layout_2dp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/btn_add_to_shuffle_store_item_child"
+            android:layout_width="@dimen/txt_button_min_width"
+            android:layout_height="@dimen/txt_button_min_height"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/bg_shimmer_layout_button" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.onmobile.rbt.baseline.activities.MyAccountActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:id="@+id/current_plan_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                >
+
+                <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                    android:id="@+id/plan_layout_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/active_plan_title"
+                    android:textColor="@color/my_account_section_title"
+                    android:textSize="13sp"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginBottom="17dp"/>
+
+                <include
+                    android:id="@+id/child_plan_not_activated_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/my_account_child_plan_not_activated"
+                    android:visibility="gone"
+                    />
+
+                <include
+                    android:id="@+id/child_plan_activated_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/my_account_child_plan_activated"
+                    android:visibility="gone"
+                    />
+
+                <include
+                    android:id="@+id/active_plan_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    layout="@layout/my_account_active_plan"
+                    android:visibility="gone"
+                    />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                    android:id="@+id/layout_plan_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommended_plan_title"
+                    android:textColor="@color/my_account_section_title"
+                    android:textSize="13sp"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginStart="16dp"
+                    android:visibility="invisible"/>
+
+                <com.onmobile.rbt.baseline.widget.PlanViewLayout
+                    android:id="@+id/layout_plan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_plan_title"
+                    />
+
+                <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                    android:id="@+id/tv_recommended_activate"
+                    style="@style/App.TextView.Button"
+                    android:layout_width="110dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/layout_plan_title"
+                    android:layout_marginTop="150dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/recommendation_plan_activation_text"
+                    android:textSize="12sp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

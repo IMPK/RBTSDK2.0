@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <include
+        android:id="@+id/toolbarlayout"
+        layout="@layout/callers_contact_search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<ScrollView
+        android:id="@+id/contact_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_layout"
+        android:layout_below="@+id/toolbarlayout"
+        android:layout_toStartOf="@+id/sideBar"
+        android:fillViewport="true">-->
+
+    <LinearLayout
+        android:id="@+id/btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:background="@color/contact_button_cancel"
+            android:text="@string/contact_cancel"
+            android:textColor="@color/contact_txt_color" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+        <Button
+            android:id="@+id/add_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:background="@drawable/contact_button"
+            android:text="@string/contact_done"
+            android:textColor="@color/contact_txt_color" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/recycler_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="48dp"
+        android:layout_below="@id/toolbarlayout"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <com.onmobile.rbt.baseline.widget.RecyclerViewFastScroller
+            android:id="@+id/fastscroller"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/recyclerView"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/recyclerView" />
+
+    </RelativeLayout>
+    <!--</ScrollView>
+-->
+    <!--<com.onmobile.rbtsdkui.customview.SideBar
+        android:id="@+id/sideBar"
+        android:layout_width="22px"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_layout"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/toolbarlayout"
+        android:layout_margin="5dp" />
+    -->
+
+</RelativeLayout>

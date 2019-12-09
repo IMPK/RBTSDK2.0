@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ProgressBar
+        android:id="@+id/wheel_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginEnd="@dimen/horizontal_weel_margin_side"
+        android:layout_marginStart="@dimen/horizontal_weel_margin_side"
+        android:progressDrawable="@drawable/horizontal_wheel_progress_ringtone"/>
+
+    <com.onmobile.rbt.baseline.util.cut.ruler.WheelRulerView
+        android:id="@+id/wheel_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black10"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/prev_button"
+        android:layout_width="@dimen/horizontal_weel_margin_side"
+        android:layout_height="match_parent"
+        android:background="@color/black40"
+        app:srcCompat="@drawable/ic_cut_prev_30s"
+        android:tint="@color/white"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"/>
+    <!--<View
+        android:layout_width="@dimen/horizontal_weel_margin_side"
+        android:layout_height="72dp"
+        android:background="#80000000"/>-->
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/next_button"
+        android:layout_width="@dimen/horizontal_weel_margin_side"
+        android:layout_height="match_parent"
+        android:background="@color/black40"
+        app:srcCompat="@drawable/ic_cut_next_30s"
+        android:tint="@color/white"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

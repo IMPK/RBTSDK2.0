@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+        android:id="@+id/custom_action_bar_tile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
+</RelativeLayout>

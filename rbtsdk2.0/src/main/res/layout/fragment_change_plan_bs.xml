@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/bottom_sheet_content_padding"
+    android:paddingTop="@dimen/bottom_sheet_content_padding">
+
+   <!-- <com.onmobile.rbt.baseline.util.customview.MediumTextView
+        android:id="@+id/tv_title_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingEnd="@dimen/bottom_sheet_content_padding"
+        android:paddingStart="@dimen/bottom_sheet_content_padding"
+        android:text="@string/label_change_plan"
+        android:textColor="@color/black"
+        android:textSize="@dimen/bottom_sheet_title" />-->
+
+        <LinearLayout
+            android:id="@+id/layout_content_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <com.onmobile.rbt.baseline.widget.PlanViewLayout
+                android:id="@+id/layout_plan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:footer_text="@string/available_plans_desc"
+                app:header_text="@string/available_plans_title" />
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_save_bottom_sheet"
+                style="@style/App.TextView.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:minHeight="32dp"
+                android:minWidth="72dp"
+                android:text="@string/save" />
+        </LinearLayout>
+</LinearLayout>

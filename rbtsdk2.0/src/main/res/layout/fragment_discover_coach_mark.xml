@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+   >
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/view1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginBottom="17dp">-->
+
+    <!--</RelativeLayout>-->
+
+
+    <RelativeLayout
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <FrameLayout
+            android:id="@+id/view1"
+            android:layout_above="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/coach_mark_bckground"
+            ></FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/view2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@+id/text_tap_dismiss"
+            android:background="@drawable/bg_border_coachmark_up"
+            >
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/view3"
+            android:orientation="horizontal"
+            android:layout_below="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_border_coachmark"
+            >
+        </FrameLayout>
+
+        <!--<View-->
+            <!--android:id="@+id/view_dark"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/coach_mark_bckground"-->
+            <!--android:layout_marginBottom="100dp"-->
+      <!--&gt;</View>-->
+
+        <!--<View-->
+            <!--android:layout_below="@+id/text_swipe_up"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@drawable/bg_border_coachmark"-->
+            <!--&gt;</View>-->
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="29dp"
+            android:clickable="true"
+            android:text="Next"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/upwards_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text_swipe_up"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="22dp"
+            app:srcCompat="@drawable/vector_smart_object" />
+
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/text_swipe_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text_tap_dismiss"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="11dp"
+            android:gravity="center"
+            android:text="@string/coach_mark_discover_txt"
+            android:textColor="@color/coach_mark_text_swipe_up"
+            android:textSize="15sp" />
+
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/text_tap_dismiss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/discover_hand"
+            android:layout_centerHorizontal="true"
+            android:text="@string/coach_mark_discover_dismiss_txt"
+            android:textColor="@color/coach_mark_tap_dismiss"
+            android:textSize="14sp" />
+
+
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/discover_hand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="17dp"
+            android:layout_marginTop="20dp"
+
+            app:srcCompat="@drawable/discover_hand" />
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>
+

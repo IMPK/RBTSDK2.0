@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/bottom_sheet_content_padding"
+        android:paddingTop="@dimen/bottom_sheet_content_padding">
+
+        <com.onmobile.rbt.baseline.util.customview.MediumTextView
+            android:id="@+id/tv_title_bottom_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/bottom_sheet_content_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_gravity="start"
+            android:paddingEnd="@dimen/bottom_sheet_content_padding"
+            android:paddingStart="@dimen/bottom_sheet_content_padding"
+            android:text="@string/title_set_callertune"
+            android:textColor="@color/black"
+            android:textSize="@dimen/bottom_sheet_title" />
+
+        <FrameLayout
+            android:id="@+id/layout_frame_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

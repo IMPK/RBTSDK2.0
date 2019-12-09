@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/bottom_sheet_registration_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/bottom_sheet_content_margin"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/mobile_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorEnabled="false">
+            <RelativeLayout
+                android:id="@+id/layout_mobile_bottom_sheet_registration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_mobile_bottom_sheet_registration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_input_mobile_number"
+                    android:imeActionId="1001"
+                    android:imeActionLabel="@string/contact_done"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberSigned"
+                    android:maxLines="1"
+                    android:paddingEnd="28dp"
+                    android:paddingStart="8dp"
+                    android:theme="@style/App.EditText" />
+
+                <android.support.v4.widget.ContentLoadingProgressBar
+                    android:id="@+id/progress_mobile_bottom_sheet_registration"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/iv_check_mobile_bottom_sheet_registration"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    app:srcCompat="@drawable/ic_check_login_24dp" />
+
+            </RelativeLayout>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/otp_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorEnabled="false">
+
+            <RelativeLayout
+                android:id="@+id/layout_otp_bottom_sheet_registration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_otp_bottom_sheet_registration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_input_otp"
+                    android:inputType="numberSigned"
+                    android:maxLines="1"
+                    android:paddingEnd="28dp"
+                    android:paddingStart="8dp"
+                    android:theme="@style/App.EditText" />
+
+                <android.support.v4.widget.ContentLoadingProgressBar
+                    android:id="@+id/progress_otp_bottom_sheet_registration"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/iv_check_otp_bottom_sheet_registration"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    app:srcCompat="@drawable/ic_check_login_24dp" />
+            </RelativeLayout>
+        </android.support.design.widget.TextInputLayout>
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/resend_otp"
+            style="@style/App.TextView.sendOTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-4dp"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:maxLines="1"
+            android:text="@string/resend_otp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <include
+        layout="@layout/tnc_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp" />
+
+</LinearLayout>

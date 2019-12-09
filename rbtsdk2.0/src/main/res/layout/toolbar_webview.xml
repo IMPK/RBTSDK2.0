@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ndroid="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    style="@style/App.Toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    ndroid:background="@color/colorPrimary">
+
+    <!--app:layout_collapseMode="parallax"
+    app:layout_scrollFlags="scroll|snap"-->
+
+    <!--android:contentInsetLeft="0dp"
+    android:contentInsetStart="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    android:contentInsetRight="0dp"
+    android:contentInsetEnd="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetEnd="0dp"-->
+
+    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+        android:id="@+id/tv_toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingEnd="4dp"
+        android:paddingStart="0dp"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <!--android:layout_marginBottom="@dimen/toolbar_title_margin_bottom"
+        android:layout_marginTop="@dimen/toolbar_title_margin_top"-->
+
+</android.support.v7.widget.Toolbar>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+        android:id="@+id/tv_add_friends"
+        style="@style/App.TextView.Button"
+        android:layout_width="116dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="@string/add_friends"
+        android:layout_margin="18dp"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tv_add_friends">
+
+        <RelativeLayout
+            android:id="@+id/showcase_layout"
+            android:layout_width="94dp"
+            android:layout_height="94dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            >
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="147dp"
+                android:layout_height="147dp"
+                android:background="@drawable/gift_bg"
+                android:layout_centerInParent="true"
+                android:alpha="0.2"/>
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/ic_gift_62dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/gift_rbt_success_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/showcase_layout"
+            android:visibility="gone">
+
+            <com.onmobile.rbt.baseline.util.customview.MediumTextView
+                android:id="@+id/gift_rbt_success_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="25sp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/add_friend_success_title"/>
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/gift_rbt_success_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/gift_rbt_success_title"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/add_friend_success_description"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/child_status_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/gift_rbt_success_layout">
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/child_status_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:text="@string/child_status_title"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/gift_child_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/child_status_title_text"
+                android:layout_marginTop="8dp"
+                android:overScrollMode="never"/>
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/child_count_info_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gift_child_recycler_view"
+                android:layout_alignParentStart="true"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

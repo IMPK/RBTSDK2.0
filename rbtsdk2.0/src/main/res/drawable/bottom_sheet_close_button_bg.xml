@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/toggle_radio" />
+    <corners android:bottomLeftRadius="16dp" />
+    <padding
+        android:bottom="8dp"
+        android:left="8dp"
+        android:right="6dp"
+        android:top="6dp" />
+</shape>

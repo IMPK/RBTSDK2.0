@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:paddingStart="@dimen/activity_padding"
+    android:paddingEnd="@dimen/activity_padding">
+
+    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+        android:id="@+id/end_date_textview"
+        style="@style/App.TextView.Activity.Rbt.End.Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/end_date_textview">
+
+        <RelativeLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/user_activity_item_height">
+
+            <FrameLayout
+                android:id="@+id/rbt_imageview_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true">
+
+                <FrameLayout
+                    android:id="@+id/activity_rbt_shuffle_card_disc"
+                    android:layout_width="@dimen/item_activity_card_disc_size"
+                    android:layout_height="@dimen/item_activity_card_disc_size"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="@dimen/item_activity_card_disc_out_size">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/activity_rbt_shuffle_disc_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/default_album_art_circle" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/disc_cover" />
+
+                    <View
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/disc_cut" />
+
+                </FrameLayout>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/activity_rbt_shuffle_card"
+                    android:layout_width="@dimen/item_activity_card_cover_size"
+                    android:layout_height="@dimen/item_activity_card_cover_size"
+                    android:layout_gravity="start|center_vertical"
+                    app:cardBackgroundColor="#898989"
+                    app:cardCornerRadius="@dimen/card_fake_elevation"
+                    app:cardElevation="@dimen/track_card_elevation"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/activity_rbt_shuffle_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_margin="2dp"
+                        android:adjustViewBounds="true"
+                        android:background="@color/white"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/default_album_art" />
+
+                </android.support.v7.widget.CardView>
+
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="79dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="9dp"
+                android:layout_toEndOf="@id/rbt_imageview_layout">
+
+
+                <RelativeLayout
+                    android:id="@+id/right_layout"
+                    android:layout_width="50dp"
+                    android:layout_height="79dp"
+                    android:layout_alignParentEnd="true">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img_overflow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:padding="4dp"
+                        app:srcCompat="@drawable/ic_more_activity_24dp" />
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/switch_button"
+                        style="@style/App.Switch"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentBottom="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/right_layout">
+
+                    <RelativeLayout
+                        android:id="@+id/title_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                            android:id="@+id/title"
+                            style="@style/App.TextView.Activity.Rbt.Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <!--<android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/expand_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toEndOf="@id/title"
+                            app:srcCompat="@drawable/ic_arrow_down_activity_rbt_shuffle" />-->
+                    </RelativeLayout>
+
+                    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                        android:id="@+id/subtitle"
+                        style="@style/App.TextView.Activity.Rbt.SubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title_layout"
+                        android:layout_marginTop="4dp" />
+
+                    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                        android:id="@+id/caller_textview"
+                        style="@style/App.TextView.Activity.Rbt.Caller"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subtitle"
+                        android:layout_marginTop="4dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/caller_textview"
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal">
+
+                        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                            android:id="@+id/rbt_status"
+                            style="@style/App.TextView.Activity.Rbt.SetDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/activity_margin_half"
+                            android:textColor="@color/black"
+                            android:textSize="9sp"
+                            android:visibility="gone" />
+
+                        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                            android:id="@+id/setdate_textview"
+                            style="@style/App.TextView.Activity.Rbt.SetDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!--<RelativeLayout
+            android:id="@+id/expand_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/content_layout"
+            android:visibility="gone">
+
+            <com.onmobile.rbt.baseline.widget.EnhancedRecyclerView
+                android:id="@+id/activity_rbt_shuffle_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp" />
+            &lt;!&ndash;<FrameLayout
+                android:id="@+id/layout_shuffle_expansion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_margin" />&ndash;&gt;
+
+        </RelativeLayout>-->
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_rbt_divider"
+            android:layout_below="@id/content_layout"
+            android:background="@color/activity_rbt_divider_color" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

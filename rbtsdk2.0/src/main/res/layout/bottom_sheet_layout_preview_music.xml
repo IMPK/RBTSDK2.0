@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_preview_bottom_sheet"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_preview_bottom_sheet"
+        android:layout_width="@dimen/bottom_sheet_set_caller_tune_img_card_size"
+        android:layout_height="@dimen/bottom_sheet_set_caller_tune_img_card_size"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="@dimen/track_card_item_corner_radius"
+        app:cardElevation="@dimen/track_card_item_elevation"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_preview_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/default_album_art" />
+
+        <LinearLayout
+            android:id="@+id/layout_favorite_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@drawable/shade_top_bottom_black"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/prebuy_aud_card_padding">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_favorite_bottom_sheet"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@drawable/checkbox_favorite"
+                android:button="@null" />
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_favorite_bottom_sheet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
+                android:text="@string/dummy_counter"
+                android:textColor="@color/white"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/layout_player_bottom_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_circle_fill_white_22dp"
+            android:clickable="false">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/ib_play_player_bottom_sheet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="false"
+                android:padding="6dp"
+                app:srcCompat="@drawable/ic_play_accent_10dp" />
+
+            <android.support.v4.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_play_player_bottom_sheet"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:visibility="gone" />
+        </FrameLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_margin_half"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_artist_bottom_sheet"
+            style="@style/App.TextView.SingleLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loading"
+            android:textColor="@color/stack_artist_txt" />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_track_bottom_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/loading"
+            android:textColor="@color/stack_track_txt"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<android.support.v4.widget.NestedScrollView
+        android:id="@+id/store_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">-->
+
+        <RelativeLayout
+            android:id="@+id/container_content"
+            android:layout_width="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_frag_store_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </RelativeLayout>
+   <!-- </android.support.v4.widget.NestedScrollView>-->
+
+    <include layout="@layout/layout_loading" />
+
+</RelativeLayout>

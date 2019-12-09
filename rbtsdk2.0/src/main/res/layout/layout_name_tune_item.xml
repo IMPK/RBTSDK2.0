@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/name_tune_parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="8dp"
+    android:background="?attr/selectableItemBackground"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <RelativeLayout
+        android:id="@+id/nametune_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="41dp">
+
+        <View
+            android:id="@+id/nametune_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height"
+            android:layout_alignParentBottom="true"
+            android:background="@color/nametune_divider" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/nametune_divider"
+            android:layout_alignParentBottom="true">
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/name_tune_info_text"
+                style="@style/App.TextView.Nametune.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:layout_toStartOf="@+id/ib_profile_tune_play_layout"
+                android:gravity="start" />
+
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_set_name_tune"
+                style="@style/App.TextView.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="19dp"
+                android:text="@string/set_small" />
+
+            <FrameLayout
+                android:id="@+id/ib_profile_tune_play_layout"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="19dp"
+                android:layout_toStartOf="@id/tv_set_name_tune"
+                android:background="@drawable/ic_circle_nametune_22dp">
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/ib_profile_tune_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="8dp"
+                    app:srcCompat="@drawable/ic_play_accent_10dp" />
+
+                <android.support.v4.widget.ContentLoadingProgressBar
+                    android:id="@+id/ib_profile_tune_progress"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

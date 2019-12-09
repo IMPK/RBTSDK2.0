@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_store_item_child"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="@dimen/track_card_min_width"
+    android:minHeight="@dimen/track_card_min_height"
+    android:orientation="vertical">
+
+    <com.onmobile.rbt.baseline.widget.AspectRatioCardView
+        android:id="@+id/card_store_item_child"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="@dimen/track_card_item_corner_radius"
+        app:cardElevation="@dimen/track_card_elevation"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_preview_store_item_child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/default_album_art" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_rbt_selected_store_item_child"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|top"
+            android:layout_margin="8dp"
+            app:srcCompat="@drawable/ic_rbt_selected" />
+    </com.onmobile.rbt.baseline.widget.AspectRatioCardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_toStartOf="@+id/tv_set_store_item_child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp">
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_artist_store_item_child"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:gravity="start"
+                android:textAlignment="textStart"
+                android:text="@string/dummy"
+                android:textColor="@color/artist_txt"
+                android:textSize="11sp" />
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_track_store_item_child"
+                android:layout_below="@id/tv_artist_store_item_child"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:text="@string/dummy"
+                android:textColor="@color/track_txt"
+                android:textSize="12.5sp" />
+        </RelativeLayout>
+
+        <!--<android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/ib_add_to_udp_store_item_child"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_shuffle_accent_16dp"
+            android:visibility="gone"/>-->
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_set_store_item_child"
+            style="@style/App.TextView.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:text="@string/set_small"
+            android:layout_alignParentEnd="true"
+            android:textAllCaps="false"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

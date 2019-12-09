@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Preview Progress wheel Starts-->
+    <color name="progress_wheel_ideal">#ffffff</color>
+    <color name="progress_wheel_indicator">#f213a0</color>
+    <color name="white_transparent">#99FFFFFF</color>
+</resources>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:fitsSystemWindows="true">
+
+        <include layout="@layout/toolbar_webview" />
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:orientation="vertical"
+            android:background="@color/white"
+            >
+
+            <EditText
+                android:id="@+id/contactName"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:hint="@string/help_name"
+                android:singleLine="true"
+                android:textColor="@color/feedback_text"
+                android:textSize="16sp"
+                style="@style/EditText" />
+
+            <EditText
+                android:id="@+id/contactNumber"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:hint="@string/help_mobile"
+                android:inputType="number"
+                android:singleLine="true"
+                android:maxLength="10"
+                android:textColor="@color/feedback_text"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/contactEmailId"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:hint="@string/help_emailID"
+                android:singleLine="true"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/feedback_text"
+                android:textSize="16sp"
+                style="@style/EditText" />
+
+            <EditText
+                android:id="@+id/contactMessage"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_gravity="bottom"
+                android:scrollbars="vertical"
+                android:inputType="textMultiLine"
+                android:minLines="5"
+                android:maxHeight="15dp"
+                android:hint="@string/help_message"
+                android:textColor="@color/feedback_text"
+                android:textSize="16sp"
+                style="@style/EditText" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:background="@color/contact_button_cancel"
+            android:text="@string/help_cancel"
+            android:textColor="@color/contact_txt_color" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+        <Button
+            android:id="@+id/submit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:background="@drawable/contact_button"
+            android:text="@string/help_submit"
+            android:textColor="@color/contact_txt_color" />
+    </LinearLayout>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/blur_view_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/banner_card_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <eightbitlab.com.blurview.BlurView
+            android:id="@+id/blurView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:blurOverlayColor="@color/blur_colorOverlay">
+            <!--Any child View here, TabLayout for example-->
+        </eightbitlab.com.blurview.BlurView>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_recommendation_card"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/tv_button_next_discover_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:background="@color/stack_line_color" />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_button_next_discover"
+            style="@style/App.TextView.NoBorder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="12dp"
+            android:text="@string/go_to_store" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tv_button_next_discover_layout">
+
+        <!--<LinearLayout
+            android:id="@+id/indicator_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+        </LinearLayout>-->
+
+        <com.onmobile.rbt.baseline.widget.pageindicator.PageIndicator
+            android:id="@+id/indicator_banner_stack_discover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/activity_margin"
+            android:gravity="center" />
+
+        <RelativeLayout
+            android:id="@+id/banner_viewpager_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/indicator_banner_stack_discover"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <com.onmobile.rbt.baseline.widget.EnhancedWrapContentViewPager
+                android:id="@+id/banner_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="184dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="26dp"
+                android:overScrollMode="never" />
+
+            <com.onmobile.rbt.baseline.util.customview.BoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/banner_viewpager"
+                android:layout_centerHorizontal="true"
+                android:text="@string/banner_card_title"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.onmobile.rbt.baseline.util.BannerBadgeView
+        android:id="@+id/banner_bandageView"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:rotation="270" />
+
+    <RelativeLayout
+        android:id="@+id/angle_text_relative"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:rotation="-45">
+
+        <com.onmobile.rbt.baseline.util.customview.MediumTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/banner_badge_title"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

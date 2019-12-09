@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_store_item_child"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="@dimen/track_card_item_corner_radius"
+        app:cardElevation="@dimen/track_card_elevation"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="146dp"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:background="@color/active_plan_card_bg">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+
+                <com.onmobile.rbt.baseline.util.customview.MediumTextView
+                    android:id="@+id/tv_plan_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"/>
+
+                <com.onmobile.rbt.baseline.util.customview.MediumTextView
+                    android:id="@+id/tv_plan_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorAccent"
+                    android:layout_centerVertical="true"
+                    android:textSize="16sp"/>
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_divider_labeled"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/divider_height"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.onmobile.rbt.baseline.util.customview.LightTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/active_plan_title_prefix"
+                        android:textSize="12sp"
+                        android:text="@string/subscription_price_prefix"
+                        />
+
+                    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+                        android:id="@+id/tv_subscription_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.onmobile.rbt.baseline.util.customview.LightTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/active_plan_title_prefix"
+                        android:textSize="12sp"
+                        android:text="@string/tune_selection_price_prefix"
+                        />
+
+                    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+                        android:id="@+id/tv_tune_selection_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.onmobile.rbt.baseline.util.customview.LightTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/active_plan_title_prefix"
+                        android:textSize="12sp"
+                        android:text="@string/plan_validity_prefix"
+                        />
+
+                    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+                        android:id="@+id/tv_plan_validity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.onmobile.rbt.baseline.util.customview.LightTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/active_plan_title_prefix"
+                        android:textSize="12sp"
+                        android:text="@string/plan_next_subscription_prefix"
+                        />
+
+                    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+                        android:id="@+id/tv_plan_next_subscription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.onmobile.rbt.baseline.util.customview.LightTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/active_plan_title_prefix"
+                        android:textSize="12sp"
+                        android:text="@string/plan_last_subscription_prefix"
+                        />
+
+                    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+                        android:id="@+id/tv_plan_last_subscription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

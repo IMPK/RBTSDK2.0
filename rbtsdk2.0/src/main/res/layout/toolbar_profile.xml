@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    style="@style/App.Toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.onmobile.rbt.baseline.util.customview.MediumTextView
+        android:id="@+id/tv_toolbar_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingEnd="4dp"
+        android:paddingStart="0dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/toolbar_title_profile" />
+
+</android.support.v7.widget.Toolbar>

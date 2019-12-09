@@ -1,0 +1,45 @@
+{
+  "project_info": {
+    "project_number": "586296617503",
+    "firebase_url": "https://ancient-alloy-167107.firebaseio.com",
+    "project_id": "ancient-alloy-167107",
+    "storage_bucket": "ancient-alloy-167107.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586296617503:android:47e7d268f3b2565e",
+        "android_client_info": {
+          "package_name": "br.com.vodain.ringbacktones"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586296617503-7c3u1osbgkpbhrkhknsk0m0dn4uoka83.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnh20nrX40WFsupztx6uXgPVui1KR2RYc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-83455982-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

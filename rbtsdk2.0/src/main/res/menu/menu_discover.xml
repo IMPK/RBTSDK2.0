@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_login"
+        android:enabled="true"
+        app:actionLayout="@layout/login_menu_layout"
+        android:title="@string/login"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:id="@+id/action_search"
+        android:enabled="true"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:title="@string/search"
+        app:showAsAction="withText|ifRoom" />
+
+</menu>

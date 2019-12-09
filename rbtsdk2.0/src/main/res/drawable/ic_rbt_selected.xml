@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <ripple android:color="@color/rbt_selected">
+            <item>
+                <shape android:shape="oval">
+                    <size
+                        android:width="16dp"
+                        android:height="16dp" />
+                    <corners android:radius="30dp" />
+                    <solid android:color="@color/rbt_selected_bg" />
+                </shape>
+            </item>
+        </ripple>
+    </item>
+    <item
+        android:bottom="2dp"
+        android:drawable="@drawable/ic_rbt_selected_12dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp" />
+</layer-list>

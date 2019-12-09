@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/bottom_sheet_registration_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/bottom_sheet_content_margin"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/name_tune_filter_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_text_layout"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:id="@+id/artist_picker_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="top">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/voice_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:tint="@color/create_name_tune_text"
+                    app:srcCompat="@drawable/ic_voice" />
+
+                <com.onmobile.rbt.baseline.util.customview.LightTextView
+                    android:id="@+id/voice_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/voice_imageview"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="11dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/name_tune_expand_item_info" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/language_picker_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="top">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/language_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:tint="@color/create_name_tune_text"
+                    app:srcCompat="@drawable/ic_language" />
+
+                <com.onmobile.rbt.baseline.util.customview.LightTextView
+                    android:id="@+id/language_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/language_imageview"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="11dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/name_tune_expand_item_info" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/edit_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_border_name_tune_edit">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/name_tune_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:editable="false"
+                android:ellipsize="end"
+                android:paddingStart="@dimen/activity_margin"
+                android:paddingEnd="@dimen/activity_margin"
+                android:singleLine="true"
+                android:textColor="@color/name_tune_edit_text_color"
+                android:textColorHint="@color/name_tune_edit_hint_color"
+                android:textSize="@dimen/name_tune_edit_text" />
+
+        </RelativeLayout>
+
+        <com.onmobile.rbt.baseline.util.customview.MediumTextView
+            android:id="@+id/create_nametune_info_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="@string/create_name_tune_info2"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/create_name_tune_btn"
+            style="@style/App.TextView.Button.Border.NameTune"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minWidth="148dp"
+            android:minHeight="@dimen/app_button_large_height"
+            android:text="@string/create_new_name_tune_confirm"
+            android:textColor="@color/create_name_tune_text"
+            android:textSize="@dimen/create_name_tune_text" />
+
+    </LinearLayout>
+
+</LinearLayout>

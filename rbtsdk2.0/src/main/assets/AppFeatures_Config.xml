@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <module name="Config">
+        <parameter name="Debug" value="true" /> <!--Must be false for production release-->
+        <parameter name="CrashReportEnabled" value="false" /> <!--Must be true for production release-->
+        <parameter name="FirebaseAnalyticsEnabled" value="false" /> <!--Must be true for production release-->
+        <parameter name="CleaverTapAnalyticsEnabled" value="true" /> <!--Must be true for production release-->
+    </module>
+    <module name="Registration">
+        <parameter name="SkipOtpValidation" value="true" />
+    </module>
+    <module name="MainApp">
+        <parameter name="IsAutoPlayEnabled" value="true" />
+        <parameter name="IsDigitalStarToCopyEnabled" value="true" />
+        <parameter name="IsServerKeySyncRequired" value="true" />
+        <parameter name="FamilyAndFriendsEnabled" value="false" />
+        <parameter name="IsContactSyncEnabled" value="false" />
+        <parameter name="PlanUpgrade" value="true" />
+        <parameter name="IsRetailIdEnabled" value="true" />
+        <parameter name="IsLanguageInSearchEnabled" value="false" />
+        <parameter name="IsShowBannerInStore" value="true" />
+        <parameter name="IsShowSinglePlanUpgrade" value="true" />
+        <parameter name="IsShownConfirmationForProfileTune" value="false" />
+        <parameter name="IsShowRatingDialogFeature" value="true" />
+        <parameter name="StoreMaxItemPerChart" value="32" />
+        <parameter name="isUDPEnabled" value="true" />
+        <parameter name="PrebuyVisualizerEnabled" value="false" />
+        <parameter name="isSelectionModel" value="true" />
+        <parameter name="isDeleteLastSelection" value="true" />
+        <parameter name="isShowVideoTutorial" value="false" />
+        <parameter name="isShowPlansForNewUser" value="true" />
+        <parameter name="isShowMyAccount" value="true" />
+        <parameter name="isShowExitPopup" value="true" />
+        <parameter name="isDummyPurchaseEnabled" value="true" />
+        <parameter name="IsPayTMEnabled" value="true" />
+        <parameter name="SecureAuthenticationFlow" value="false"/>
+        <parameter name="isMultiAppLanguageSupport" value="false"/>
+    </module>
+</config>

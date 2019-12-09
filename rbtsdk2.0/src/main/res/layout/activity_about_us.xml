@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:fitsSystemWindows="true">
+
+        <include layout="@layout/toolbar_webview" />
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100"
+        >
+
+        <!--Please change the image view width and height wrap content according to the image
+        currently for convenience I am setting hard coded parameters and a random icon-->
+        <ImageView
+            android:layout_marginTop="25dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@drawable/ic_logo_aboutus"
+            android:layout_gravity="center"
+            android:layout_weight="20"
+            />
+
+        <!--Text heading is also random, Still waiting to provide the text, please check the textcolor -->
+        <com.onmobile.rbt.baseline.util.customview.BoldTextView
+            android:id="@+id/aboutus_tittle"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/about_us_screen_title"
+            android:layout_gravity="center"
+            android:textSize="@dimen/about_us_heading"
+            android:layout_weight="10"
+            android:textColor="@color/about_us_text"
+            />
+
+        <!--text body is from html page in assets, most probably it is going to change confirm with Naresh once.-->
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/aboutus_body_first"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/about_us_body_first"
+            android:textSize="@dimen/about_us_body"
+            android:layout_weight="10"
+            android:layout_marginEnd="@dimen/about_us_margin"
+            android:layout_marginTop="@dimen/about_us_margin"
+            android:layout_marginStart="@dimen/about_us_margin"
+            android:textColor="@color/about_us_text"
+            />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/aboutus_body_sec"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/about_us_body_sec"
+            android:textSize="@dimen/about_us_body"
+            android:layout_weight="10"
+            android:layout_marginStart="@dimen/about_us_margin"
+            android:layout_marginEnd="@dimen/about_us_margin"
+            android:textColor="@color/about_us_text"
+            />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/aboutus_body_last"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/about_us_body_last"
+            android:textSize="@dimen/about_us_body"
+            android:layout_weight="10"
+            android:layout_marginStart="@dimen/about_us_margin"
+            android:layout_marginEnd="@dimen/about_us_margin"
+            android:textColor="@color/about_us_text"
+            />
+    </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

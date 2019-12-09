@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/verifying_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cg_sms_verifying_hgt"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center">
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/verification_failed"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/cg_sms_verifying_hgt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            android:text="@string/verification_failed"
+            android:textColor="@color/cg_text_verification_failed"
+            android:textSize="@dimen/cg_sms_verifying_text_size"
+            />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/loading_failed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/verification_failed"
+            app:srcCompat="@drawable/ic_failr"/>
+
+
+    </RelativeLayout>
+
+    <com.onmobile.rbt.baseline.util.customview.LightTextView
+        android:id="@+id/verification_failed_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/verifying_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/cg_sms_bottom_margin"
+        android:layout_marginTop="@dimen/cg_sms_back_btn_text_top_margin"
+        android:gravity="center"
+        android:text="@string/cg_sms_verification_failed_text"
+        android:textColor="@color/custom_cg_title"
+        android:textSize="@dimen/cg_sms_back_btn_text_size"
+        />
+
+    <Button
+        android:id="@+id/ok_btn"
+        android:layout_width="@dimen/cg_sms_ok_btn_width"
+        android:layout_height="@dimen/cg_sms_ok_btn_height"
+        android:layout_below="@+id/verification_failed_text"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/cg_ok_border"
+        android:gravity="center"
+        android:text="@string/cg_ok"
+        android:textColor="@color/black"
+        android:textSize="@dimen/cg_sms_btn_size"
+        />
+
+</RelativeLayout>

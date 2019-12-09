@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_root_pre_buy_aud_card_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_pre_buy_aud_card_item"
+        android:layout_width="@dimen/prebuy_track_aud_card_height_width"
+        android:layout_height="@dimen/prebuy_track_aud_card_height_width"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="@dimen/track_card_item_corner_radius"
+        app:cardElevation="@dimen/card_fake_elevation"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="false">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_preview_pre_buy_aud_card_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/default_album_art" />
+
+        <LinearLayout
+            android:id="@+id/layout_favorite_pre_buy_aud_card_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@drawable/shade_top_bottom_black"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/prebuy_aud_card_padding">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_favorite_pre_buy_aud_card_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/checkbox_favorite"
+                android:button="@null" />
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_favorite_pre_buy_aud_card_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
+                android:text="@string/dummy_counter"
+                android:textColor="@color/white"
+                android:textSize="@dimen/prebuy_aud_like_counter_txt" />
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_rbt_selected_pre_buy_aud_card_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|top"
+            android:layout_margin="@dimen/prebuy_aud_card_padding"
+            app:srcCompat="@drawable/ic_rbt_selected" />
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

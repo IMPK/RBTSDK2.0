@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--UI Revamp-->
+    <color name="colorPrimary">#e60000</color>
+    <color name="colorPrimaryDark">#ce0101</color>
+    <color name="colorAccent">#e60000</color>
+
+    <color name="colorPrimaryNight">#e60000</color>
+    <color name="colorPrimaryDarkNight">#ce0101</color>
+    <color name="colorAccentNight">#e60000</color>
+
+    <color name="light_window_background">#FFFFFF</color>
+    <color name="dark_window_background">#333333</color>
+
+    <color name="txt_primary">#000000</color>
+    <color name="txt_secondary">#898989</color>
+    <color name="txt_card_title">#000000</color>
+    <color name="txt_card_sub_title">#000000</color>
+    <color name="txt_profile_title">#898989</color>
+    <color name="txt_profile_sub_title">#000000</color>
+    <color name="txt_nametune_title">#333333</color>
+    <color name="nametune_divider">#acacac</color>
+
+    <color name="colorControlNormal">#d4bcbcbc</color>
+    <color name="colorControlActivated">@color/colorAccent</color>
+    <color name="colorControlDisabled">#d4bcbcbc</color>
+
+    <color name="shimmer_base_color">#DDDDDD</color>
+    <color name="shimmer_highlight_color">#C8C8C8</color>
+    <color name="stack_artist_txt">#898989</color>
+    <color name="stack_track_txt">#000000</color>
+    <color name="stack_line_color">#DDDDDD</color>
+    <color name="trending_gradient_start">#ff7900</color>
+    <color name="trending_gradient_end">#f213a0</color>
+    <color name="profile_tune_gradient_start">#7ce1ff</color>
+    <color name="profile_tune_gradient_end">#0231b7</color>
+    <color name="record_gradient_start">#222222</color>
+    <color name="record_gradient_end">#484747</color>
+    <color name="name_tune_gradient_start">#977bd3</color>
+    <color name="name_tune_gradient_end">#cf69b7</color>
+    <color name="music_shuffle_gradient_start">#57b2e7</color>
+    <color name="music_shuffle_gradient_end">#df92c7</color>
+    <color name="recommendation_gradient_start">#d03f62</color>
+    <color name="recommendation_gradient_end">#d9868c</color>
+    <color name="banner_gradient_start">#518bee</color>
+    <color name="banner_gradient_end">#2aedff</color>
+    <color name="white_transparent">#99FFFFFF</color>
+    <color name="toolbar_background">#f9f9f9</color>
+    <color name="txt_color_secondary">#66000000</color>
+    <color name="artist_txt">#898989</color>
+    <color name="track_txt">@color/colorAccent</color>
+    <color name="content_icon">#C8C8C8</color>
+    <color name="checkable_favorite">@color/colorAccent</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="trans_black_25">#99000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="text_box_bg">#5b5b5b</color>
+    <color name="grey2">#EBEBEB</color>
+    <color name="chrome_grey">#F2F2F2</color>
+    <color name="colorButton">@color/colorAccent</color>
+    <color name="app_text_theme_color">@color/colorAccent</color>
+    <color name="splash_bg">@color/colorAccent</color>
+
+    <color name="white_transparent_10">#E6FFFFFF</color>
+
+    <color name="aud_track_head_artist">#999999</color>
+    <color name="aud_track_head_track">#333333</color>
+
+    <color name="black_transparent_60">#99000000</color>
+    <color name="black_transparent_20">#33000000</color>
+
+    <color name="white_transparent_80">#CCFFFFFF</color>
+
+    <color name="disc_border">#66000000</color>
+    <color name="disc_gradient">#FFFFFF</color>
+    <drawable name="name_tune_white">#FFFFFF</drawable>
+
+    <color name="app_blue_them_color">#977bd3</color>
+
+    <color name="desc_txt">#4d4d4d</color>
+
+    <color name="bottom_sheet_sub_item_title">#b3000000</color>
+    <color name="divider">#c8c7cc</color>
+
+    <color name="switchColorControlNormal">#d4bcbcbc</color>
+    <color name="switchColorControlActivated">@color/colorAccent</color> <!-- #4cd964 -->
+    <color name="switchColorForeground">#d4bcbcbc</color>
+    <color name="switchColorThumb">#ffffff</color>
+
+    <drawable name="activity_rbt_current">@color/activity_rbt_bg_grey</drawable>
+    <drawable name="activity_rbt_History">#FFFFFF</drawable>
+
+    <color name="activity_rbt_bg_grey">#efeff4</color>
+    <color name="txt_activity_end_date">#000000</color>
+    <color name="activity_rbt_divider_color">#cccccc</color>
+    <color name="activity_rbt_title">#898989</color>
+    <color name="activity_rbt_sub_title">#000000</color>
+    <color name="activity_rbt_caller">@color/colorAccent</color>
+    <color name="activity_rbt_setdate">#000000</color>
+    <color name="activity_rbt_title_big">#1b1b1b</color>
+    <color name="activity_rbt_title_small">#b3000000</color>
+    <color name="activity_rbt_shuffle_item_title">#898989</color>
+    <color name="activity_rbt_shuffle_item_sub_title">#333333</color>
+
+    <color name="bottom_navigation_background">#f7f7f7</color>
+
+    <color name="border_profile_picture">#82cccccc</color>
+
+    <color name="labeled_title">#b3cccccc</color>
+
+    <color name="name_tune_expand_item_info">#000000</color>
+    <color name="name_tune_expand_sub_item_info">#b3000000</color>
+    <color name="name_tune_edit_text_color">#121212</color>
+    <color name="name_tune_edit_hint_color">#666666</color>
+    <color name="create_name_tune_text">#977bd3</color>
+
+    <!--Chip-->
+    <color name="chip_border">#cccccc</color>
+    <color name="chip_text">#333333</color>
+    <color name="chip_ripple">@color/colorAccent</color>
+
+    <!--Chip Layout-->
+    <color name="colorChipBackground">#e0e0e0</color>
+    <color name="colorChipBackgroundClicked">#424242</color>
+    <color name="colorChipText">#424242</color>
+    <color name="colorChipTextClicked">#F5F5F5</color>
+    <color name="colorChipCloseInactive">#757575</color>
+    <color name="colorChipCloseClicked">#F5F5F5</color>
+
+    <color name="plan_attr_choice_background">#1A818187</color>
+
+    <color name="login_check_color">#33cc00</color>
+
+    <color name="visualizer_left">#ff7900</color>
+    <color name="visualizer_right">#f213a0</color>
+
+    <!-- Plan -->
+    <color name="plan_layout_footer">#b3000000</color>
+    <color name="plan_layout_header">#4d4d4d</color>
+    <color name="plan_ripple">@color/transparent</color> <!--#cccccc-->
+
+
+    <!--CG access over SMS-->
+    <color name="custom_cg_title">#2e2e2e</color>
+    <color name="custom_cg_no_btn">#c8c8c8</color>
+    <color name="custom_cg_yes_btn">#21bd15</color>
+    <color name="custom_cg_border_view">#dadada</color>
+    <color name="cg_text_verifying">#05cc2f</color>
+    <color name="cg_text_verification_failed">#f13b28</color>
+    <color name="cg_ok_btn_border">#737373</color>
+
+    <color name="header_text">#0e0e0e</color>
+
+    <color name="recomendation_text_color">#4d4d4d</color>
+    <color name="recomendation_bold_color">#1d1d1d</color>
+    <color name="contact_button_cancel">#a8a8aa</color>
+    <color name="contact_button_done">@color/colorAccent</color>
+    <color name="contact_txt_color">@color/white</color>
+
+    <color name="feedback_text">#0e0e0e</color>
+
+    <color name="about_us_text">@color/black</color>
+
+    <!--Digital Star-->
+    <color name="digital_star_background_color">#FFFFFF</color>
+    <color name="digital_star_heading_color">@color/app_text_theme_color</color>
+    <color name="charges_apply_text_color">#999999</color>
+    <color name="digital_star_info1_color">#666666</color>
+    <color name="digital_star_info2_color">@color/app_text_theme_color</color>
+    <color name="digital_star_dismiss_item_bg_color">#b7b7b7</color>
+
+    <color name="picker_selector">#c3c3c3</color>
+
+    <color name="toggle_radio">#5e5e5e</color>
+
+    <!--Speech Recognizer-->
+    <color name="speech_recognizer_text_indicator">#666666</color>
+    <color name="speech_recognizer_listening_mic_bg">@color/colorAccent</color>
+    <color name="speech_recognizer_ready_mic_bg">#c5c5c5</color>
+
+
+    <!-- Cut wheel ruler view-->
+    <color name="blur_colorOverlay">#50000000</color>
+    <color name="wheel_small_line_color">#4DFFFFFF</color>
+    <color name="wheel_big_line_color">#FFFFFF</color>
+    <color name="black40">#80000000</color>
+    <color name="black10">#1A000000</color>
+    <color name="black80">#CC000000</color>
+    <color name="black90">#E6000000</color>
+    <color name="track_cut_wheel_progress_color">#73e60000</color>
+    <color name="track_cut_wheel_progress_color_notification">#73e60000</color>
+
+    <!--<color name="pointer_color_green">#B326e443</color>-->
+    <color name="pointer_color_green">#B3e60000</color>
+    <color name="red">#FF004F</color>
+    <color name="background_notification">#2853CE</color>
+
+    <color name="rbt_selected">#05cc2f</color>
+    <color name="rbt_selected_bg">#DDFFFFFF</color>
+    <color name="prebuy_video_bg">#4D000000</color>
+
+    <!--OTP-->
+
+    <color name="powered_by_color">#f08282</color>
+    <color name="splash_progress_unselected">#cccccc</color>
+    <color name="splash_progress_selected">#333333</color>
+    <color name="tag_search_bg">#f8f8f8</color>
+
+    <!--Default-->
+    <color name="default_content_bg">#f8f8f8</color>
+
+    <!--Gift-->
+    <color name="gift_bg_circle_gradient_start">@color/white</color>
+    <color name="gift_bg_circle_gradient_end">#e3bf58</color>
+    <color name="gift_circle_accepted">#f26c4f</color>
+    <color name="gift_circle_pending">#6dcff6</color>
+    <color name="active_plan_card_bg">#ededed</color>
+    <color name="active_plan_title_prefix">#333333</color>
+    <color name="my_account_section_title">#b3000000</color>
+    <color name="gift_child_sub_head_color">#b3333333</color>
+
+    <!--Page Indicator-->
+    <color name="page_indicator_active">@color/colorAccent</color>
+    <color name="page_indicator_inactive">#cccccc</color>
+
+    <!--Default Album Image (Loading, Error image)-->
+    <color name="default_album_art_background">@color/black</color>
+    <color name="default_album_art_icon">@color/colorAccent</color>
+
+    <!--Coach marks-->
+    <color name="coach_mark_bckground">#e6000000</color>
+    <color name="coach_mark_text_swipe_up">#ffffff</color>
+    <color name="coach_mark_tap_dismiss">#6d6d6d</color>
+
+    <!--App Button-->
+    <color name="app_button_start">#ff7900</color>
+    <color name="app_button_end">#f213a0</color>
+
+    <color name="empty_activity_info1">@color/colorAccent</color>
+    <color name="empty_activity_info2">#333333</color>
+
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bg_gradient_trending" />
+    <item>
+        <shape>
+            <gradient
+                android:angle="90"
+                android:centerColor="@color/white_transparent_80"
+                android:dither="true"
+                android:endColor="@color/transparent"
+                android:startColor="@color/white"
+                android:type="linear" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/bottom_sheet_layout_choice_auto_profile_tune" />
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="visible"
+        android:id="@+id/meeting_listview"
+        layout="@layout/meeting_sync_listview" />
+
+    <!--<include layout="@layout/bottom_sheet_layout_plans" />-->
+    <com.onmobile.rbt.baseline.widget.PlanViewLayout
+        android:id="@+id/layout_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:footer_text="@string/available_plans_desc"
+        app:header_text="@string/available_plans_title" />
+
+    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+        android:id="@+id/play_for_all_callers_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/activity_margin"
+        android:layout_marginEnd="@dimen/activity_margin"
+        android:layout_marginBottom="16dp"
+        android:text="@string/play_for_all_callers_info"
+        android:theme="@style/App.TextView.Multiline"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+        android:id="@+id/tv_set_bottom_sheet"
+        style="@style/App.TextView.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:minHeight="32dp"
+        android:minWidth="72dp"
+        android:text="@string/enable" />
+
+</LinearLayout>

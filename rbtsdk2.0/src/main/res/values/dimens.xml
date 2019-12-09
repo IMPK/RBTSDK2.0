@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="activity_margin">16dp</dimen>
+    <dimen name="activity_padding">16dp</dimen>
+    <dimen name="activity_margin_half">8dp</dimen>
+    <dimen name="activity_padding_half">8dp</dimen>
+    <dimen name="txt_default_padding">4dp</dimen>
+    <dimen name="edit_txt_default_padding">4dp</dimen>
+
+    <dimen name="toolbar_title_large">30sp</dimen>
+    <dimen name="toolbar_title">24sp</dimen>
+    <dimen name="toolbar_title_profile">20sp</dimen>
+    <dimen name="toolbar_title_margin_top">32dp</dimen>
+    <dimen name="toolbar_title_margin_bottom">8dp</dimen>
+    <dimen name="toolbar_tab_padding">8dp</dimen>
+    <dimen name="toolbar_elevation">2dp</dimen>
+    <dimen name="toolbar_default_elevation">0dp</dimen>
+
+    <dimen name="txt_view">12sp</dimen>
+    <dimen name="resendotp_txt_view">14sp</dimen>
+    <dimen name="tnc_txt_view">16sp</dimen>
+    <dimen name="txt_button">12sp</dimen>
+    <dimen name="edit_text">16sp</dimen>
+    <dimen name="txt_view_error">16sp</dimen>
+    <dimen name="txt_button_min_padding_left_right">12dp</dimen>
+    <dimen name="txt_button_min_padding_top_bottom">4dp</dimen>
+    <dimen name="txt_button_min_width">48dp</dimen>
+    <dimen name="txt_button_min_height">24dp</dimen>
+    <dimen name="txt_card_button_width">60dp</dimen>
+    <dimen name="txt_card_button_height">28dp</dimen>
+    <dimen name="txt_heading_trend">30sp</dimen>
+    <dimen name="txt_subheading_trend">12sp</dimen>
+    <dimen name="txt_button_width">68dp</dimen>
+    <dimen name="txt_button_height">32dp</dimen>
+    <dimen name="txt_card_title">18sp</dimen>
+    <dimen name="txt_card_sub_title">14sp</dimen>
+    <dimen name="txt_profile_title">11sp</dimen>
+    <dimen name="txt_profile_sub_title">15sp</dimen>
+    <dimen name="txt_button_circular_width">200dp</dimen>
+    <dimen name="txt_button_circular_height">32dp</dimen>
+    <dimen name="txt_nametune_title">12sp</dimen>
+
+    <dimen name="track_image_item_min_hw">154dp</dimen>
+    <dimen name="divider_height">0.3dp</dimen>
+
+    <dimen name="stack_item_elevation">4dp</dimen>
+    <dimen name="stack_item_card_corner_radius">8dp</dimen>
+
+    <dimen name="stack_layout_margin_top">-32dp</dimen>
+    <dimen name="stack_layout_margin_bottom">64dp</dimen>
+    <dimen name="stack_layout_margin_start_end">12dp</dimen>
+    <dimen name="stack_layout_margin_start_end_others">12dp</dimen>
+    <dimen name="stack_recycler_margin_top">12dp</dimen>
+    <dimen name="stack_recycler_margin_bottom">12dp</dimen>
+    <dimen name="stack_content_title_margin">54dp</dimen>
+    <dimen name="stack_layout_margin_home_top">48dp</dimen>
+
+    <dimen name="track_card_elevation">1dp</dimen>
+    <dimen name="track_card_item_corner_radius">4dp</dimen>
+    <dimen name="track_card_min_height">158dp</dimen>
+    <dimen name="track_card_min_width">158dp</dimen>
+    <dimen name="track_card_item_elevation">4dp</dimen>
+    <dimen name="track_child_item_margin">12dp</dimen>
+    <dimen name="recommendation_card_item_margin">3dp</dimen>
+    <dimen name="track_child_item_margin_top_bottom">8dp</dimen>
+    <dimen name="track_child_margin">16dp</dimen>
+
+    <dimen name="track_aud_card_gap">48dp</dimen>
+    <dimen name="track_aud_card_height_width">177dp</dimen>
+    <dimen name="track_aud_card_difference">80dp</dimen>
+    <dimen name="track_aud_card_head_artist">16sp</dimen>
+    <dimen name="track_aud_card_head_track">20sp</dimen>
+    <dimen name="track_aud_card_head_button_diff">12dp</dimen>
+    <dimen name="track_aud_card_head_action_button_diff">32dp</dimen>
+    <dimen name="track_aud_card_pager_margin_top">38dp</dimen>
+    <dimen name="track_aud_card_pager_margin_bottom">16dp</dimen>
+    <dimen name="track_aud_card_shadow_width">144dp</dimen>
+    <dimen name="track_aud_card_shadow_height">16dp</dimen>
+
+    <dimen name="shimmer_highlight_alpha">0.3</dimen>
+    <dimen name="shimmer_base_alpha">0.7</dimen>
+
+    <dimen name="round_tab_min_width">80dp</dimen>
+    <dimen name="round_tab_max_height">32dp</dimen>
+    <dimen name="round_tab_corner">16dp</dimen>
+
+    <dimen name="prebuy_aud_card_padding">8dp</dimen>
+    <dimen name="prebuy_aud_like_counter_txt">12sp</dimen>
+    <dimen name="prebuy_track_aud_card_height_width">177dp</dimen>
+    <dimen name="prebuy_track_translate_offset">72dp</dimen>
+    <dimen name="prebuy_text_artist_margin_top">24dp</dimen>
+    <dimen name="prebuy_text_track_margin_top">4dp</dimen>
+    <dimen name="prebuy_visualizer_margin">16dp</dimen>
+    <dimen name="prebuy_player_control_margin_top">16dp</dimen>
+    <dimen name="prebuy_player_control_shuffle_margin_top">20dp</dimen>
+    <dimen name="prebuy_player_control_padding_bottom">16dp</dimen>
+    <dimen name="prebuy_player_control_button_width_height">32dp</dimen>
+    <dimen name="prebuy_player_control_progress_width_height">24dp</dimen>
+    <dimen name="prebuy_visualizer_width">144dp</dimen>
+    <dimen name="prebuy_visualizer_height">44dp</dimen>
+
+    <dimen name="card_fake_elevation">0.1dp</dimen>
+    <dimen name="bottom_sheet_content_padding">16dp</dimen>
+    <dimen name="bottom_sheet_content_margin">16dp</dimen>
+    <dimen name="bottom_sheet_set_caller_tune_img_card_size">120dp</dimen>
+    <dimen name="bottom_sheet_set_tune_min_height">378dp</dimen>
+    <dimen name="bottom_sheet_title">20sp</dimen>
+
+    <!--Multiline radio button-->
+    <dimen name="multiline_radio_button_width">96dp</dimen>
+    <dimen name="multiline_radio_button_height">44dp</dimen>
+    <dimen name="multiline_radio_margin_end">8dp</dimen>
+
+    <dimen name="txt_activity_end_date">16sp</dimen>
+    <dimen name="activity_rbt_divider">0.7dp</dimen>
+    <dimen name="activity_rbt_title">12sp</dimen>
+    <dimen name="activity_rbt_sub_title">16sp</dimen>
+    <dimen name="activity_rbt_caller">12sp</dimen>
+    <dimen name="activity_rbt_setdate">9sp</dimen>
+    <dimen name="activity_rbt_title_big">16sp</dimen>
+    <dimen name="activity_rbt_title_small">14sp</dimen>
+    <dimen name="activity_rbt_shuffle_item_title">11sp</dimen>
+    <dimen name="activity_rbt_shuffle_item_sub_title">12sp</dimen>
+
+    <dimen name="profile_pic_radius">48dp</dimen>
+    <dimen name="profile_avatar_selector_radius">48dp</dimen>
+    <dimen name="profile_pic_size">132dp</dimen>
+    <dimen name="profile_avatar_selector_size">128dp</dimen>
+    <dimen name="profile_pic_border">2dp</dimen>
+
+    <dimen name="min_height_labeled">44dp</dimen>
+    <dimen name="start_end_padding_labeled">16dp</dimen>
+    <dimen name="top_bottom_padding_labeled">8dp</dimen>
+    <dimen name="txt_label_labeled_size">16sp</dimen>
+    <dimen name="txt_value_labeled_size">14sp</dimen>
+
+    <dimen name="name_tune_expand_item_info">12sp</dimen>
+    <dimen name="name_tune_expand_sub_item_info">9sp</dimen>
+    <dimen name="name_tune_edit_text">14sp</dimen>
+    <dimen name="create_name_tune_text">12sp</dimen>
+    <dimen name="activity_rbt_video_text">9sp</dimen>
+
+    <!--Chip-->
+    <dimen name="chip_text">14sp</dimen>
+    <dimen name="chip_padding">16dp</dimen>
+    <dimen name="chip_min_height">32dp</dimen>
+    <dimen name="chip_border_width">0.7dp</dimen>
+    <dimen name="chip_radius">16dp</dimen>
+
+    <!--Chip Layout-->
+    <dimen name="chip_height">32dp</dimen>
+    <dimen name="chip_horizontal_padding">16dp</dimen>
+    <dimen name="chip_gap">6dp</dimen>
+
+    <!--Horizontal Recycler-->
+    <dimen name="horizontal_music_item_card_size">90dp</dimen>
+    <dimen name="horizontal_music_item_padding">16dp</dimen>
+    <dimen name="horizontal_music_item_half_padding">8dp</dimen>
+    <dimen name="horizontal_music_item_card_corner">4dp</dimen>
+
+    <dimen name="fading_edge_text">32dp</dimen>
+    <dimen name="fading_edge_recycler">72dp</dimen>
+
+    <!--Plan View-->
+    <dimen name="plan_view_radius">4dp</dimen>
+    <dimen name="plan_view_stroke">0.7dp</dimen>
+    <dimen name="plan_view_width">101dp</dimen>
+    <dimen name="plan_view_height">60dp</dimen>
+    <dimen name="plan_view_margin_end">4dp</dimen>
+    <dimen name="plan_view_adjustment_margin_top">-5dp</dimen>
+
+    <!--CG access over sms -->
+    <dimen name="cg_sms_top_margin">20dp</dimen>
+    <dimen name="cg_sms_bottom_margin">16dp</dimen>
+    <dimen name="cg_sms__title_left_margin">26dp</dimen>
+    <dimen name="cg_sms_title">18sp</dimen>
+    <dimen name="cg_sms_click_to_yes">16sp</dimen>
+    <dimen name="cg_sms_click_to_yes_top_margin">40dp</dimen>
+    <dimen name="cg_sms_left_margin">24dp</dimen>
+    <dimen name="cg_sms_btn_size">18sp</dimen>
+    <dimen name="cg_sms_btn_width">152dp</dimen>
+    <dimen name="cg_sms_btn_height">48dp</dimen>
+    <dimen name="cg_sms_btn_banner_width">280dp</dimen>
+    <dimen name="cg_sms_btn_banner_height">280dp</dimen>
+    <dimen name="cg_sms_pricing_text">14sp</dimen>
+    <dimen name="cg_sms_pricing_txt_border">24dp</dimen>
+    <dimen name="cg_sms_verifying_hgt">48dp</dimen>
+    <dimen name="cg_sms_verifying_text_size">18sp</dimen>
+    <dimen name="cg_sms_verifying_loader_margin">8dp</dimen>
+    <dimen name="cg_sms_back_btn_text_size">14sp</dimen>
+    <dimen name="cg_sms_back_btn_text_top_margin">12dp</dimen>
+    <dimen name="cg_sms_ok_btn_width">312dp</dimen>
+    <dimen name="cg_sms_ok_btn_height">48dp</dimen>
+
+    <dimen name="search_edittext_height">40dp</dimen>
+    <dimen name="image_margin">20dp</dimen>
+
+    <dimen name="text_size_16">16sp</dimen>
+
+    <!--User Activity -->
+    <dimen name="user_activity_item_height">116dp</dimen>
+    <dimen name="item_activity_card_img_size">87dp</dimen>
+    <dimen name="item_activity_card_cover_size">64dp</dimen>
+    <dimen name="item_activity_card_disc_size">54dp</dimen>
+    <dimen name="item_activity_card_disc_out_size">32dp</dimen>
+    <dimen name="item_card_cover_size">87dp</dimen>
+    <dimen name="item_card_disc_size">64dp</dimen>
+    <dimen name="item_card_disc_out_size">48dp</dimen>
+
+    <!--about us text dimensions-->
+    <dimen name="about_us_heading">18sp</dimen>
+    <dimen name="about_us_body">15sp</dimen>
+    <dimen name="about_us_margin">10dp</dimen>
+
+    <!--Digital Star-->
+    <dimen name="digital_star_heading">11sp</dimen>
+    <dimen name="digital_star_copy_song">9sp</dimen>
+    <dimen name="digital_star_charges_apply">8sp</dimen>
+
+    <!--Dialog-->
+    <dimen name="dialog_button_text_size">12sp</dimen>
+    <dimen name="single_input_dialog_margin">18dp</dimen>
+
+    <!--Speech Recognizer-->
+    <dimen name="speech_recognizer_text_indicator">16sp</dimen>
+    <dimen name="speech_recognizer_icon_radius">30dp</dimen>
+    <dimen name="speech_recognizer_mic_bg_size">90dp</dimen>
+
+    <!--Cut wheel ruler view-->
+    <dimen name="horizontal_weel_margin_side">60dp</dimen>
+    <dimen name="horizontal_weel_big_line_height">16dp</dimen>
+    <dimen name="horizontal_weel_small_line_height">8dp</dimen>
+    <dimen name="horizontal_weel_small_line_width">1dp</dimen>
+    <dimen name="horizontal_weel_big_line_width">1dp</dimen>
+    <dimen name="horizontal_weel_text_line_margin">4dp</dimen>
+
+    <!--meeting-->
+    <dimen name="meeting_margin_top">16dp</dimen>
+    <dimen name="meeting_margin_down">4dp</dimen>
+    <dimen name="meeting_text_size">14sp</dimen>
+    <dimen name="meeting_timing_text_size">12sp</dimen>
+
+    <!--Friends and Family-->
+    <dimen name="accept_gift_bottom_sheet_height">220dp</dimen>
+    <dimen name="accept_gift_bottom_sheet_description_size">15sp</dimen>
+    <dimen name="accept_gift_bottom_sheet_success_title_size">18sp</dimen>
+
+    <!--Shuffle Disc and Cover UI-->
+    <dimen name="shuffle_disc_width">68dp</dimen>
+    <dimen name="shuffle_disc_height">68dp</dimen>
+    <dimen name="shuffle_disc_out_margin">44dp</dimen>
+    <dimen name="shuffle_disc_cut_width">20dp</dimen>
+    <dimen name="shuffle_disc_cut_height">20dp</dimen>
+    <dimen name="shuffle_cover_width">76dp</dimen>
+    <dimen name="shuffle_cover_height">76dp</dimen>
+    <dimen name="shuffle_cover_border_size">3dp</dimen>
+
+    <!--Set Button-->
+    <dimen name="app_button_corner">18dp</dimen>
+    <dimen name="app_button_start_end_padding">8dp</dimen>
+    <dimen name="app_button_top_bottom_padding">4dp</dimen>
+    <dimen name="app_button_large_width">207dp</dimen>
+    <dimen name="app_button_large_height">36dp</dimen>
+
+    <dimen name="empty_activity_info1">33sp</dimen>
+    <dimen name="empty_activity_info2">14sp</dimen>
+    <dimen name="empty_activity_go_to_store">13sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+</resources>

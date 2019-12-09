@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--UI Revamp-->
+    <attr name="gradientStart" format="color" />
+    <attr name="gradientEnd" format="color" />
+
+    <declare-styleable name="GradientButton">
+        <attr name="gradientStart" />
+        <attr name="gradientEnd" />
+    </declare-styleable>
+
+    <declare-styleable name="GradientTextView">
+        <attr name="gradientStart" />
+        <attr name="gradientEnd" />
+    </declare-styleable>
+
+    <declare-styleable name="app">
+        <attr name="bottomDragVisibleHeight" format="dimension" />
+        <attr name="bototmExtraIndicatorHeight" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="MultiLineRadioButton">
+        <attr name="primaryText" format="string|reference" />
+        <attr name="secondaryText" format="string|reference" />
+        <attr name="primaryTextDefaultColor" format="color|reference" />
+        <attr name="primaryTextCheckedColor" format="color|reference" />
+        <attr name="secondaryTextDefaultColor" format="color|reference" />
+        <attr name="secondaryTextCheckedColor" format="color|reference" />
+        <attr name="primaryTextSize" format="dimension|reference" />
+        <attr name="secondaryTextSize" format="dimension|reference" />
+        <attr name="buttonWidth" format="dimension|reference" />
+        <attr name="buttonHeight" format="dimension|reference" />
+        <attr name="primaryTextBold" format="boolean|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="LabeledView">
+        <attr name="leftPadding" format="dimension|reference" />
+        <attr name="rightPadding" format="dimension|reference" />
+        <attr name="topPadding" format="dimension|reference" />
+        <attr name="bottomPadding" format="dimension|reference" />
+        <attr name="valueTextColor" format="color|reference" />
+        <attr name="labelTextColor" format="color|reference" />
+        <attr name="valueTextSize" format="dimension|reference" />
+        <attr name="labelTextSize" format="dimension|reference" />
+        <attr name="label" format="string|reference" />
+        <attr name="value" format="string|reference" />
+        <attr name="switcher" format="boolean|reference" />
+        <attr name="switchStatus" format="boolean|reference" />
+        <attr name="bottomDivider" format="boolean|reference" />
+        <attr name="userInteraction" format="boolean|reference" />
+        <attr name="switchColorNormal" format="color|reference" />
+        <attr name="switchColorActivated" format="color|reference" />
+        <attr name="switchColorDisabled" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="Chip">
+        <attr name="mcv_chipText" format="string" />
+        <attr name="mcv_backgroundColor" format="color" />
+        <attr name="mcv_textColor" format="color" />
+        <attr name="mcv_cornerRadius" format="dimension" />
+        <attr name="mcv_strokeSize" format="dimension" />
+        <attr name="mcv_strokeColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="PlanViewLayout">
+        <attr name="header_text" format="string|reference" />
+        <attr name="footer_text" format="string|reference" />
+        <attr name="error_text" format="string|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="PlanView">
+        <attr name="planTextDefaultColor" format="color|reference" />
+        <attr name="planTextCheckedColor" format="color|reference" />
+        <attr name="planSecondaryTextDefaultColor" format="color|reference" />
+        <attr name="planSecondaryTextCheckedColor" format="color|reference" />
+        <attr name="planTextSize" format="dimension|reference" />
+        <attr name="planSecondaryTextSize" format="dimension|reference" />
+        <attr name="planButtonWidth" format="dimension|reference" />
+        <attr name="planButtonHeight" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CircularSeekBar">
+        <attr name="progress" format="integer"/>
+        <attr name="max" format="integer"/>
+        <attr name="lock_enabled" format="boolean"/>
+        <attr name="pointer_radius" format="dimension" />
+        <attr name="pointer_selected_radius" format="dimension" />
+        <attr name="pointer_halo_width" format="dimension" />
+        <attr name="pointer_halo_border_width" format="dimension"/>
+        <attr name="pointer_color" format="color"/>
+        <attr name="pointer_halo_color" format="color"/>
+        <attr name="pointer_halo_color_ontouch" format="color"/>
+        <attr name="cut_area_color" format="color"/>
+        <attr name="played_area_color_ringtone" format="color"/>
+        <attr name="played_area_color_notification" format="color"/>
+        <attr name="pointer_alpha_ontouch" format="integer"/>
+        <attr name="start_angle" format="float"/>
+        <attr name="end_angle" format="float"/>
+        <attr name="circle_fill" format="color"/>
+    </declare-styleable>
+
+    <!--Page Indicator-->
+    <declare-styleable name="PagerIndicator">
+        <attr name="page_indicator_dotColor" format="color" />
+        <attr name="page_indicator_dotSelectedColor" format="color" />
+        <attr name="page_indicator_dotSize" format="dimension" />
+        <attr name="page_indicator_dotSelectedSize" format="dimension" />
+        <attr name="page_indicator_dotSpacing" format="dimension" />
+        <attr name="page_indicator_visibleDotCount" format="integer" />
+        <attr name="page_indicator_visibleDotThreshold" format="integer" />
+        <attr name="page_indicator_looped" format="boolean" />
+    </declare-styleable>
+
+</resources>

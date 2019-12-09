@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/activity_padding"
+    android:paddingBottom="@dimen/activity_padding">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingStart="@dimen/activity_padding"
+        android:paddingEnd="@dimen/activity_padding_half">
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_title_search_content_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/search_category_songs_title"
+            android:textColor="@color/aud_track_head_track"
+            android:theme="@style/App.TextView.SingleLine" />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_more_search_content_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/track_child_margin"
+            android:paddingTop="8dp"
+            android:paddingEnd="@dimen/track_child_margin"
+            android:paddingBottom="8dp"
+            android:text="@string/more"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp"
+            android:theme="@style/App.TextView.SingleLine" />
+    </RelativeLayout>
+
+    <!--<FrameLayout
+        android:id="@+id/layout_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_horizontal_search_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/horizontal_music_item_padding"
+        android:paddingEnd="0dp" />
+
+</LinearLayout>

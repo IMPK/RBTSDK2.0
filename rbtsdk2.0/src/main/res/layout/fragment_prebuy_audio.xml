@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/layout_blur_img_aud_track"
+        android:layout_width="match_parent"
+        android:layout_height="418dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_blur_aud_track"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:alpha="0.7"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/default_album_art" />
+
+        <eightbitlab.com.blurview.BlurView
+            android:id="@+id/blur_view_aud_track"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <View
+        android:id="@+id/iv_gradient_aud_track_white"
+        android:layout_width="match_parent"
+        android:layout_height="418dp"
+        android:background="@drawable/bg_prebuy_bottom_white" />
+
+    <!--<View
+        android:id="@+id/iv_gradient_aud_track"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.7"
+        android:background="@drawable/prebuy_audio_video_background" />-->
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_gradient_aud_track"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.7" />
+
+    <LinearLayout
+        android:id="@+id/layout_parent_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/prebuy_video_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_artist_prebuy_vid_track"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:gravity="center"
+            android:paddingStart="@dimen/activity_padding"
+            android:paddingEnd="@dimen/activity_padding"
+            android:text="@string/loading"
+            android:textColor="@color/aud_track_head_artist"
+            android:textSize="@dimen/track_aud_card_head_artist"
+            android:theme="@style/App.TextView.SingleLine" />
+
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_track_prebuy_vid_track"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:paddingStart="@dimen/activity_padding"
+            android:paddingEnd="@dimen/activity_padding"
+            android:text="@string/loading"
+            android:textColor="@color/white"
+            android:textSize="@dimen/track_aud_card_head_track"
+            android:theme="@style/App.TextView.SingleLine" />
+
+        <!-- style="@style/App.TextView.Button.Border.White" -->
+        <com.onmobile.rbt.baseline.util.customview.RegularTextView
+            android:id="@+id/tv_set_prebuy_vid_track"
+            style="@style/App.TextView.Button"
+            android:layout_width="@dimen/txt_button_width"
+            android:layout_height="@dimen/txt_button_height"
+            android:layout_marginTop="@dimen/activity_margin"
+            android:text="@string/set_small" />
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_aud_track_dummy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:descendantFocusability="beforeDescendants"
+        android:overScrollMode="never" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_margin_half"
+            android:layout_marginTop="36dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/btn_iv_prebuy_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="@dimen/activity_margin_half"
+                app:srcCompat="@drawable/ic_arrow_left_white_24dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_margin_half"
+                android:orientation="horizontal"
+                android:layoutDirection="ltr">
+
+                <com.onmobile.rbt.baseline.widget.chip.Chip
+                    android:id="@+id/chip_prebuy_music"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    app:mcv_chipText="@string/music"
+                    app:mcv_strokeSize="@dimen/chip_border_width" />
+
+                <com.onmobile.rbt.baseline.widget.chip.Chip
+                    android:layout_toEndOf="@+id/chip_prebuy_music"
+                    android:id="@+id/chip_prebuy_video"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    app:mcv_chipText="@string/video"
+                    app:mcv_strokeSize="@dimen/chip_border_width" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_blur_aud_track"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/track_aud_card_pager_margin_top"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.onmobile.rbt.baseline.widget.EnhancedWrapContentViewPager
+                android:id="@+id/pager_aud_track"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clipToPadding="false"
+                android:descendantFocusability="beforeDescendants"
+                android:overScrollMode="never"
+                android:paddingStart="@dimen/track_aud_card_gap"
+                android:paddingEnd="@dimen/track_aud_card_gap"/>
+
+            <FrameLayout
+                android:id="@+id/layout_aud_track_shadow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_margin_half">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shadow_track" />
+
+                <eightbitlab.com.blurview.BlurView
+                    android:id="@+id/blur_view_aud_track_shadow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_artist_prebuy_aud_track"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/prebuy_text_artist_margin_top"
+                android:gravity="center"
+                android:paddingStart="@dimen/activity_padding"
+                android:paddingEnd="@dimen/activity_padding"
+                android:text="@string/loading"
+                android:textColor="@color/aud_track_head_artist"
+                android:textSize="@dimen/track_aud_card_head_artist"
+                android:theme="@style/App.TextView.SingleLine" />
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_track_prebuy_aud_track"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/prebuy_text_track_margin_top"
+                android:gravity="center"
+                android:paddingStart="@dimen/activity_padding"
+                android:paddingEnd="@dimen/activity_padding"
+                android:text="@string/loading"
+                android:textColor="@color/track_txt"
+                android:textSize="@dimen/track_aud_card_head_track"
+                android:theme="@style/App.TextView.SingleLine" />
+
+            <!--<com.onmobile.rbt.baseline.util.PlayerVisualizerView
+            android:id="@+id/visualizer_view"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginEnd="15dp" />-->
+
+            <com.onmobile.rbt.baseline.util.AudioPlayerVisualizer
+                android:id="@+id/visualizer_view"
+                android:layout_width="@dimen/prebuy_visualizer_width"
+                android:layout_height="@dimen/prebuy_visualizer_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/prebuy_visualizer_margin"
+                android:layerType="software" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_parent_audio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/prebuy_player_control_margin_top"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/prebuy_player_control_padding_bottom">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                    android:id="@+id/tv_edit_prebuy_aud_track"
+                    style="@style/App.TextView.Button"
+                    android:layout_width="@dimen/txt_button_width"
+                    android:layout_height="@dimen/txt_button_height"
+                    android:layout_marginEnd="@dimen/track_aud_card_head_button_diff"
+                    android:text="@string/edit_cut_rbt" />
+
+                <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                    android:id="@+id/tv_share_prebuy_aud_track"
+                    style="@style/App.TextView.Button"
+                    android:layout_width="@dimen/txt_button_width"
+                    android:layout_height="@dimen/txt_button_height"
+                    android:layout_marginEnd="12dp"
+                    android:text="@string/share" />
+
+                <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                    android:id="@+id/tv_set_prebuy_aud_track"
+                    style="@style/App.TextView.Button"
+                    android:layout_width="@dimen/txt_button_width"
+                    android:layout_height="@dimen/txt_button_height"
+                    android:text="@string/set_small" />
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/ib_shuffle_aud_track"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="@dimen/prebuy_player_control_shuffle_margin_top"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="@dimen/activity_padding_half"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_shuffle_accent_24dp" />
+
+            <FrameLayout
+                android:id="@+id/layout_container_control_aud_track"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/prebuy_player_control_margin_top">
+
+                <android.support.v4.widget.ContentLoadingProgressBar
+                    android:id="@+id/progress_container_control_aud_track"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="@dimen/prebuy_player_control_progress_width_height"
+                    android:layout_height="@dimen/prebuy_player_control_progress_width_height"
+                    android:layout_gravity="center" />
+
+                <LinearLayout
+                    android:id="@+id/layout_control_aud_track"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/ib_previous_control_aud_track"
+                        android:layout_width="@dimen/prebuy_player_control_button_width_height"
+                        android:layout_height="@dimen/prebuy_player_control_button_width_height"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="@dimen/activity_padding_half"
+                        app:srcCompat="@drawable/ic_previous_gray_16dp" />
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/track_aud_card_head_action_button_diff"
+                        android:layout_marginEnd="@dimen/track_aud_card_head_action_button_diff">
+
+                        <android.support.v7.widget.AppCompatImageButton
+                            android:id="@+id/ib_play_control_aud_track"
+                            android:layout_width="@dimen/prebuy_player_control_button_width_height"
+                            android:layout_height="@dimen/prebuy_player_control_button_width_height"
+                            android:layout_gravity="center"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:padding="@dimen/activity_padding_half"
+                            app:srcCompat="@drawable/ic_play_accent_24dp" />
+
+                        <android.support.v4.widget.ContentLoadingProgressBar
+                            android:id="@+id/progress_player_control_aud_track"
+                            style="@style/Widget.AppCompat.ProgressBar"
+                            android:layout_width="@dimen/prebuy_player_control_button_width_height"
+                            android:layout_height="@dimen/prebuy_player_control_button_width_height"
+                            android:layout_gravity="center" />
+                    </FrameLayout>
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/ib_next_control_aud_track"
+                        android:layout_width="@dimen/prebuy_player_control_button_width_height"
+                        android:layout_height="@dimen/prebuy_player_control_button_width_height"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="@dimen/activity_padding_half"
+                        app:srcCompat="@drawable/ic_next_gray_16dp" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

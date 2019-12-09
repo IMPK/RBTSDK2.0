@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        android:id="@+id/best_plan_parent_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="6dp">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/best_plan_recommendation_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible">
+
+        <RelativeLayout
+            android:id="@+id/recommended_plan_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="20dp">
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/best_plan_recommended"
+                android:textSize="9sp"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:background="@drawable/best_plan_info_bg"/>
+        </RelativeLayout>
+
+        <com.onmobile.rbt.baseline.util.BannerBadgeView
+            android:layout_below="@id/recommended_plan_layout"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginStart="-6dp"
+            android:alpha="0.6"
+            android:rotation="0" />
+    </RelativeLayout>
+
+</RelativeLayout>

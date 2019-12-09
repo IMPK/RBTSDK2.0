@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_root_set_action"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/bottom_sheet_content_padding"
+    android:paddingEnd="@dimen/bottom_sheet_content_padding">
+
+    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/title_shuffle_choice"
+        android:textColor="@color/bottom_sheet_sub_item_title"
+        android:textSize="12sp" />
+
+    <com.onmobile.rbt.baseline.widget.LabeledView
+        android:id="@+id/all_callers_labeled_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bottomDivider="true"
+        app:label="@string/title_all_the_callers"
+        app:leftPadding="0dp"
+        app:rightPadding="0dp"
+        app:switchStatus="true"
+        app:switcher="true" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.onmobile.rbt.baseline.widget.LabeledView
+            android:id="@+id/special_callers_labeled_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:label="@string/title_special_callers"
+            app:leftPadding="0dp"
+            app:rightPadding="0dp"
+            app:switcher="true" />
+
+        <!--<android.support.v7.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_clear_black_20dp"
+            android:text="4"
+            android:background="@drawable/"/>-->
+        <com.onmobile.rbt.baseline.widget.chip.Chip
+            android:id="@+id/chip_add_more_contact_root_set_action"
+            android:layout_width="51dp"
+            android:layout_height="31dp"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="60dp"
+            android:gravity="center_vertical|start"
+            android:paddingStart="12dp"
+            android:layout_marginStart="170dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="8dp"
+            android:visibility="visible">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_add_more_contact_root_set_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_add_contact_accent_16dp" />
+
+            <com.onmobile.rbt.baseline.util.customview.RegularTextView
+                android:id="@+id/tv_add_more_contact_root_set_action"
+                style="@style/App.TextView.SingleLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/iv_add_more_contact_root_set_action"
+                android:paddingStart="2dp"
+                android:paddingEnd="0dp"
+                android:textColor="@color/colorAccent" />
+        </com.onmobile.rbt.baseline.widget.chip.Chip>
+    </FrameLayout>
+
+    <!--<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="12dp">
+
+        <com.onmobile.rbt.baseline.util.customview.LightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/title_all_the_callers"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:checked="true"
+            style="@style/App.Switch" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp">
+
+        <com.onmobile.rbt.baseline.util.customview.LightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/title_special_callers"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            style="@style/App.Switch" />
+    </RelativeLayout>-->
+
+</LinearLayout>

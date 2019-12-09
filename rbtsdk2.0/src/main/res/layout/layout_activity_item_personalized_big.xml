@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/activity_rbt_bg_grey"
+    android:orientation="vertical"
+    android:paddingTop="5dp">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_rbt_divider"
+        android:layout_marginStart="@dimen/activity_margin"
+        android:layout_marginEnd="@dimen/activity_margin"
+        android:background="@color/activity_rbt_divider_color" />
+
+    <com.onmobile.rbt.baseline.widget.LabeledView
+        android:id="@+id/labeled_personalized_shuffle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:bottomDivider="false"
+        app:label="@string/label_switch_personalized_shuffle"
+        app:switcher="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_rbt_divider"
+        android:layout_marginStart="@dimen/activity_margin"
+        android:layout_marginEnd="@dimen/activity_margin"
+        android:background="@color/activity_rbt_divider_color" />
+
+</LinearLayout>

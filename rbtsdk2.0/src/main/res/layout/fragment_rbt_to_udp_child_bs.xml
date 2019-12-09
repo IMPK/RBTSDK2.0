@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root_add_to_udp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.onmobile.rbt.baseline.util.customview.RegularTextView
+        android:id="@+id/tv_add_to_udp_create"
+        style="@style/App.TextView.Button.Border"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:minWidth="@dimen/app_button_large_width"
+        android:minHeight="@dimen/app_button_large_height"
+        android:text="@string/title_create_udp"
+        android:textColor="?attr/colorAccent" />
+
+    <View
+        android:id="@+id/divider_add_to_udp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_margin="@dimen/activity_margin"
+        android:background="@color/divider" />
+
+    <FrameLayout
+        android:id="@+id/layout_add_to_udp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.onmobile.rbt.baseline.util.customview.BoldTextView
+                android:id="@+id/tv_title_add_to_udp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/activity_padding"
+                android:paddingEnd="@dimen/activity_padding"
+                android:paddingBottom="@dimen/activity_padding_half"
+                android:text="@string/add_to_existing"
+                android:textColor="@color/activity_rbt_title_big"
+                android:textSize="16sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_below="@id/tv_title_add_to_udp"
+                android:id="@+id/rv_add_to_udp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <include layout="@layout/layout_loading" />
+        </RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>

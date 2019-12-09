@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_language_filter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/activity_padding"
+    android:paddingEnd="@dimen/activity_padding">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_language_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_language_accent_24dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_language_filter"
+        style="@style/App.TextView.SingleLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/language_filter_label_default"
+        android:textColor="@color/colorAccent"
+        android:textSize="8sp" />
+
+</LinearLayout>
