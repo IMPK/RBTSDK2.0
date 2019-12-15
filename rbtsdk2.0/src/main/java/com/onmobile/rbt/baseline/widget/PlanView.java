@@ -15,8 +15,8 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
 
-import com.onmobile.baseline.http.api_action.dtos.PricingSubscriptionDTO;
-import com.onmobile.baseline.http.api_action.dtos.UserSubscriptionDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.UserSubscriptionDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.model.PlanBean;

@@ -49,8 +49,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
-    implementation project(path: ':httpmodule')
-    implementation project(path: ':musicplayback')
+/*    implementation project(path: ':httpmodule')
+    implementation project(path: ':com.onmobile.rbt.baseline.musicplayback')*/
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.0.0'
@@ -62,6 +62,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.ext.kotlin_version"
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.0'
+
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
 
     implementation 'com.eightbitlab:blurview:1.5.0'
     implementation 'org.greenrobot:eventbus:3.1.0'

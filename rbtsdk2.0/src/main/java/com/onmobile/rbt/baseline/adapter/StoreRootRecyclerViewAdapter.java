@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.onmobile.baseline.http.api_action.dtos.BannerDTO;
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.BannerDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.application.AppLocaleHelper;
 import com.onmobile.rbt.baseline.application.BaselineApplication;

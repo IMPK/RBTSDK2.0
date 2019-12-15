@@ -23,7 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.onmobile.baseline.http.api_action.dtos.pricing.availability.PricingIndividualDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.pricing.availability.PricingIndividualDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.dialog.custom.AppRatingDialog;
 import com.onmobile.rbt.baseline.dialog.custom.GiftnNormalPlanConfirmDialog;

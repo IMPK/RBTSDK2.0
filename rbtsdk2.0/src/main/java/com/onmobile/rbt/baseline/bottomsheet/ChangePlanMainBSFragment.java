@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
-import com.onmobile.baseline.http.api_action.dtos.UserSubscriptionDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.UserSubscriptionDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.bottomsheet.base.BaseBottomSheetFragment;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;

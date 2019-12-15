@@ -14,7 +14,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.onmobile.baseline.http.api_action.dtos.PricingSubscriptionDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
 import com.onmobile.rbt.baseline.R;
 
 import java.util.concurrent.TimeUnit;

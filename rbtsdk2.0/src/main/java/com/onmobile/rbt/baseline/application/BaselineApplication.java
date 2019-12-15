@@ -11,10 +11,10 @@ import android.text.TextUtils;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 
-import com.onmobile.baseline.http.Configuration;
-import com.onmobile.baseline.http.basecallback.BaselineCallback;
-import com.onmobile.baseline.http.cache.LocalCacheManager;
-import com.onmobile.baseline.http.httpmodulemanagers.HttpModuleMethodManager;
+import com.onmobile.rbt.baseline.http.Configuration;
+import com.onmobile.rbt.baseline.http.basecallback.BaselineCallback;
+import com.onmobile.rbt.baseline.http.cache.LocalCacheManager;
+import com.onmobile.rbt.baseline.http.httpmodulemanagers.HttpModuleMethodManager;
 
 import com.onmobile.rbt.baseline.R;
 
@@ -154,7 +154,7 @@ public class BaselineApplication extends Application {
             }
 
             @Override
-            public void failure(com.onmobile.baseline.http.api_action.errormodule.ErrorResponse errorResponse) {
+            public void failure(com.onmobile.rbt.baseline.http.api_action.errormodule.ErrorResponse errorResponse) {
 
             }
         });

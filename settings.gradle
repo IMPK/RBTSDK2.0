@@ -1,2 +1,2 @@
-include ':app', ':rbtsdk2.0', ':httpmodule', ':musicplayback'
+include ':app', ':rbtsdk2.0'
 rootProject.name='vodafonecallertunes_sdk'

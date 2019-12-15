@@ -5,9 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.onmobile.baseline.http.api_action.dtos.BannerDTO;
-import com.onmobile.baseline.http.api_action.dtos.ChartItemDTO;
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.BannerDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.holder.AzaanStackViewHolder;
 import com.onmobile.rbt.baseline.holder.BannerStackViewHolder;

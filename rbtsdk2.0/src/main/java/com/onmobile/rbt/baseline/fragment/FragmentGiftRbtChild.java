@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.onmobile.baseline.http.api_action.dtos.familyandfriends.ChildOperationResponseDTO;
-import com.onmobile.baseline.http.api_action.dtos.familyandfriends.GetParentInfoResponseDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.familyandfriends.ChildOperationResponseDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.familyandfriends.GetParentInfoResponseDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.adapter.GiftRbtChildAdapter;
 import com.onmobile.rbt.baseline.application.BaselineApplication;

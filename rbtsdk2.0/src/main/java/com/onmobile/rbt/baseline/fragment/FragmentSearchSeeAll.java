@@ -6,10 +6,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
-import com.onmobile.baseline.http.api_action.dtos.search.CategoricalSearchItemDTO;
-import com.onmobile.baseline.http.api_action.dtos.search.CategorySearchResultDTO;
-import com.onmobile.baseline.http.retrofit_io.APIRequestParameters;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.search.CategoricalSearchItemDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.search.CategorySearchResultDTO;
+import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.PreBuyActivity;
 import com.onmobile.rbt.baseline.activities.StoreContentActivity;

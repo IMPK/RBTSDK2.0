@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.onmobile.musicplayback.BaselineMusicPlayer;
+import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 
 import androidx.annotation.LayoutRes;

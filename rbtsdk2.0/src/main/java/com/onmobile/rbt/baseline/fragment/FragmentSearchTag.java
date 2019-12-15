@@ -5,8 +5,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
-import com.onmobile.baseline.http.api_action.dtos.search.SearchTagItemDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.search.SearchTagItemDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.SearchSeeAllActivity;
 import com.onmobile.rbt.baseline.activities.StoreContentActivity;

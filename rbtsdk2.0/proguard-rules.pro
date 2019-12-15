@@ -82,7 +82,7 @@
 #-keepattributes Exceptions
 #
 #-keepclasseswithmembers class * {
-#    @retrofit2.http.* <methods>;
+#    @retrofit2.com.onmobile.rbt.baseline.http.* <methods>;
 #}
 
 -dontwarn retrofit2.**
@@ -134,7 +134,7 @@
 -keep class * implements com.google.gson.JsonSerializer
 -keep class * implements com.google.gson.JsonDeserializer
 -keepclasseswithmembers class * {
-   @retrofit2.http.* <methods>;
+   @retrofit2.com.onmobile.rbt.baseline.http.* <methods>;
 }
 ##---------------End: proguard configuration for Gson  ----------
 ########## END RETROFIT2:RETROFIT ###########
@@ -311,44 +311,44 @@
 #-keep class !com.onmobile.rbt.baseline.BuildConfig { *; }
 
 # Application classes that will be serialized/deserialized
--keep class com.onmobile.baseline.http.Configuration { *; }
--keep class com.onmobile.baseline.http.api_action.dtos.** { *; }
--keep class com.onmobile.baseline.http.api_action.catalogapis.ChartQueryParameters { *; }
--keep class com.onmobile.baseline.http.api_action.catalogapis.DynamicChartQueryParameters { *; }
--keep class com.onmobile.baseline.http.api_action.catalogapis.RecommnedQueryParameters { *; }
--keep class com.onmobile.baseline.http.api_action.catalogapis.SearchAPIRequestParameters { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.Configuration { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.dtos.** { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.catalogapis.ChartQueryParameters { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.catalogapis.DynamicChartQueryParameters { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.catalogapis.RecommnedQueryParameters { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.catalogapis.SearchAPIRequestParameters { *; }
 
--keep class com.onmobile.baseline.http.api_action.storeapis.CreateUserDefinedPlaylistQueryParams { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.AddContentToUDPQueryParameters { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.DigitalStarQueryParams { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.FeedBackRequestParameters { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.UserHistoryQueryParameters { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.UserSubscriptionQueryParams { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.CreateUserDefinedPlaylistQueryParams { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.AddContentToUDPQueryParameters { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.DigitalStarQueryParams { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.FeedBackRequestParameters { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.UserHistoryQueryParameters { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.UserSubscriptionQueryParams { *; }
 
--keep class com.onmobile.baseline.http.api_action.storeapis.batchrequest.BatchItemResponseDTO { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.batchrequest.BatchRequestItemDTO { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.batchrequest.ListOfRequestBatchItemsDTO { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.batchrequest.ListOfResponseBatchItemsDTO { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.batchrequest.BatchItemResponseDTO { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.batchrequest.BatchRequestItemDTO { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.batchrequest.ListOfRequestBatchItemsDTO { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.batchrequest.ListOfResponseBatchItemsDTO { *; }
 
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.CallingParty { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.ComboApiAssetDto { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.ComboApiBillingInfoDto { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.ComboAPIExtraInfoDto { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.ComboApiPlayRuleDto { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.ComboApiPurchaseDto { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.ComboApiSubscriptionDto { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.Discount { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.PurchaseComboRequestDTO { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.PurchaseComboRequestParameters { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.PurchaseComboResponseDTO { *; }
--keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.ScheduleDTO { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.CallingParty { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.ComboApiAssetDto { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.ComboApiBillingInfoDto { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.ComboAPIExtraInfoDto { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.ComboApiPlayRuleDto { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.ComboApiPurchaseDto { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.ComboApiSubscriptionDto { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.Discount { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.PurchaseComboRequestDTO { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.PurchaseComboRequestParameters { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.PurchaseComboResponseDTO { *; }
+-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.ScheduleDTO { *; }
 
 
-#-keep class com.onmobile.baseline.http.api_action.errormodule.** { *; }
-#-keep class com.onmobile.baseline.http.api_action.storeapis.AddContentToUDPQueryParameters { *; }
-#-keep class com.onmobile.baseline.http.api_action.storeapis.FeedBackRequestParameters { *; }
-#-keep class com.onmobile.baseline.http.api_action.storeapis.batchrequest.** { *; }
-#-keep class com.onmobile.baseline.http.api_action.storeapis.purchase_combo.** { *; }
+#-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.errormodule.** { *; }
+#-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.AddContentToUDPQueryParameters { *; }
+#-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.FeedBackRequestParameters { *; }
+#-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.batchrequest.** { *; }
+#-keep class com.onmobile.baseline.com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.** { *; }
 # Applcation serializable/deserializable
 -keep class * implements java.io.Serializable
 -keepclassmembers class * implements java.io.Serializable {

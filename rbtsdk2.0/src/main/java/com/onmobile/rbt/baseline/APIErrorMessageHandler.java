@@ -3,9 +3,9 @@ package com.onmobile.rbt.baseline;
 import android.content.Context;
 import android.content.res.Resources;
 
-import com.onmobile.baseline.http.api_action.errormodule.ErrorCode;
-import com.onmobile.baseline.http.api_action.errormodule.ErrorResponse;
-import com.onmobile.baseline.http.api_action.errormodule.ErrorSubCode;
+import com.onmobile.rbt.baseline.http.api_action.errormodule.ErrorCode;
+import com.onmobile.rbt.baseline.http.api_action.errormodule.ErrorResponse;
+import com.onmobile.rbt.baseline.http.api_action.errormodule.ErrorSubCode;
 
 
 public class APIErrorMessageHandler {

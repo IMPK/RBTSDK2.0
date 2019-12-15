@@ -2,8 +2,8 @@ package com.onmobile.rbt.baseline.model;
 
 import android.text.TextUtils;
 
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
-import com.onmobile.baseline.http.retrofit_io.APIRequestParameters;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
 import com.onmobile.rbt.baseline.util.FunkyAnnotation;
 
 import java.io.Serializable;

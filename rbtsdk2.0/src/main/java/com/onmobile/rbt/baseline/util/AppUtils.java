@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 
-import com.onmobile.baseline.http.api_action.dtos.RecommendationDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RecommendationDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;

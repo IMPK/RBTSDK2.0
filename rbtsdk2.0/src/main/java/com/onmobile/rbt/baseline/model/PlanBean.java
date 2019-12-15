@@ -3,8 +3,8 @@ package com.onmobile.rbt.baseline.model;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.onmobile.baseline.http.api_action.dtos.PricingSubscriptionDTO;
-import com.onmobile.baseline.http.api_action.dtos.UserSubscriptionDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.UserSubscriptionDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.util.AppConstant;
 import com.onmobile.rbt.baseline.util.Util;

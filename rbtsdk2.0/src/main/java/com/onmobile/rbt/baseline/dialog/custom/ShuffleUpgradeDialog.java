@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
-import com.onmobile.baseline.http.api_action.dtos.pricing.availability.PricingIndividualDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.pricing.availability.PricingIndividualDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.dialog.base.BaseDialog;
 import com.onmobile.rbt.baseline.util.Util;

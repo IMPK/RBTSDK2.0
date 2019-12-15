@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
-import com.onmobile.musicplayback.BaselineMusicPlayer;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.holder.RootViewHolder;
 import com.onmobile.rbt.baseline.listener.OnItemClickListener;

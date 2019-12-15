@@ -44,7 +44,7 @@ public class YouTubeHelper {
     public boolean isUrlStartsWithHttpOrHttpsOrWWW(String youtubeUrl) {
         boolean is =  false;
         if(youtubeUrl != null) {
-            if(youtubeUrl.toLowerCase().startsWith("http://")) {
+            if(youtubeUrl.toLowerCase().startsWith("com.onmobile.rbt.baseline.http://")) {
                 is = true;
             }else if (youtubeUrl.toLowerCase().startsWith("https://")) {
                 is = true;

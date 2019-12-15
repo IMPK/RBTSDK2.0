@@ -4,8 +4,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
-import com.onmobile.baseline.http.api_action.dtos.ChartItemDTO;
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;

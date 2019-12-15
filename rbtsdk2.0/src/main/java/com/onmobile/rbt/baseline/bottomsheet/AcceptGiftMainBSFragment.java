@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import android.view.View;
 
-import com.onmobile.baseline.http.api_action.dtos.familyandfriends.GetChildInfoResponseDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.familyandfriends.GetChildInfoResponseDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;

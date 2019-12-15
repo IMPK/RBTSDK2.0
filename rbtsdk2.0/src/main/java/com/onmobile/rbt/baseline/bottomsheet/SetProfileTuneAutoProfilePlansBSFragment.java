@@ -11,17 +11,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import com.onmobile.baseline.http.api_action.dtos.ChartItemDTO;
-import com.onmobile.baseline.http.api_action.dtos.PricingSubscriptionDTO;
-import com.onmobile.baseline.http.api_action.dtos.RUrlResponseDto;
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
-import com.onmobile.baseline.http.api_action.dtos.appconfigdtos.LowBattery;
-import com.onmobile.baseline.http.api_action.dtos.appconfigdtos.Meeting;
-import com.onmobile.baseline.http.api_action.dtos.appconfigdtos.Roaming;
-import com.onmobile.baseline.http.api_action.dtos.appconfigdtos.Silent;
-import com.onmobile.baseline.http.api_action.dtos.pricing.availability.PricingIndividualDTO;
-import com.onmobile.baseline.http.httpmodulemanagers.HttpModuleMethodManager;
-import com.onmobile.musicplayback.BaselineMusicPlayer;
+import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RUrlResponseDto;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.LowBattery;
+import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.Meeting;
+import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.Roaming;
+import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.Silent;
+import com.onmobile.rbt.baseline.http.api_action.dtos.pricing.availability.PricingIndividualDTO;
+import com.onmobile.rbt.baseline.http.httpmodulemanagers.HttpModuleMethodManager;
+import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
 import com.onmobile.rbt.baseline.R;
 
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;

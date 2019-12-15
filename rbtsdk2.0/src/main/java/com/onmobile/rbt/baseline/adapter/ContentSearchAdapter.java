@@ -3,8 +3,8 @@ package com.onmobile.rbt.baseline.adapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
-import com.onmobile.baseline.http.api_action.dtos.search.CategoricalSearchItemDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.search.CategoricalSearchItemDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.adapter.base.SimpleRecyclerAdapter;
 import com.onmobile.rbt.baseline.holder.RootViewHolder;

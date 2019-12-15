@@ -15,14 +15,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 
-import com.onmobile.baseline.http.api_action.dtos.HeaderResponseDTO;
-import com.onmobile.baseline.http.api_action.dtos.ListOfSongsResponseDTO;
-import com.onmobile.baseline.http.api_action.dtos.appconfigdtos.AppConfigDataManipulator;
-import com.onmobile.baseline.http.api_action.dtos.userjourneynotifi.ServerSyncResponseDto;
-import com.onmobile.baseline.http.cache.LocalCacheManager;
-import com.onmobile.baseline.http.cache.UserSettingsCacheManager;
-import com.onmobile.baseline.http.httpmodulemanagers.HttpModuleMethodManager;
-import com.onmobile.baseline.http.httpmodulemanagers.IAppUpgradeHandler;
+import com.onmobile.rbt.baseline.http.api_action.dtos.HeaderResponseDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.ListOfSongsResponseDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.AppConfigDataManipulator;
+import com.onmobile.rbt.baseline.http.api_action.dtos.userjourneynotifi.ServerSyncResponseDto;
+import com.onmobile.rbt.baseline.http.cache.LocalCacheManager;
+import com.onmobile.rbt.baseline.http.cache.UserSettingsCacheManager;
+import com.onmobile.rbt.baseline.http.httpmodulemanagers.HttpModuleMethodManager;
+import com.onmobile.rbt.baseline.http.httpmodulemanagers.IAppUpgradeHandler;
 import com.onmobile.rbt.baseline.Constant;
 import com.onmobile.rbt.baseline.MsisdnType;
 import com.onmobile.rbt.baseline.R;

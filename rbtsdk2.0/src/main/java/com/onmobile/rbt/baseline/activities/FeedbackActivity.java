@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.onmobile.baseline.http.api_action.storeapis.FeedBackRequestParameters;
+import com.onmobile.rbt.baseline.http.api_action.storeapis.FeedBackRequestParameters;
 import com.onmobile.rbt.baseline.BuildConfig;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;

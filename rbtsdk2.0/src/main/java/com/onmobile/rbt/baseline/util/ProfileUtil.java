@@ -3,8 +3,8 @@ package com.onmobile.rbt.baseline.util;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
-import com.onmobile.baseline.http.api_action.storeapis.purchase_combo.ScheduleDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.ScheduleDTO;
 import com.onmobile.rbt.baseline.R;
 
 import java.text.ParseException;
@@ -293,7 +293,7 @@ public class ProfileUtil {
         return time;
     }
 
-    public static long getDifferenceInMillis(com.onmobile.baseline.http.api_action.storeapis.purchase_combo.ScheduleDTO scheduleDTO) {
+    public static long getDifferenceInMillis(com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.ScheduleDTO scheduleDTO) {
         if (scheduleDTO == null)
             return -1;
         String startDate = scheduleDTO.getDateRange().getStartDate();

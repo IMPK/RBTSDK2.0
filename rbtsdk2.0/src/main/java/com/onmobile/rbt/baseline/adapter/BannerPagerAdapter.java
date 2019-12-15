@@ -2,7 +2,7 @@ package com.onmobile.rbt.baseline.adapter;
 
 import android.content.Context;
 
-import com.onmobile.baseline.http.api_action.dtos.BannerDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.BannerDTO;
 import com.onmobile.rbt.baseline.fragment.BannerFragment;
 
 import java.util.List;

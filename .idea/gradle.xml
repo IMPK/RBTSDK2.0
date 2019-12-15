@@ -9,8 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/httpmodule" />
-            <option value="$PROJECT_DIR$/musicplayback" />
             <option value="$PROJECT_DIR$/rbtsdk2.0" />
           </set>
         </option>

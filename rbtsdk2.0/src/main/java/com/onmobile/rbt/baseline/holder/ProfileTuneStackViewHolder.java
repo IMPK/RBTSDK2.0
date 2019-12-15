@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
 
-import com.onmobile.baseline.http.api_action.dtos.RingBackToneDTO;
+import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.HomeActivity;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
