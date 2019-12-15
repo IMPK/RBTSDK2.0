@@ -39,7 +39,7 @@
                 android:background="@drawable/ic_circle_accent_border_48dp"
                 android:backgroundTint="@color/shimmer_base_color">
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -91,14 +91,14 @@
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless">
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/iv_play_profile_tune"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/ic_play_accent_16dp" />
 
-                <android.support.v4.widget.ContentLoadingProgressBar
+                <androidx.core.widget.ContentLoadingProgressBar
                     android:id="@+id/progress_play_profile_tune"
                     style="@style/Widget.AppCompat.ProgressBar"
                     android:layout_width="16dp"

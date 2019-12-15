@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="418dp">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_blur_aud_track"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -37,7 +37,7 @@
         android:layout_height="match_parent"
         android:alpha="0.7"
         android:background="@drawable/prebuy_audio_video_background" />-->
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_gradient_aud_track"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -88,7 +88,7 @@
             android:text="@string/set_small" />
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager_aud_track_dummy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -110,7 +110,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_iv_prebuy_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -267,7 +267,7 @@
                     android:text="@string/set_small" />
             </LinearLayout>
 
-            <android.support.v7.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/ib_shuffle_aud_track"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -283,7 +283,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/prebuy_player_control_margin_top">
 
-                <android.support.v4.widget.ContentLoadingProgressBar
+                <androidx.core.widget.ContentLoadingProgressBar
                     android:id="@+id/progress_container_control_aud_track"
                     style="@style/Widget.AppCompat.ProgressBar"
                     android:layout_width="@dimen/prebuy_player_control_progress_width_height"
@@ -298,7 +298,7 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <android.support.v7.widget.AppCompatImageButton
+                    <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/ib_previous_control_aud_track"
                         android:layout_width="@dimen/prebuy_player_control_button_width_height"
                         android:layout_height="@dimen/prebuy_player_control_button_width_height"
@@ -312,7 +312,7 @@
                         android:layout_marginStart="@dimen/track_aud_card_head_action_button_diff"
                         android:layout_marginEnd="@dimen/track_aud_card_head_action_button_diff">
 
-                        <android.support.v7.widget.AppCompatImageButton
+                        <androidx.appcompat.widget.AppCompatImageButton
                             android:id="@+id/ib_play_control_aud_track"
                             android:layout_width="@dimen/prebuy_player_control_button_width_height"
                             android:layout_height="@dimen/prebuy_player_control_button_width_height"
@@ -321,7 +321,7 @@
                             android:padding="@dimen/activity_padding_half"
                             app:srcCompat="@drawable/ic_play_accent_24dp" />
 
-                        <android.support.v4.widget.ContentLoadingProgressBar
+                        <androidx.core.widget.ContentLoadingProgressBar
                             android:id="@+id/progress_player_control_aud_track"
                             style="@style/Widget.AppCompat.ProgressBar"
                             android:layout_width="@dimen/prebuy_player_control_button_width_height"
@@ -329,7 +329,7 @@
                             android:layout_gravity="center" />
                     </FrameLayout>
 
-                    <android.support.v7.widget.AppCompatImageButton
+                    <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/ib_next_control_aud_track"
                         android:layout_width="@dimen/prebuy_player_control_button_width_height"
                         android:layout_height="@dimen/prebuy_player_control_button_width_height"

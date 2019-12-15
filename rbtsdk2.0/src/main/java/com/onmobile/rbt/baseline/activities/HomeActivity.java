@@ -87,11 +87,23 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
 
     private int mDefaultStackItem = FunkyAnnotation.TYPE_TRENDING;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mBottomItemSelectedListener = item -> {
-        updateViewPager(item);
-        //broadcastTabSwitch(item);
-        return false;
+//    private BottomNavigationView.OnNavigationItemSelectedListener mBottomItemSelectedListener = item -> {
+//        updateViewPager(item);
+//        //broadcastTabSwitch(item);
+//        return false;
+//    };
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mBottomItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            updateViewPager(menuItem);
+            //broadcastTabSwitch(item);
+            return false;
+        }
     };
+
+
+
 
     private ViewPager.OnPageChangeListener mViewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
@@ -321,54 +333,13 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
         mViewPager.setAdapter(adapter);
         //handleDiscoverCoachMark();
         mViewPager.addOnPageChangeListener(mViewPagerPageChangeListener);
-        mViewPager.postDelayed(() -> mViewPager.setCurrentItem(DEFAULT_TAB, false), 100);
-
-        BaselineApplication.getApplication().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
+        mViewPager.postDelayed(new Runnable() {
             @Override
-            public void isParent(boolean exist) {
-
+            public void run() {
+                mViewPager.setCurrentItem(DEFAULT_TAB,false);
             }
-
-            @Override
-            public void isChild(boolean exist) {
-                int giftDisplayedCount = SharedPrefProvider.getInstance(getActivityContext()).getGiftDisplayCount();
-
-                if (BaselineApplication.getApplication().getRbtConnector().getFriendsAndFamilyConfigDTO() != null && BaselineApplication.getApplication().getRbtConnector().getFriendsAndFamilyConfigDTO().getChild() != null) {
-                    int giftDisplayLimit = BaselineApplication.getApplication().getRbtConnector().getFriendsAndFamilyConfigDTO().getChild().getDisplayLimit();
-                    if (giftDisplayedCount >= giftDisplayLimit) {
-                        return;
-                    }
-                }
-
-                if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
-                    return;
-                }
-
-                if (BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo() != null && !BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getStatus().equalsIgnoreCase("pending")) {
-                    return;
-                }
-
-
-                if (BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo() != null) {
-                    new Handler().postDelayed(() -> {
-                        GetChildInfoResponseDTO childInfo = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo();
-                        ContactDetailProvider contactDetailProvider = new ContactDetailProvider(getApplicationContext(), childInfo.getParentId(), contactModelDTO -> {
-                            if (contactModelDTO.getName() == null) {
-                                contactModelDTO.setName(contactModelDTO.getMobileNumber());
-                            }
-                            acceptGift(childInfo, contactModelDTO);
-                        });
-                        contactDetailProvider.execute();
-
-                    }, 1000);
-                }
-            }
-
-            @Override
-            public void isNone(boolean exist) {
-
-            }
-        });
+        },100);
+        //mViewPager.postDelayed(() -> mViewPager.setCurrentItem(DEFAULT_TAB, false), 100);
     }
 
     private void setupNavigationView() {

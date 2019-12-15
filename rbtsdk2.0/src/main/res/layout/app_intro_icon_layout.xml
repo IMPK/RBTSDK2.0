@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_text_app_intro_icon_layout"
         android:layout_width="96dp"
         android:layout_height="72dp"
@@ -12,7 +12,7 @@
         android:tint="@color/colorAccent"
         android:tintMode="src_atop" />
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_outer_app_intro_icon_layout"
         android:layout_width="160dp"
         android:layout_height="160dp"

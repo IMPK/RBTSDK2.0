@@ -68,6 +68,7 @@ import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 public class FragmentActRbt extends BaseFragment {
 
     private RecyclerView mRvContent;
@@ -131,7 +132,13 @@ public class FragmentActRbt extends BaseFragment {
             }
         }
     };
-    private View.OnClickListener mClickListener = v -> fetchAllContents();
+    private View.OnClickListener mClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            fetchAllContents();
+        }
+    };
+//    private View.OnClickListener mClickListener = v -> fetchAllContents();
 
     @NonNull
     @Override

@@ -3,15 +3,20 @@ package com.onmobile.rbt.baseline;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LauncherActivity extends AppCompatActivity {
+public class LauncherActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     RbtSdkClient rbtSdkClient;
+    private RadioGroup mOperatorGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
+        mOperatorGroup = findViewById(R.id.radio_group);
+        mOperatorGroup.setOnCheckedChangeListener(this);
+
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,6 +36,11 @@ public class LauncherActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
 
     }
 }

@@ -70,7 +70,7 @@
                 android:background="@drawable/bg_shimmer_layout_4dp" />
         </LinearLayout>-->
 
-        <android.support.v4.widget.ContentLoadingProgressBar
+        <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/pb_plans_loading_bottom_sheet"
             style="@style/Widget.AppCompat.ProgressBar"
             android:layout_width="32dp"

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/card_pre_buy_aud_card_item"
         android:layout_width="@dimen/prebuy_track_aud_card_height_width"
         android:layout_height="@dimen/prebuy_track_aud_card_height_width"
@@ -19,7 +19,7 @@
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="false">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_preview_pre_buy_aud_card_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -39,7 +39,7 @@
             android:orientation="horizontal"
             android:padding="@dimen/prebuy_aud_card_padding">
 
-            <android.support.v7.widget.AppCompatCheckBox
+            <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/checkbox_favorite_pre_buy_aud_card_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 android:textSize="@dimen/prebuy_aud_like_counter_txt" />
         </LinearLayout>
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_rbt_selected_pre_buy_aud_card_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,5 +67,5 @@
             android:layout_margin="@dimen/prebuy_aud_card_padding"
             app:srcCompat="@drawable/ic_rbt_selected" />
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

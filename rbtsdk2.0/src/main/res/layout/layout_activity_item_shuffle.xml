@@ -41,7 +41,7 @@
                     android:layout_gravity="start|center_vertical"
                     android:layout_marginStart="@dimen/item_activity_card_disc_out_size">
 
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/activity_rbt_shuffle_disc_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -63,7 +63,7 @@
 
                 </FrameLayout>
 
-                <android.support.v7.widget.CardView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/activity_rbt_shuffle_card"
                     android:layout_width="@dimen/item_activity_card_cover_size"
                     android:layout_height="@dimen/item_activity_card_cover_size"
@@ -79,7 +79,7 @@
                         android:layout_height="match_parent"
                         android:background="@color/white" />
 
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/activity_rbt_shuffle_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -90,7 +90,7 @@
                         android:scaleType="fitXY"
                         app:srcCompat="@drawable/default_album_art" />
 
-                </android.support.v7.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
             </FrameLayout>
 
@@ -109,7 +109,7 @@
                     android:layout_height="79dp"
                     android:layout_alignParentEnd="true">
 
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/img_overflow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                         android:padding="4dp"
                         app:srcCompat="@drawable/ic_more_activity_24dp" />
 
-                    <android.support.v7.widget.SwitchCompat
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switch_button"
                         style="@style/App.Switch"
                         android:layout_width="50dp"
@@ -143,7 +143,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
-                        <!--<android.support.v7.widget.AppCompatImageView
+                        <!--<androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/expand_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

@@ -58,12 +58,12 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_below="@id/toolbarlayout"
         android:orientation="horizontal">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </android.support.v7.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
 
         <com.onmobile.rbt.baseline.widget.RecyclerViewFastScroller
             android:id="@+id/fastscroller"

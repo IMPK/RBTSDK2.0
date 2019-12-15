@@ -34,7 +34,7 @@
             android:layout_height="match_parent"
             android:layout_above="@id/divider">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/card_rbt_imageview"
                 android:layout_width="87dp"
                 android:layout_height="87dp"
@@ -46,7 +46,7 @@
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true">
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/rbt_imageview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -55,7 +55,7 @@
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/bg_gradient_trending" />
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/iv_recording_anim"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -73,7 +73,7 @@
                     android:clickable="false">
 
 
-                    <android.support.v7.widget.AppCompatImageButton
+                    <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/ib_play_activity_rbt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                         android:padding="6dp"
                         app:srcCompat="@drawable/ic_play_accent_10dp" />
 
-                    <android.support.v4.widget.ContentLoadingProgressBar
+                    <androidx.core.widget.ContentLoadingProgressBar
                         android:id="@+id/progress_play_activity_rbt"
                         style="@style/Widget.AppCompat.ProgressBar"
                         android:layout_width="10dp"
@@ -93,7 +93,7 @@
                         android:visibility="gone" />
                 </FrameLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
             <RelativeLayout
@@ -111,7 +111,7 @@
                     android:layout_height="79dp"
                     android:layout_alignParentEnd="true">
 
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -119,7 +119,7 @@
                         android:padding="4dp"
                         app:srcCompat="@drawable/ic_more_activity_24dp" />
 
-                    <android.support.v7.widget.SwitchCompat
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/switch_button"
                         style="@style/App.Switch"
                         android:layout_width="50dp"

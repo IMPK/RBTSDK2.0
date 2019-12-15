@@ -47,7 +47,7 @@
             android:textSize="@dimen/txt_value_labeled_size"
             android:theme="@style/App.TextView.Multiline" />
 
-        <android.support.v7.widget.SwitchCompat
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch_labeled"
             style="@style/App.Switch"
             android:layout_width="wrap_content"

@@ -13,7 +13,7 @@
         android:layout_height="46dp"
         android:layout_centerVertical="true">
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/card_shuffle_item_image"
             android:layout_width="46dp"
             android:layout_height="46dp"
@@ -24,17 +24,17 @@
             app:cardPreventCornerOverlap="false"
             app:cardUseCompatPadding="true">
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/shuffle_item_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/default_album_art" />
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
-        <android.support.v7.widget.AppCompatImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/ib_play_activity_rbt_shuffle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
