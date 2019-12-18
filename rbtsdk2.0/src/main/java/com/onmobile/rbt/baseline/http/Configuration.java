@@ -1,6 +1,7 @@
 package com.onmobile.rbt.baseline.http;
 
 import android.app.Application;
+import android.content.Context;
 import android.util.Log;
 
 import java.io.IOException;
@@ -54,7 +55,7 @@ public class Configuration implements Serializable {
     public static int scheduleID = 1;
     public static String scheduleType = "Default";
 
-    public void loadConfiguration(Application app, BaselineCallback<String> errorMsg) throws IllegalStateException {
+    public void loadConfiguration(Context app, BaselineCallback<String> errorMsg) throws IllegalStateException {
         Properties applicationProperties = new Properties();
         try {
             applicationProperties.load(app.getAssets().open("application.properties"));
@@ -123,7 +124,7 @@ public class Configuration implements Serializable {
 
     }
 
-    public static void loadFromProperties(Application app, Properties properties) throws IllegalArgumentException, IllegalAccessException, MissingConfigurationException {
+    public static void loadFromProperties(Context app, Properties properties) throws IllegalArgumentException, IllegalAccessException, MissingConfigurationException {
         Log.d("sTag", "Loading configuration from properties.");
 
         // TODO should check for set properties that do not match any fields

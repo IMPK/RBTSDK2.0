@@ -69,7 +69,7 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
     public static final int TAB_STORE = 1;
     public static final int TAB_ACTIVITY = 2;
     public static final int TAB_PROFILE = 3;
-    private int DEFAULT_TAB = TAB_HOME;
+    private int DEFAULT_TAB = TAB_STORE;
     private boolean mDiscoverDataLoaded = false, mStoreDataLoaded = false;
     private ViewPager mViewPager;
     private BottomNavigationView mBottomNavigationView;

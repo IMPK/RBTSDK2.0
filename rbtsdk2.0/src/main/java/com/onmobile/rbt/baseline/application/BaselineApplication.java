@@ -63,74 +63,6 @@ public class BaselineApplication extends Application {
         mActivityVisible = false;
     }
 
-    public static boolean isActivityVisible() {
-        return mActivityVisible;
-    }
-
-    public static void setAppInitializeStatus(boolean appInitializeStatus) {
-        mAppInitializeStatus = appInitializeStatus;
-    }
-
-    public static boolean isAppInitialized() {
-        return mAppInitializeStatus;
-    }
-
-    public static void showProfileNotification(Context context, @FunkyAnnotation.AutoProfileNotificationIds int notificationId) {
-        new AsyncTask<Void, Void, Void>() {
-
-            @Override
-            protected Void doInBackground(Void... voids) {
-                String profileTag = null;
-                NotificationBean.Builder notificationBuilder = new NotificationBean.Builder();
-                notificationBuilder.setNotificationId(notificationId);
-                notificationBuilder.setChannelId(AppConstant.AUTO_PROFILE_CHANNEL_ID);
-                notificationBuilder.setChannelName(AppConstant.AUTO_PROFILE_CHANNEL_NAME);
-                switch (notificationId) {
-                    case FunkyAnnotation.NID_PROFILE_SILENT:
-                        //profileTag = AutoDetectConstants.PROFILE_TUNES.SILENT.value();
-                        notificationBuilder.setTitle(context.getString(R.string.silent_title));
-                        notificationBuilder.setMessage(context.getString(R.string.silent_content_message));
-                        break;
-                    case FunkyAnnotation.NID_PROFILE_ROAMING:
-                        //profileTag = AutoDetectConstants.PROFILE_TUNES.ROAMING.value();
-                        notificationBuilder.setTitle(context.getString(R.string.roaming_title));
-                        notificationBuilder.setMessage(context.getString(R.string.roaming_content_message));
-                        break;
-                    case FunkyAnnotation.NID_PROFILE_LOW_BATTERY:
-                        //profileTag = AutoDetectConstants.PROFILE_TUNES.LOWBATTERY.value();
-                        notificationBuilder.setTitle(context.getString(R.string.lowbattery_title));
-                        notificationBuilder.setMessage(context.getString(R.string.lowbattery_content_message));
-                        break;
-                    case FunkyAnnotation.NID_PROFILE_MEETING:
-                        //profileTag = AutoDetectConstants.PROFILE_TUNES.MEETING.value();
-                        notificationBuilder.setTitle(context.getString(R.string.meeting_notification_title));
-                        notificationBuilder.setMessage(context.getString(R.string.meeting_notification_content));
-                        break;
-                }
-
-//                if (!TextUtils.isEmpty(profileTag)) {
-//                    AutoProfileTuneRepository autoProfileTuneRepository = new AutoProfileTuneRepository(context);
-//                    if (autoProfileTuneRepository.doCheckTimeInterval(profileTag) && !autoProfileTuneRepository.isTuneIsSet(profileTag) && autoProfileTuneRepository.getAutoTuneIsEnabled(profileTag)) {
-//                        Object obj = autoProfileTuneRepository.getRBTObject(profileTag);
-//                        if (obj != null)
-//                            if (obj instanceof LinkedTreeMap) {
-//                                LinkedTreeMap item = (LinkedTreeMap) obj;
-//                                if (item.containsKey("primary_image"))
-//                                    notificationBuilder.setBannerImage((String) item.get("primary_image"));
-//                            }
-//                        try {
-//                            NotificationHelper.createAutoProfileNotification(context, notificationBuilder.build()).show();
-//                            autoProfileTuneRepository.updateNotificationStatus(profileTag, true);
-//                        } catch (InsufficientDataException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }
-                return null;
-            }
-        }.execute();
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -138,7 +70,7 @@ public class BaselineApplication extends Application {
 
         LocalCacheManager.getInstance().init(getApplicationContext());
 
-        new AppConfigurationValues(this);
+        new AppConfigurationValues(this).init();
 
         /* Crashlytics */
         if (AppConfigurationValues.crashReportEnabled())

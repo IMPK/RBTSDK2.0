@@ -61,6 +61,8 @@ public class RbtSdkClient/* implements IExposedContent */{
             if (decodedOperator.equalsIgnoreCase(Constant.operatorName(decodedOperator))) {
                 if (Constant.isPackageVerificationRequired) {
                     if (dynamicPackageName.equalsIgnoreCase(packageNameProvided(decodedOperator))) {
+                        //AppManager.getInstance(mMsisdn,mMsisdnType,decodedOperator).init(mContext);
+
                         android.content.Intent intent = new android.content.Intent(mContext, SplashActivity.class);
                         intent.putExtra(Constant.Intent.EXTRA_MSISDN_SDK, mMsisdn);
                         intent.putExtra(Constant.Intent.EXTRA_MSISDN_TYPE_SDK, mMsisdnType);
@@ -73,6 +75,8 @@ public class RbtSdkClient/* implements IExposedContent */{
                         Toast.makeText(mContext, mContext.getString(R.string.not_authorised_access), Toast.LENGTH_LONG).show();
                     }
                 } else {
+                    //AppManager.getInstance(mMsisdn,mMsisdnType,decodedOperator).init(mContext);
+
                     android.content.Intent intent = new android.content.Intent(mContext, SplashActivity.class);
                     intent.putExtra(Constant.Intent.EXTRA_MSISDN_SDK, mMsisdn);
                     intent.putExtra(Constant.Intent.EXTRA_MSISDN_TYPE_SDK, mMsisdnType);

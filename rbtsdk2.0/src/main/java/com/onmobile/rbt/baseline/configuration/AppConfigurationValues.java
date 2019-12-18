@@ -29,6 +29,8 @@ public class AppConfigurationValues {
 
     public AppConfigurationValues(Context context) {
         this.mContext = context;
+    }
+    public void init() {
         loadAppConfiguration();
     }
 

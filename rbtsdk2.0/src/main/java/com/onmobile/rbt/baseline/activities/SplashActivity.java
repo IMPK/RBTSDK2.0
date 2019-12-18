@@ -135,7 +135,6 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onPostOnCreate(@Nullable Bundle savedInstanceState) {
-        SharedPrefProvider.getInstance(this).updateAppLaunchTime();
         checkPhoneStatePermission();
     }
 
