@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.BannerDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.application.AppLocaleHelper;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.holder.RootViewHolder;
 import com.onmobile.rbt.baseline.holder.StoreRootViewHolder;
 import com.onmobile.rbt.baseline.listener.LifeCycleCallback;
@@ -293,7 +293,7 @@ public class StoreRootRecyclerViewAdapter extends RecyclerView.Adapter<RootViewH
                          * Change made by Appolla Sreedhar
                          */
 
-                        if ((mAppLocaleHelper.setAppLocalForDeviceLanguage(BaselineApplication.getApplication().getApplicationContext(),true,false)).getLanguage().contains("ar")){
+                        if ((mAppLocaleHelper.setAppLocalForDeviceLanguage(AppManager.getContext(),true,false)).getLanguage().contains("ar")){
                             defaultSelection = mBannerDtoList.size() - 1;
                         }else {
                             defaultSelection = 1;
@@ -362,7 +362,7 @@ public class StoreRootRecyclerViewAdapter extends RecyclerView.Adapter<RootViewH
                          * Change made by Appolla Sreedhar
                          */
 
-                        if ((mAppLocaleHelper.setAppLocalForDeviceLanguage(BaselineApplication.getApplication().getApplicationContext(),true,false)).getLanguage().contains("ar")){
+                        if ((mAppLocaleHelper.setAppLocalForDeviceLanguage(AppManager.getContext(),true,false)).getLanguage().contains("ar")){
                             viewPager.setCurrentItem((0 < currentItemCount) ? currentItemCount-1 : mBannerDtoList.size() , true);
                         }else {
                             viewPager.setCurrentItem((currentItemCount < mBannerDtoList.size() - 1) ? currentItemCount + 1 : 0, true);

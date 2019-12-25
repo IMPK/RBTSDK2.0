@@ -5,9 +5,9 @@ import android.os.Bundle;
 
 import android.view.View;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.familyandfriends.GetChildInfoResponseDTO;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.bottomsheet.base.BaseBottomSheetFragment;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
@@ -141,7 +141,7 @@ public class AcceptGiftMainBSFragment extends BaseBottomSheetFragment<AcceptGift
             nextFragment = AcceptGiftSuccessBSFragment.newInstance(mContactModelDTO).setCallback(this);
             sheetCancellable = true;
             mSuccess = true;
-            BaselineApplication.getApplication().getRbtConnector().getChildInfo(new AppBaselineCallback<GetChildInfoResponseDTO>() {
+            AppManager.getInstance().getRbtConnector().getChildInfo(new AppBaselineCallback<GetChildInfoResponseDTO>() {
                 @Override
                 public void success(GetChildInfoResponseDTO result) {
                     if (!isAdded()) return;

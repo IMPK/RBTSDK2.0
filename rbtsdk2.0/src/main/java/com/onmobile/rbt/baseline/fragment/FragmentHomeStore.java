@@ -2,10 +2,10 @@ package com.onmobile.rbt.baseline.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.BannerDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.DynamicChartItemDTO;
@@ -17,7 +17,6 @@ import com.onmobile.rbt.baseline.http.httpmodulemanagers.HttpModuleMethodManager
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.adapter.StoreRootRecyclerViewAdapter;
 import com.onmobile.rbt.baseline.application.ApiConfig;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.event.NewRecommendation;
@@ -59,7 +58,6 @@ public class FragmentHomeStore extends BaseFragment {
 
     private List<ListItem> mList;
     private StoreRootRecyclerViewAdapter mAdapter;
-    private int chartCurrentPosition = 0;
 
     private InternalCallback mActivityCallback;
     private ListItem mListItem;
@@ -68,7 +66,11 @@ public class FragmentHomeStore extends BaseFragment {
     private ArrayList<RingBackToneDTO> mExtraRingtoneList;
 
     private String mCallerSource;
-    private boolean mVisibleToUser = true, mPendingRecommendationUpdate = false;
+    private boolean mVisibleToUser = true, mPendingRecommendationUpdate = false, mPendingDailyPlayListUpdate = false;
+
+    private boolean mBannerRequired;
+    private boolean mRecommendationRequired;
+    private boolean mDailyPlayListRequired;
 
     public static FragmentHomeStore newInstance(String callerSource, ListItem listItem) {
         FragmentHomeStore fragment = new FragmentHomeStore();
@@ -215,40 +217,24 @@ public class FragmentHomeStore extends BaseFragment {
         mRecyclerView.post(() -> mAdapter.notifyItemChanged(mAdapter.getItemCount() - 1));
     }
 
-    private void hideLoadMore() {
-        trimList(items);
-    }
-
-    private List<RingBackToneDTO> trimList(final List<RingBackToneDTO> list) {
-        try {
-            if (mList.size() < 1)
-                return list;
-            int lastPosition = mList.size() - 1;
-            if (mList.get(lastPosition) == null)
-                list.remove(lastPosition);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
     private void loadChart() {
         String id;
         if (mListItem.getParent() instanceof DynamicChartItemDTO) {
             id = ((DynamicChartItemDTO) mListItem.getParent()).getId();
         } else if (mListItem.getParent() instanceof ChartItemDTO) {
             id = String.valueOf(((ChartItemDTO) mListItem.getParent()).getId());
+        } else if (mListItem.getParent() instanceof RecommendationDTO) {
+            id = ((RecommendationDTO) mListItem.getParent()).getSessionId();
         } else {
             id = ((RingBackToneDTO) mListItem.getParent()).getId();
         }
 
-        BaselineApplication.getApplication().getRbtConnector().getDynamicChartContents(mCurrentOffset, id, new AppBaselineCallback<DynamicChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getDynamicChartContents(mCurrentOffset, id, new AppBaselineCallback<DynamicChartItemDTO>() {
             @Override
             public void success(DynamicChartItemDTO result) {
                 if (!isAdded()) return;
                 mCurrentOffset = mCurrentOffset + result.getItems().size();
                 mMaxOffset = Integer.parseInt(result.getTotal_item_count());
-                chartCurrentPosition = 0;
                 ArrayList<RingBackToneDTO> chartList = new ArrayList<>();
                 for (RingBackToneDTO ringBackToneDTO : result.getItems()) {
                     if (ringBackToneDTO.getType().equals("chart")) {
@@ -282,58 +268,13 @@ public class FragmentHomeStore extends BaseFragment {
     }
 
     private void loadChartGroup(boolean isAddRecommendations) {
-        /*BaselineApplication.getApplication().getRbtConnector().getDynamicChartGroups(mCurrentOffset, new AppBaselineCallback<DynamicChartsDTO>() {
-            @Override
-            public void success(DynamicChartsDTO result) {
-                if (!isAdded()) return;
-                mCurrentOffset = mCurrentOffset + result.getItems().size();
-                mMaxOffset = Integer.parseInt(result.getTotal_item_count());
-                chartCurrentPosition = 0;
-                ArrayList<RingBackToneDTO> chartList = new ArrayList<>();
 
-                for (int i = 0; i < result.getItems().size(); i++) {
-                    RingBackToneDTO ringBackToneDTO = result.getItems().get(i);
-
-                    if (isAddRecommendations && i == 1) {
-                        chartList.add(mRecommendation);
-                    }
-
-                    if (ringBackToneDTO.getType().equals("chart")) {
-                        chartList.add(ringBackToneDTO);
-                    } else if (ringBackToneDTO.getType().equals("ringback")) {
-                        if (mExtraRingtoneList == null) {
-                            mExtraRingtoneList = new ArrayList<>();
-                        }
-                        mExtraRingtoneList.add(ringBackToneDTO);
-                    }
-
-                }
-                loadChartContent(chartList);
-            }
-
-            @Override
-            public void failure(String errMsg) {
-                if (!isAdded()) return;
-                if (mAdapter.getBannerSize() > 0) {
-                    mProgressLoading.setVisibility(View.GONE);
-                } else {
-                    if (mList == null || mList.size() < 1) {
-                        showEmpty(errMsg);
-                    } else {
-                        mAdapter.setLoaded();
-                        handleLoadMore();
-                    }
-                }
-            }
-        });*/
-
-        BaselineApplication.getApplication().getRbtConnector().getStoreChartsFromAppConfig(mCurrentOffset, new AppBaselineCallback<ChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getStoreChartsFromAppConfig(mCurrentOffset, new AppBaselineCallback<ChartItemDTO>() {
             @Override
             public void success(ChartItemDTO result) {
                 if (!isAdded()) return;
                 mCurrentOffset = mCurrentOffset + result.getRingBackToneDTOS().size();
                 mMaxOffset = result.getTotalItemCount();
-                chartCurrentPosition = 0;
                 ArrayList<RingBackToneDTO> chartList = new ArrayList<>();
                 List<String> chartIds = new ArrayList<>();
 
@@ -355,7 +296,7 @@ public class FragmentHomeStore extends BaseFragment {
                     }
                 }
 
-                BaselineApplication.getApplication().getRbtConnector().getChartBatchRequest(chartIds, new AppBaselineCallback<ListOfSongsResponseDTO>() {
+                AppManager.getInstance().getRbtConnector().getChartBatchRequest(chartIds, new AppBaselineCallback<ListOfSongsResponseDTO>() {
                     @Override
                     public void success(ListOfSongsResponseDTO result) {
                         if (!isAdded()) return;
@@ -493,8 +434,6 @@ public class FragmentHomeStore extends BaseFragment {
                 mMaxOffset = Integer.valueOf(ringBackToneDTO.getChart_item_count());
             }
 
-            chartCurrentPosition = 0;
-
             ArrayList<RingBackToneDTO> chartList = new ArrayList<>();
             for (RingBackToneDTO ringBackToneDTO : mListItem.getItems()) {
                 if (ringBackToneDTO.getType().equals("chart")) {
@@ -593,7 +532,7 @@ public class FragmentHomeStore extends BaseFragment {
     }
 
     private void loadBanners() {
-        BaselineApplication.getApplication().getRbtConnector().getBannerContent(new AppBaselineCallback<List<BannerDTO>>() {
+        AppManager.getInstance().getRbtConnector().getBannerContent(new AppBaselineCallback<List<BannerDTO>>() {
             @Override
             public void success(List<BannerDTO> result) {
                 if (!isAdded()) return;
@@ -616,7 +555,7 @@ public class FragmentHomeStore extends BaseFragment {
     private boolean mRecommendedPreviouslyAdded;
 
     public void loadRecommendations(boolean addAsNew) {
-        BaselineApplication.getApplication().getRbtConnector().getRecommendationContent(0, null, new AppBaselineCallback<RecommendationDTO>() {
+        AppManager.getInstance().getRbtConnector().getRecommendationContent(0, null, new AppBaselineCallback<RecommendationDTO>() {
             @Override
             public void success(RecommendationDTO result) {
                 if (!isAdded()) return;

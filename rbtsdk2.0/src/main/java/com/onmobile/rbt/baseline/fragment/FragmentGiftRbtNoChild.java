@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
 
 import androidx.annotation.NonNull;
@@ -43,7 +43,7 @@ public class FragmentGiftRbtNoChild extends BaseFragment implements View.OnClick
     @Override
     protected void initViews(View view) {
         mAddFriendsText = view.findViewById(R.id.tv_add_friends);
-        if(BaselineApplication.getApplication().getRbtConnector().isFriendsAndFamilyActiveUser()) {
+        if(AppManager.getInstance().getRbtConnector().isFriendsAndFamilyActiveUser()) {
             mAddFriendsText.setEnabled(true);
             mAddFriendsText.setOnClickListener(this);
         }

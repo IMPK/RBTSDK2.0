@@ -80,4 +80,8 @@
         tools:layout_editor_absoluteX="223dp"
         tools:layout_editor_absoluteY="239dp" />
 
+    <include
+        android:id="@+id/layout_loading_main"
+        android:visibility="gone"
+        layout="@layout/layout_loading_main" />
 </RelativeLayout>

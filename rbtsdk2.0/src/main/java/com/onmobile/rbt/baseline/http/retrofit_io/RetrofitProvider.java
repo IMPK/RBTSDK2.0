@@ -2,6 +2,7 @@ package com.onmobile.rbt.baseline.http.retrofit_io;
 
 
 
+import com.onmobile.rbt.baseline.http.Configuration;
 import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.AppConfigDataManipulator;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -65,7 +66,7 @@ public class RetrofitProvider {
         if (retrofitAppUtility == null) {
 
             retrofitAppUtility = new Retrofit.Builder()
-                    .baseUrl(APIRequestParameters.APIURLEndPoints.APP_UTILITY_END_POINT)
+                    .baseUrl(Configuration.getNetwork_utility_host())
                     .client(OkHttpClientProvider.getAppUtilityInstance())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
@@ -91,7 +92,7 @@ public class RetrofitProvider {
         if (retrofitAuthToken == null) {
 
             retrofitAuthToken = new Retrofit.Builder()
-                    .baseUrl(APIRequestParameters.APIURLEndPoints.AUTH_TOKEN_END_POINT)
+                    .baseUrl(Configuration.getAuthentication_api())
                     .client(OkHttpClientProvider.getAuthenticationTokenInstance())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
@@ -101,12 +102,15 @@ public class RetrofitProvider {
     }
 
     private static String getBaseCatalogURL() {
-        return APIRequestParameters.APIURLEndPoints.API_END_POINT_CATALOG;
+        String catalogUrl = Configuration.getApi_end_point_catalog();
+        return catalogUrl;
+        //return APIRequestParameters.APIURLEndPoints.API_END_POINT_CATALOG;
 
     }
 
     private static String getBaseStoreURL() {
-        return APIRequestParameters.APIURLEndPoints.API_END_POINT_STORE;
+        String storeUrl = Configuration.getApi_end_point_store();
+        return storeUrl;
 
     }
     public static void reset(){

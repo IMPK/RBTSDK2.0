@@ -15,9 +15,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.UpdateUserDefinedShuffleResponseDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.UserSubscriptionDTO;
-import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.ShareAppDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.familyandfriends.GetParentInfoResponseDTO;
 import com.onmobile.rbt.baseline.http.cache.LocalCacheManager;
 import com.onmobile.rbt.baseline.http.cache.UserSettingsCacheManager;
@@ -32,7 +32,6 @@ import com.onmobile.rbt.baseline.activities.SplashActivity;
 import com.onmobile.rbt.baseline.activities.VideoActivity;
 import com.onmobile.rbt.baseline.activities.WebViewActivity;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
@@ -246,7 +245,7 @@ public class FragmentHomeProfile extends BaseFragment implements View.OnClickLis
             mLabeledDigitalStar.setVisibility(View.GONE);
         }
 
-        Map<String, String> languageMap = BaselineApplication.getApplication().getRbtConnector().getLanguageToDisplay();
+        Map<String, String> languageMap = AppManager.getInstance().getRbtConnector().getLanguageToDisplay();
         if (languageMap != null && languageMap.size() > 1) {
             mLabeledChangeLanguage.setListener(mLabeledListener);
             mLabeledChangeLanguage.setVisibility(View.VISIBLE);
@@ -254,7 +253,7 @@ public class FragmentHomeProfile extends BaseFragment implements View.OnClickLis
             mLabeledChangeLanguage.setVisibility(View.GONE);
         }
 
-        SortedMap<Integer, String> appLanguageMap = BaselineApplication.getApplication().getRbtConnector().getAppLocale();
+        SortedMap<Integer, String> appLanguageMap = AppManager.getInstance().getRbtConnector().getAppLocale();
 
         if (appLanguageMap!=null && appLanguageMap.size()>1){
 
@@ -326,7 +325,7 @@ public class FragmentHomeProfile extends BaseFragment implements View.OnClickLis
     }
 
     private void changePlan() {
-        UserSubscriptionDTO userSubscriptionDTO = BaselineApplication.getApplication().getRbtConnector().getCacheUserSubscription();
+        UserSubscriptionDTO userSubscriptionDTO = AppManager.getInstance().getRbtConnector().getCacheUserSubscription();
         if (userSubscriptionDTO == null) {
             return;
         }
@@ -375,8 +374,8 @@ public class FragmentHomeProfile extends BaseFragment implements View.OnClickLis
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
-                if (BaselineApplication.getApplication().getRbtConnector().isUserUDPEnabled()) {
+            if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
+                if (AppManager.getInstance().getRbtConnector().isUserUDPEnabled()) {
                     mLabeledPersonalizedShuffle.enableSwitchStatusSilently();
                 } else {
                     mLabeledPersonalizedShuffle.disableSwitchStatusSilently();
@@ -386,7 +385,7 @@ public class FragmentHomeProfile extends BaseFragment implements View.OnClickLis
                 mLabeledPersonalizedShuffle.setVisibility(View.GONE);
             }
 
-            BaselineApplication.getApplication().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
+            AppManager.getInstance().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
                 @Override
                 public void isParent(boolean exist) {
                     refreshMyAccount();
@@ -446,11 +445,11 @@ public class FragmentHomeProfile extends BaseFragment implements View.OnClickLis
     }
 
     private void refreshGift() {
-        BaselineApplication.getApplication().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
+        AppManager.getInstance().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
             @Override
             public void isParent(boolean exist) {
-                if (BaselineApplication.getApplication().getRbtConnector().getCacheParentInfo() != null) {
-                    GetParentInfoResponseDTO parentInfo = BaselineApplication.getApplication().getRbtConnector().getCacheParentInfo();
+                if (AppManager.getInstance().getRbtConnector().getCacheParentInfo() != null) {
+                    GetParentInfoResponseDTO parentInfo = AppManager.getInstance().getRbtConnector().getCacheParentInfo();
                     if (parentInfo.getChilds() != null && parentInfo.getChilds().size() > 0) {
                         mChildCountText.setText(parentInfo.getChilds().size() + "");
                     } else {
@@ -493,9 +492,9 @@ public class FragmentHomeProfile extends BaseFragment implements View.OnClickLis
         if (!AppConfigurationValues.isShowMyAccount()) {
             return;
         }
-        if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
+        if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
             try {
-                PlanBean bean = new PlanBean.Builder().build(getContext(), BaselineApplication.getApplication().getRbtConnector().getCacheUserSubscription());
+                PlanBean bean = new PlanBean.Builder().build(getContext(), AppManager.getInstance().getRbtConnector().getCacheUserSubscription());
                 String currentPlanString = bean.finalText;
                 currentPlanString = currentPlanString.replaceAll("\n", " / ");
                 mLabeledMyAccount.setValue(currentPlanString);
@@ -533,7 +532,7 @@ public class FragmentHomeProfile extends BaseFragment implements View.OnClickLis
 
     private void updatePersonalizedShuffle(boolean status) {
         showProgress(true);
-        BaselineApplication.getApplication().getRbtConnector().updateUSerDefinedShuffleStatus(AnalyticsConstants.EVENT_PV_PERSONALIZED_SHUFFLE_SOURCE_PROFILE, status, new AppBaselineCallback<UpdateUserDefinedShuffleResponseDTO>() {
+        AppManager.getInstance().getRbtConnector().updateUSerDefinedShuffleStatus(AnalyticsConstants.EVENT_PV_PERSONALIZED_SHUFFLE_SOURCE_PROFILE, status, new AppBaselineCallback<UpdateUserDefinedShuffleResponseDTO>() {
             @Override
             public void success(UpdateUserDefinedShuffleResponseDTO result) {
                 if (!isAdded()) return;

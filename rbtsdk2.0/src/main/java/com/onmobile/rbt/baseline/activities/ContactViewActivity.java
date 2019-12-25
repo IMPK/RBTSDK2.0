@@ -15,11 +15,11 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.familyandfriends.ChildOperationResponseDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.adapter.ContactsRecyclerAdapter;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
 import com.onmobile.rbt.baseline.model.ContactModelDTO;
@@ -372,7 +372,7 @@ public class ContactViewActivity extends BaseActivity implements View.OnClickLis
     private void addChild(ContactData contactData) {
         String childMsisdn = contactData.getSelectedContact().getMobileNumber();
         showProgress(true, null);
-        BaselineApplication.getApplication().getRbtConnector().addChildRequest(childMsisdn, new AppBaselineCallback<ChildOperationResponseDTO>() {
+        AppManager.getInstance().getRbtConnector().addChildRequest(childMsisdn, new AppBaselineCallback<ChildOperationResponseDTO>() {
             @Override
             public void success(ChildOperationResponseDTO result) {
                 showProgress(false, null);

@@ -12,13 +12,13 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.UserSubscriptionDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.pricing.availability.PricingIndividualDTO;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.util.FunkyAnnotation;
 
 import androidx.annotation.NonNull;
@@ -223,7 +223,7 @@ public class PlanViewLayout extends FrameLayout {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
             RelativeLayout bestPlanLayout = (RelativeLayout) inflater.inflate(R.layout.best_plan_layout, null);
 
-            if (!plan.isGift() &&priceDTO.getCatalog_subscription_id().equals(BaselineApplication.getApplication().getRbtConnector().getBestValuePack())) {
+            if (!plan.isGift() &&priceDTO.getCatalog_subscription_id().equals(AppManager.getInstance().getRbtConnector().getBestValuePack())) {
                 bestPlanLayout.findViewById(R.id.best_plan_recommendation_layout).setVisibility(View.VISIBLE);
             }
             else{

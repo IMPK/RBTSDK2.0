@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.LocaleList;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.BuildConfig;
 
 import java.util.List;
@@ -90,8 +91,8 @@ public class AppLocaleHelper {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
         Resources resources = null;
-        if(BaselineApplication.getApplication() != null){
-            resources = BaselineApplication.getApplication().getResources();
+        if(AppManager.getContext() != null){
+            resources = AppManager.getContext().getResources();
         }
         else{
             resources = context.getResources();

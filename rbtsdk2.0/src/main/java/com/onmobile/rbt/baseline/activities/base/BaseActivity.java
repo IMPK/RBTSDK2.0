@@ -23,10 +23,9 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
-import com.onmobile.rbt.baseline.BuildConfig;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.DiscoverActivity;
 import com.onmobile.rbt.baseline.activities.HomeActivity;
@@ -34,14 +33,12 @@ import com.onmobile.rbt.baseline.activities.MusicLanguageActivity;
 import com.onmobile.rbt.baseline.activities.PreBuyActivity;
 import com.onmobile.rbt.baseline.activities.VideoActivity;
 import com.onmobile.rbt.baseline.application.AppLocaleHelper;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
 import com.onmobile.rbt.baseline.dialog.listeners.DialogListener;
 import com.onmobile.rbt.baseline.listener.SpeechRecognizerListener;
 import com.onmobile.rbt.baseline.listener.ToolbarSearchListener;
-import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
 import com.onmobile.rbt.baseline.util.AppConstant;
 import com.onmobile.rbt.baseline.util.FontUtils;
 import com.onmobile.rbt.baseline.util.FunkyAnnotation;
@@ -70,9 +67,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
-
-import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG;
-import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT;
 
 /**
  * Created by Shahbaz Akhtar on 18/09/2018.
@@ -249,7 +243,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void redirectInFlow() {
         if (!SharedPrefProvider.getInstance(getActivityContext()).isLanguageSelected()) {
-            Map<String, String> languageMap = BaselineApplication.getApplication().getRbtConnector().getLanguageToDisplay();
+            Map<String, String> languageMap = AppManager.getInstance().getRbtConnector().getLanguageToDisplay();
             if (languageMap.size() == 1) {
                 List<String> mSelectedLanguageList = new ArrayList<>();
                 for (Map.Entry<String, String> entry : languageMap.entrySet()) {
@@ -633,13 +627,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        BaselineApplication.activityResumed();
+        AppManager.activityResumed();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        BaselineApplication.activityPaused();
+        AppManager.activityPaused();
     }
 
     @Override
@@ -730,7 +724,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        Context context = BaselineApplication.getApplication().getAppLocaleManager().setLocale(newBase);
+        Context context = AppManager.getAppLocaleManager(newBase).setLocale(newBase);
         super.attachBaseContext(context);
     }
 

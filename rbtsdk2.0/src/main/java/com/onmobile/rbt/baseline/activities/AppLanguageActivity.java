@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.adapter.AppLanguageAdapter;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.listener.AppLanguageSelectionListener;
 
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class AppLanguageActivity extends BaseActivity {
     protected void bindViews() {
         mAppLocaleList =  new ArrayList<>();
         mAppLanguageRecycler.setLayoutManager(new LinearLayoutManager(this));
-        SortedMap<Integer, String> appLanguageMap = BaselineApplication.getApplication().getRbtConnector().getAppLocale();
+        SortedMap<Integer, String> appLanguageMap = AppManager.getInstance().getRbtConnector().getAppLocale();
 
         for (SortedMap.Entry<Integer,String> entry:appLanguageMap.entrySet()){
             mAppLocaleList.add(entry.getValue());
@@ -102,7 +102,7 @@ public class AppLanguageActivity extends BaseActivity {
             onBackPressed();
         } else if (item.getItemId() == R.id.action_done) {
              if(mSelectedLocaleCode != null ) {
-                BaselineApplication.getApplication().getAppLocaleManager().changeLocale( BaselineApplication.getApplication().getApplicationContext(), mSelectedLocaleCode);
+                AppManager.getAppLocaleManager(this).changeLocale(AppManager.getContext(), mSelectedLocaleCode);
             }
 
             redirect(DiscoverActivity.class, null, true, true);

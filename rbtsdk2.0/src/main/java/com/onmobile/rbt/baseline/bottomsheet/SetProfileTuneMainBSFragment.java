@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.LowBattery;
 import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.Meeting;
@@ -13,7 +14,6 @@ import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.Roaming;
 import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.Silent;
 import com.onmobile.rbt.baseline.http.httpmodulemanagers.HttpModuleMethodManager;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.bottomsheet.base.BaseBottomSheetFragment;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
@@ -193,7 +193,7 @@ public class SetProfileTuneMainBSFragment extends BaseBottomSheetFragment<SetPro
     public void done(BaseFragment fragment, RingBackToneDTO data) {
         if (!isAdded()) return;
         if (fragment instanceof SetProfileTunePlansBSFragment || fragment instanceof SetProfileTuneAutoProfilePlansBSFragment) {
-            mSuccess = BaselineApplication.getApplication().getRbtConnector().isActiveUser();
+            mSuccess = AppManager.getInstance().getRbtConnector().isActiveUser();
         }
         dismissAllowingStateLoss();
     }

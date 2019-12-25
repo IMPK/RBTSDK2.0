@@ -13,6 +13,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
@@ -23,7 +24,6 @@ import com.onmobile.rbt.baseline.activities.SearchActivity;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.adapter.NameTunesAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.custom.AppRatingPopup;
@@ -84,7 +84,7 @@ public class NameTunesStackViewHolder extends StackViewHolder<List<RingBackToneD
 //        mVoiceSelected = mVoiceList.get(mVoiceSelectedIndex);
 //        mVoiceText.setText(mVoiceSelected);
 //
-//        languagesMap = BaselineApplication.getApplication().getRbtConnector().getLanguageToDisplay();
+//        languagesMap = AppManager.getInstance().getRbtConnector().getLanguageToDisplay();
 //        if (languagesMap != null) {
 //            mLanguageList = new ArrayList<>(languagesMap.values());
 //            mLanguageCodeList = new ArrayList<>(languagesMap.keySet());
@@ -158,12 +158,12 @@ public class NameTunesStackViewHolder extends StackViewHolder<List<RingBackToneD
             }
 
             Util.hideKeyboard(getContext(), mRecyclerView);
-            List<String> languageList = SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode();
+            List<String> languageList = SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode();
 
             if (languageList == null || languageList.size() < 1)
                 return;
 
-            BaselineApplication.getApplication().getRbtConnector().getNametunes(0, searchText, /*mLanguageSelectedCode*/languageList.get(0), new AppBaselineCallback<ChartItemDTO>() {
+            AppManager.getInstance().getRbtConnector().getNametunes(0, searchText, /*mLanguageSelectedCode*/languageList.get(0), new AppBaselineCallback<ChartItemDTO>() {
                 @Override
                 public void success(ChartItemDTO result) {
                     contentLayout.setBackgroundResource(R.drawable.name_tune_white);

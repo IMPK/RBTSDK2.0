@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RUrlResponseDto;
@@ -24,8 +25,6 @@ import com.onmobile.rbt.baseline.http.httpmodulemanagers.HttpModuleMethodManager
 import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
 import com.onmobile.rbt.baseline.R;
 
-import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
@@ -243,7 +242,7 @@ public class SetProfileTuneAutoProfilePlansBSFragment extends BaseFragment {
 
         mCallersChoiceLayout = view.findViewById(R.id.caller_choice_layout);
         mPlayForAllCallersInfoText = view.findViewById(R.id.play_for_all_callers_info);
-        if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
+        if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
             mCallersChoiceLayout.setVisibility(View.VISIBLE);
             mPlayForAllCallersInfoText.setVisibility(View.GONE);
         } else {
@@ -349,7 +348,7 @@ public class SetProfileTuneAutoProfilePlansBSFragment extends BaseFragment {
                 return;
             }
         }
-        BaselineApplication.getApplication().getRbtConnector().getProfileContents(mBaseRingBackToneDTO.getId(), new AppBaselineCallback<ChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getProfileContents(mBaseRingBackToneDTO.getId(), new AppBaselineCallback<ChartItemDTO>() {
             @Override
             public void success(ChartItemDTO result) {
                 if (!isAdded()) return;
@@ -392,7 +391,7 @@ public class SetProfileTuneAutoProfilePlansBSFragment extends BaseFragment {
      */
     private void populatePlans() {
         mPlanLayout.loading();
-        BaselineApplication.getApplication().getRbtConnector().checkUser(new AppBaselineCallback<Boolean>() {
+        AppManager.getInstance().getRbtConnector().checkUser(new AppBaselineCallback<Boolean>() {
             @Override
             public void success(Boolean result) {
                 fetchPlans();
@@ -409,7 +408,7 @@ public class SetProfileTuneAutoProfilePlansBSFragment extends BaseFragment {
     }
 
     private void fetchPlans(){
-        BaselineApplication.getApplication().getRbtConnector().getContent(mCurrentRingBackToneDTO.getId(), new AppBaselineCallback<RingBackToneDTO>() {
+        AppManager.getInstance().getRbtConnector().getContent(mCurrentRingBackToneDTO.getId(), new AppBaselineCallback<RingBackToneDTO>() {
             @Override
             public void success(RingBackToneDTO result) {
                 if (!isAdded()) return;
@@ -590,7 +589,7 @@ public class SetProfileTuneAutoProfilePlansBSFragment extends BaseFragment {
                     }
                 }
                 String cgrUrl = data.getStringExtra(EXTRA_CG_RURL);
-                BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                     @Override
                     public void success(RUrlResponseDto result) {
                         if (!isAdded()) return;

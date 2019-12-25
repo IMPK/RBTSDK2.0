@@ -19,10 +19,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
 import com.onmobile.rbt.baseline.holder.RootViewHolder;
 import com.onmobile.rbt.baseline.model.UserActivityRbtDTO;
@@ -334,7 +334,7 @@ public class BottomSheetListActionFragment extends BottomSheetDialogFragment {
             if (getMusicPlayer() != null && AppUtils.isRecommendationQueueDelayLapsed(getMusicPlayer().getMediaPlayedInSeconds())) {
                 RingBackToneDTO ringBackToneDTO = getRingBackToneIfAvailable();
                 if (ringBackToneDTO != null && ringBackToneDTO.isRingBackMusic())
-                    BaselineApplication.getApplication().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
+                    AppManager.getInstance().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
             }
         }
 

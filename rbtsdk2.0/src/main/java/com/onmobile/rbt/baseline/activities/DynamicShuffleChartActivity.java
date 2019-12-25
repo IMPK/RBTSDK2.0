@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.DynamicChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
@@ -17,7 +18,6 @@ import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.adapter.DynamicShuffleChartAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
@@ -26,7 +26,6 @@ import com.onmobile.rbt.baseline.listener.OnBottomSheetChangeListener;
 import com.onmobile.rbt.baseline.model.SimpleAdapterItem;
 import com.onmobile.rbt.baseline.util.AppConstant;
 import com.onmobile.rbt.baseline.util.FunkyAnnotation;
-import com.onmobile.rbt.baseline.util.MarginDividerItemDecoration;
 import com.onmobile.rbt.baseline.util.WidgetUtils;
 
 import java.util.ArrayList;
@@ -161,7 +160,7 @@ public class DynamicShuffleChartActivity extends BaseActivity implements View.On
 
     private void pullUserDefinedPlayList() {
         showLoading();
-        BaselineApplication.getApplication().getRbtConnector().getUserDefinedPlaylist(0, 2, new AppBaselineCallback<ListOfUserDefinedPlaylistDTO>() {
+        AppManager.getInstance().getRbtConnector().getUserDefinedPlaylist(0, 2, new AppBaselineCallback<ListOfUserDefinedPlaylistDTO>() {
             @Override
             public void success(ListOfUserDefinedPlaylistDTO result) {
                 if (result != null && result.getAssets() != null && result.getAssets().size() > 0) {
@@ -192,7 +191,7 @@ public class DynamicShuffleChartActivity extends BaseActivity implements View.On
             mAdapter.setLoading();
         else
             showLoading();
-        BaselineApplication.getApplication().getRbtConnector().getDynamicMusicShuffle(new AppBaselineCallback<DynamicChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getDynamicMusicShuffle(new AppBaselineCallback<DynamicChartItemDTO>() {
             @Override
             public void success(DynamicChartItemDTO result) {
                 mAdapter.setLoaded();
@@ -261,7 +260,7 @@ public class DynamicShuffleChartActivity extends BaseActivity implements View.On
         if (TextUtils.isEmpty(mContentId))
             return;
         showTranslucentDialog();
-        BaselineApplication.getApplication().getRbtConnector().getShuffleContentAndPrice(mContentId, new AppBaselineCallback<ChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getShuffleContentAndPrice(mContentId, new AppBaselineCallback<ChartItemDTO>() {
             @Override
             public void success(ChartItemDTO result) {
                 hideTranslucentDialog();

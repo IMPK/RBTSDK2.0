@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ListOfSongsResponseDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
@@ -16,7 +17,6 @@ import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.PreBuyActivity;
 import com.onmobile.rbt.baseline.adapter.HorizontalMusicAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
@@ -262,7 +262,7 @@ public class FragmentHorizontalMusic extends BaseFragment {
     private void loadShuffleChartItems(String chartId) {
         if (mIsSystemShuffle) {
             //Fetch System Shuffle details
-            BaselineApplication.getApplication().getRbtConnector().getShuffleAllContent(chartId, new AppBaselineCallback<ChartItemDTO>() {
+            AppManager.getInstance().getRbtConnector().getShuffleAllContent(chartId, new AppBaselineCallback<ChartItemDTO>() {
                 @Override
                 public void success(ChartItemDTO result) {
                     if (!isAdded()) return;
@@ -288,7 +288,7 @@ public class FragmentHorizontalMusic extends BaseFragment {
             });
         } else {
             //Fetch UDP Shuffle details
-            BaselineApplication.getApplication().getRbtConnector().getUserDefinedPlaylist(chartId, new AppBaselineCallback<UdpDetailDTO>() {
+            AppManager.getInstance().getRbtConnector().getUserDefinedPlaylist(chartId, new AppBaselineCallback<UdpDetailDTO>() {
                 @Override
                 public void success(UdpDetailDTO result) {
                     if (!isAdded()) return;
@@ -311,7 +311,7 @@ public class FragmentHorizontalMusic extends BaseFragment {
                             dto.setType(item.getType());
                             requestItems.add(dto);
                         }
-                        BaselineApplication.getApplication().getRbtConnector().getContentBatchRequest(requestItems, new AppBaselineCallback<ListOfSongsResponseDTO>() {
+                        AppManager.getInstance().getRbtConnector().getContentBatchRequest(requestItems, new AppBaselineCallback<ListOfSongsResponseDTO>() {
                             @Override
                             public void success(ListOfSongsResponseDTO result) {
                                 if (!isAdded()) return;
@@ -399,14 +399,14 @@ public class FragmentHorizontalMusic extends BaseFragment {
                 getRootActivity().showShortToast(errMsg);
             }
         };
-        List<String> language = SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode();
+        List<String> language = SharedPrefProvider.getInstance(getActivity()).getUserLanguageCode();
         boolean languageSearchSupported = AppConfigurationValues.isLanguageInSearchEnabled();
         if (mSearchType == FunkyAnnotation.SEARCH_CONTENT_TYPE_SONG)
-            BaselineApplication.getApplication().getRbtConnector().getSearchSongContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, language, languageSearchSupported, mSearchQuery, callback);
+            AppManager.getInstance().getRbtConnector().getSearchSongContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, language, languageSearchSupported, mSearchQuery, callback);
         else if (mSearchType == FunkyAnnotation.SEARCH_CONTENT_TYPE_ARTIST)
-            BaselineApplication.getApplication().getRbtConnector().getSearchArtistContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, language, languageSearchSupported, mSearchQuery, callback);
+            AppManager.getInstance().getRbtConnector().getSearchArtistContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, language, languageSearchSupported, mSearchQuery, callback);
         else if (mSearchType == FunkyAnnotation.SEARCH_CONTENT_TYPE_ALBUM)
-            BaselineApplication.getApplication().getRbtConnector().getSearchAlbumContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, language, languageSearchSupported, mSearchQuery, callback);
+            AppManager.getInstance().getRbtConnector().getSearchAlbumContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, language, languageSearchSupported, mSearchQuery, callback);
     }
 
     @Override

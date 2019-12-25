@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.view.View;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
 import com.onmobile.rbt.baseline.musicplayback.models.MusicPlaybackStateModel;
@@ -18,7 +19,6 @@ import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.adapter.base.SimpleFragmentPagerAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
 import com.onmobile.rbt.baseline.application.AppLocaleHelper;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
 import com.onmobile.rbt.baseline.dialog.custom.AppRatingPopup;
@@ -85,7 +85,7 @@ public class TrendingStackViewHolder extends StackViewHolder<List<RingBackToneDT
 
     @Override
     protected void initViews() {
-        mAppLocaleHelper=BaselineApplication.getApplication().getAppLocaleManager();
+        mAppLocaleHelper=AppManager.getAppLocaleManager(AppManager.getContext());
         if (contentLayout != null) {
             viewPager = contentLayout.findViewById(R.id.viewpager_trending_stack_discover);
             pagerIndicator = contentLayout.findViewById(R.id.indicator_trending_stack_discover);
@@ -130,7 +130,7 @@ public class TrendingStackViewHolder extends StackViewHolder<List<RingBackToneDT
 
             if (sliderAdapter.getCount() > 0) {
                 int currentItemCount;
-                if ((mAppLocaleHelper.setAppLocalForDeviceLanguage(BaselineApplication.getApplication().getApplicationContext(),true,false)).getLanguage().contains("ar")){
+                if ((mAppLocaleHelper.setAppLocalForDeviceLanguage(AppManager.getContext(),true,false)).getLanguage().contains("ar")){
                     currentItemCount=sliderAdapter.getCount();
                 }else {
                     currentItemCount=viewPager.getCurrentItem();
@@ -280,7 +280,7 @@ public class TrendingStackViewHolder extends StackViewHolder<List<RingBackToneDT
             if (mBaselineMusicPlayer != null && AppUtils.isRecommendationQueueDelayLapsed(mBaselineMusicPlayer.getMediaPlayedInSeconds())) {
                 RingBackToneDTO ringBackToneDTO = sliderAdapter.getItem(lastPlayedPosition).getRingBackToneDTO();
                 if (ringBackToneDTO != null)
-                    BaselineApplication.getApplication().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
+                    AppManager.getInstance().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
             }
         }
 
@@ -381,7 +381,7 @@ public class TrendingStackViewHolder extends StackViewHolder<List<RingBackToneDT
                     final int currentItemCount = viewPager.getCurrentItem();
                     new Handler().post(() -> {
                         if (viewPager != null)
-                            if ((mAppLocaleHelper.setAppLocalForDeviceLanguage(BaselineApplication.getApplication().getApplicationContext(),true,false)).getLanguage().contains("ar")){
+                            if ((mAppLocaleHelper.setAppLocalForDeviceLanguage(AppManager.getContext(),true,false)).getLanguage().contains("ar")){
                                 viewPager.setCurrentItem((0 < currentItemCount) ? currentItemCount-1 : sliderAdapter.getCount(), true);
                             }else {
                                 viewPager.setCurrentItem((currentItemCount < sliderAdapter.getCount() - 1) ? currentItemCount + 1 : 0, true);

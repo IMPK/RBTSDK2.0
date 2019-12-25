@@ -31,6 +31,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.udp.UserDefinedPlaylistDTO;
@@ -40,7 +41,6 @@ import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.PreBuyActivity;
 import com.onmobile.rbt.baseline.adapter.TransparentPagerAdapter;
 import com.onmobile.rbt.baseline.adapter.base.SimpleFragmentPagerAdapter;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.bottomsheet.AddRbt2UdpBSChildFragment;
 import com.onmobile.rbt.baseline.bottomsheet.SetCallerTunePlansBSFragment;
@@ -61,7 +61,6 @@ import com.onmobile.rbt.baseline.util.Logger;
 import com.onmobile.rbt.baseline.util.PermissionUtil;
 import com.onmobile.rbt.baseline.util.TrackPagerTransformer;
 import com.onmobile.rbt.baseline.util.WidgetUtils;
-import com.onmobile.rbt.baseline.util.YouTubeHelper;
 import com.onmobile.rbt.baseline.util.cut.ruler.CircularSeekBar;
 import com.onmobile.rbt.baseline.util.cut.ruler.DjAudioPlayer;
 import com.onmobile.rbt.baseline.util.cut.ruler.PreviewUrlGeneration;
@@ -270,7 +269,7 @@ public class FragmentPreBuyAudio extends BaseFragment {
         mLayoutParentVideo.setVisibility(View.GONE);
         mTvSetVideo = view.findViewById(R.id.tv_set_prebuy_vid_track);
 
-        if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
+        if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
             mTvShare.setVisibility(View.VISIBLE);
         } else {
             mTvShare.setVisibility(View.GONE);
@@ -440,7 +439,7 @@ public class FragmentPreBuyAudio extends BaseFragment {
                     RingBackToneDTO ringBackToneDTO = fragment.getItem();
                     boolean isSelected = false;
                     if (ringBackToneDTO != null) {
-                        isSelected = BaselineApplication.getApplication().getRbtConnector().isRingbackSelected(ringBackToneDTO.getId());
+                        isSelected = AppManager.getInstance().getRbtConnector().isRingbackSelected(ringBackToneDTO.getId());
                     }
                     //mTvSet.setText(getString(!isSelected ? R.string.set_small : R.string.tune_update));
                     playTrack(fragment);
@@ -675,7 +674,7 @@ public class FragmentPreBuyAudio extends BaseFragment {
                 if (progressStatus < AppConstant.MAX_PROGRESS_TO_UPDATE_PLAYER)
                     showTrackPlaying();
                 if (AppUtils.isRecommendationQueueDelayLapsed(getMusicPlayer().getMediaPlayedInSeconds()))
-                    BaselineApplication.getApplication().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
+                    AppManager.getInstance().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
             }
 
             @Override
@@ -977,7 +976,7 @@ public class FragmentPreBuyAudio extends BaseFragment {
             mWheelRulerView.setMaxValue(TRACK_DURATION / 1000, AppConstant.TYPE_RINGTONE);
         }
 
-        String path = BaselineApplication.getApplication().getRbtConnector().generateUrl(mCutRingBackTone, PreviewUrlGeneration.FT_PREVIEW, mCircularSeekBar.getProgress(), (int) (mCircularSeekBar.getProgress() + AppConstant.DEFAULT_CUT_RINGTONE_TIME), PreviewUrlGeneration.RINGTONE, "");
+        String path = AppManager.getInstance().getRbtConnector().generateUrl(mCutRingBackTone, PreviewUrlGeneration.FT_PREVIEW, mCircularSeekBar.getProgress(), (int) (mCircularSeekBar.getProgress() + AppConstant.DEFAULT_CUT_RINGTONE_TIME), PreviewUrlGeneration.RINGTONE, "");
 
         makeMadeRequest(false, path);
 
@@ -1238,7 +1237,7 @@ public class FragmentPreBuyAudio extends BaseFragment {
             ringtoneOrNotification = PreviewUrlGeneration.NOTIFICATION;
         }
 
-        String url = BaselineApplication.getApplication().getRbtConnector().generateUrl(ringBackToneDTO, PreviewUrlGeneration.FT_PREVIEW, mCircularSeekBar.getProgress(), end, ringtoneOrNotification, "");
+        String url = AppManager.getInstance().getRbtConnector().generateUrl(ringBackToneDTO, PreviewUrlGeneration.FT_PREVIEW, mCircularSeekBar.getProgress(), end, ringtoneOrNotification, "");
         playCut(url);
 
 //        makeMadeRequest(true, url);
@@ -1261,7 +1260,7 @@ public class FragmentPreBuyAudio extends BaseFragment {
 
                 RingBackToneDTO ringBackToneDTO = mTrackAdapter.getItem(mCurrentPosition).getItem();
                 if (ringBackToneDTO != null && AppUtils.isRecommendationQueueDelayLapsed(getMusicPlayer().getMediaPlayedInSeconds()))
-                    BaselineApplication.getApplication().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
+                    AppManager.getInstance().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
             }
 
             @Override
@@ -1518,7 +1517,7 @@ public class FragmentPreBuyAudio extends BaseFragment {
                     public void PositiveButton(DialogInterface dialog, int id, final String data) {
                         dialog.dismiss();
                         mProgressDialog.show();
-                        BaselineApplication.getApplication().getRbtConnector().createUserDefinedPlaylist(data, new AppBaselineCallback<UserDefinedPlaylistDTO>() {
+                        AppManager.getInstance().getRbtConnector().createUserDefinedPlaylist(data, new AppBaselineCallback<UserDefinedPlaylistDTO>() {
                             @Override
                             public void success(UserDefinedPlaylistDTO result) {
                                 if (!isAdded()) return;
@@ -1614,7 +1613,7 @@ public class FragmentPreBuyAudio extends BaseFragment {
     }
 
     private synchronized void loadMoreMusicFromRemote(int offset, String chartId) {
-        BaselineApplication.getApplication().getRbtConnector().getChartContents(offset, chartId, new AppBaselineCallback<ChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getChartContents(offset, chartId, new AppBaselineCallback<ChartItemDTO>() {
             @Override
             public void success(ChartItemDTO result) {
                 //removeLoadingMusic();

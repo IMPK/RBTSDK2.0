@@ -83,7 +83,7 @@ public class VideoActivity extends BaseActivity {
         if (!isFromUserProfile) {
             SharedPrefProvider.getInstance(getActivityContext()).setTourShown(true);
             if (SharedPrefProvider.getInstance(getActivityContext()).isLanguageSelected()) {
-                if (/*BaselineApplication.getApplication().getRbtConnector().isActiveUser()*/SharedPrefProvider.getInstance(getActivityContext()).isLoggedIn()) {
+                if (/*AppManager.getInstance().getRbtConnector().isActiveUser()*/SharedPrefProvider.getInstance(getActivityContext()).isLoggedIn()) {
                     startActivity(new Intent(getActivityContext(), HomeActivity.class));
                 } else {
                     startActivity(new Intent(getActivityContext(), DiscoverActivity.class));

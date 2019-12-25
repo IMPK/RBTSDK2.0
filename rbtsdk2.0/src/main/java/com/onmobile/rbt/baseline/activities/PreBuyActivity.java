@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.DynamicChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
 import com.onmobile.rbt.baseline.fragment.FragmentPreBuyAudio;
@@ -245,7 +245,7 @@ public class PreBuyActivity extends BaseActivity implements BaseFragment.Interna
 
     private void loadRingBackToneItem() {
         showLoading();
-        BaselineApplication.getApplication().getRbtConnector().getContent(mRingBackToneId, new AppBaselineCallback<RingBackToneDTO>() {
+        AppManager.getInstance().getRbtConnector().getContent(mRingBackToneId, new AppBaselineCallback<RingBackToneDTO>() {
             @Override
             public void success(RingBackToneDTO result) {
                 if (result != null) {

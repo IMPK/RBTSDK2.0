@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.BannerDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
@@ -15,7 +16,6 @@ import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.PreBuyActivity;
 import com.onmobile.rbt.baseline.activities.StoreContentActivity;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
 import com.onmobile.rbt.baseline.model.ListItem;
@@ -89,7 +89,7 @@ public class BannerFragment extends BaseFragment {
                 getRootActivity().redirect(StoreContentActivity.class, bundle, false, false);
             } else if (mBannerDto.getType().equals(APIRequestParameters.EMode.RINGBACK.value())) {
                 enableLoading();
-                BaselineApplication.getApplication().getRbtConnector().getContent(mBannerDto.getID(), new AppBaselineCallback<RingBackToneDTO>() {
+                AppManager.getInstance().getRbtConnector().getContent(mBannerDto.getID(), new AppBaselineCallback<RingBackToneDTO>() {
                     @Override
                     public void success(RingBackToneDTO ringBackToneDTO) {
                         if (!isAdded()) return;

@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.AppUtilityDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RUrlResponseDto;
@@ -31,7 +32,6 @@ import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
 import com.onmobile.rbt.baseline.dialog.custom.PurchaseConfirmDialog;
@@ -180,12 +180,12 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     protected void bindViews() {
-        userSubscriptionDTO = BaselineApplication.getApplication().getRbtConnector().getCacheUserSubscription();
+        userSubscriptionDTO = AppManager.getInstance().getRbtConnector().getCacheUserSubscription();
 
-        BaselineApplication.getApplication().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
+        AppManager.getInstance().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
             @Override
             public void isParent(boolean exist) {
-                if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
+                if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
                     loadActivePlan();
                 }
                 populatePlans();
@@ -193,7 +193,7 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             public void isChild(boolean exist) {
-                GetChildInfoResponseDTO getChildInfoResponseDTO = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo();
+                GetChildInfoResponseDTO getChildInfoResponseDTO = AppManager.getInstance().getRbtConnector().getCacheChildInfo();
                 if (getChildInfoResponseDTO != null) {
                     ContactDetailProvider contactDetailProvider = new ContactDetailProvider(getApplicationContext(), getChildInfoResponseDTO.getParentId(), new IContactDetailProvider() {
                         @Override
@@ -219,7 +219,7 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             public void isNone(boolean exist) {
-                if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
+                if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
                     loadActivePlan();
                 }
                 populatePlans();
@@ -304,7 +304,7 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
 
     private void populatePlans() {
         mPlanViewLayout.loading();
-        BaselineApplication.getApplication().getRbtConnector().checkUser(new AppBaselineCallback<Boolean>() {
+        AppManager.getInstance().getRbtConnector().checkUser(new AppBaselineCallback<Boolean>() {
             @Override
             public void success(Boolean result) {
                 fetchPlans();
@@ -320,7 +320,7 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
 
     private void fetchPlans() {
         mPlanLayoutTitle.setVisibility(View.INVISIBLE);
-        BaselineApplication.getApplication().getRbtConnector().getListOfPlans(new AppBaselineCallback<List<PricingSubscriptionDTO>>() {
+        AppManager.getInstance().getRbtConnector().getListOfPlans(new AppBaselineCallback<List<PricingSubscriptionDTO>>() {
             @Override
             public void success(List<PricingSubscriptionDTO> result) {
                 if (result != null && result.size() > 0) {
@@ -330,7 +330,7 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
                         if (userSubscriptionDTO == null
                                 || userSubscriptionDTO.getCatalog_subscription_id() == null
                                 || !priceDTO.getCatalog_subscription_id().equals(userSubscriptionDTO.getCatalog_subscription_id()) ||
-                                !BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
+                                !AppManager.getInstance().getRbtConnector().isActiveUser()) {
                             PlanView plan = new PlanView(getActivityContext());
                             if (priceDTO != null && priceDTO.getRetail_priceObject() != null &&
                                     priceDTO.getRetail_priceObject().getAmount() != null) {
@@ -449,23 +449,23 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
         isGiftActivate = true;
         showProgress(true);
 
-        String confirmationPopUpDescription = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
+        String confirmationPopUpDescription = AppManager.getInstance().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
 
-        BaselineApplication.getApplication().getRbtConnector().getAppUtilityNetworkRequest(new AppBaselineCallback<AppUtilityDTO>() {
+        AppManager.getInstance().getRbtConnector().getAppUtilityNetworkRequest(new AppBaselineCallback<AppUtilityDTO>() {
             @Override
             public void success(AppUtilityDTO result) {
                 mNetworkType = result.getNetworkType();
 
-                BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
+                AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
 
-                GetChildInfoResponseDTO dummyChildInfo = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo();
-                BaselineApplication.getApplication().getRbtConnector().dummyChildPurchaseSubscription(dummyChildInfo.getCatalogSubscription().getId(), dummyChildInfo.getParentId());
+                GetChildInfoResponseDTO dummyChildInfo = AppManager.getInstance().getRbtConnector().getCacheChildInfo();
+                AppManager.getInstance().getRbtConnector().dummyChildPurchaseSubscription(dummyChildInfo.getCatalogSubscription().getId(), dummyChildInfo.getParentId());
 
                 APIRequestParameters.ConfirmationType confirmationType = null;
                 if (mNetworkType.equalsIgnoreCase("opt_network")) {
-                    confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationOptNetwork();
+                    confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationOptNetwork();
                 } else {
-                    confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationNonOptNetwork();
+                    confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationNonOptNetwork();
                 }
 
                 if (!isShowConsentPopUp(confirmationType, false)) {
@@ -476,7 +476,7 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
                         @Override
                         public void onContinue() {
                             showProgress(true);
-                            BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
+                            AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
                             createChild();
                         }
 
@@ -498,16 +498,16 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void createChild() {
-        GetChildInfoResponseDTO childInfo = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo();
-        BaselineApplication.getApplication().getRbtConnector().createChildUserSubscription(childInfo.getCatalogSubscription().getId(), childInfo.getParentId(), new AppBaselineCallback<UserSubscriptionDTO>() {
+        GetChildInfoResponseDTO childInfo = AppManager.getInstance().getRbtConnector().getCacheChildInfo();
+        AppManager.getInstance().getRbtConnector().createChildUserSubscription(childInfo.getCatalogSubscription().getId(), childInfo.getParentId(), new AppBaselineCallback<UserSubscriptionDTO>() {
             @Override
             public void success(UserSubscriptionDTO result) {
                 if (result != null) {
                     PurchaseComboResponseDTO.Thirdpartyconsent thirdPartyConsentDTO = result.getThirdpartyconsent();
                     Intent intent = new Intent();
                     if (thirdPartyConsentDTO != null && (thirdPartyConsentDTO.getThird_party_url() == null || thirdPartyConsentDTO.getThird_party_url().isEmpty())) {
-                        NonNetworkCGDTO nonNetworkCG = BaselineApplication.getApplication().getRbtConnector().getNonNetworkCG();
-                        BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                        NonNetworkCGDTO nonNetworkCG = AppManager.getInstance().getRbtConnector().getNonNetworkCG();
+                        AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                             @Override
                             public void success(RUrlResponseDto result) {
                                 showProgress(false);
@@ -585,7 +585,7 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
                     }
                 }
                 String cgrUrl = data.getStringExtra(EXTRA_CG_RURL);
-                BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                     @Override
                     public void success(RUrlResponseDto result) {
                         showProgress(false);
@@ -619,16 +619,16 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
             return;
         }
 
-        BaselineApplication.getApplication().getRbtConnector().getAppUtilityNetworkRequest(AnalyticsConstants.EVENT_PV_SOURCE_SET_FROM_MY_ACCOUNT, AnalyticsConstants.EVENT_PV_PURCHASE_PLAN_TYPE_USER_MIGRATE, null, mPricingSubscriptionDTO, null, null, new AppBaselineCallback<AppUtilityDTO>() {
+        AppManager.getInstance().getRbtConnector().getAppUtilityNetworkRequest(AnalyticsConstants.EVENT_PV_SOURCE_SET_FROM_MY_ACCOUNT, AnalyticsConstants.EVENT_PV_PURCHASE_PLAN_TYPE_USER_MIGRATE, null, mPricingSubscriptionDTO, null, null, new AppBaselineCallback<AppUtilityDTO>() {
             @Override
             public void success(AppUtilityDTO result) {
                 mNetworkType = result.getNetworkType();
-                BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
+                AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
 
-                BaselineApplication.getApplication().getRbtConnector().dummyPurchaseSubscriptionchangePlan(mPricingSubscriptionDTO);
+                AppManager.getInstance().getRbtConnector().dummyPurchaseSubscriptionchangePlan(mPricingSubscriptionDTO);
 
                 //Commented by PK_PK
-//                boolean isAllowed = BaselineApplication.getApplication().getRbtConnector().isThirdPartyPaymentRequired("", mPricingSubscriptionDTO, null);
+//                boolean isAllowed = AppManager.getInstance().getRbtConnector().isThirdPartyPaymentRequired("", mPricingSubscriptionDTO, null);
 //                if (AppConfigurationValues.isPayTMOptionEnabled() && isAllowed) {
 //                    getPaymentApiPayTM();
 //                } else {
@@ -653,15 +653,15 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
             return;
         }
 
-        BaselineApplication.getApplication().getRbtConnector().changePlan(mPricingSubscriptionDTO, extraInfoMap, new AppBaselineCallback<UserSubscriptionDTO>() {
+        AppManager.getInstance().getRbtConnector().changePlan(mPricingSubscriptionDTO, extraInfoMap, new AppBaselineCallback<UserSubscriptionDTO>() {
             @Override
             public void success(UserSubscriptionDTO userSubscriptionDTO) {
                 if (userSubscriptionDTO != null) {
                     PurchaseComboResponseDTO.Thirdpartyconsent thirdPartyConsentDTO = userSubscriptionDTO.getThirdpartyconsent();
                     Intent intent = new Intent();
                     if (thirdPartyConsentDTO != null && (thirdPartyConsentDTO.getThird_party_url() == null || thirdPartyConsentDTO.getThird_party_url().isEmpty())) {
-                        NonNetworkCGDTO nonNetworkCG = BaselineApplication.getApplication().getRbtConnector().getNonNetworkCG();
-                        BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                        NonNetworkCGDTO nonNetworkCG = AppManager.getInstance().getRbtConnector().getNonNetworkCG();
+                        AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                             @Override
                             public void success(RUrlResponseDto result) {
                                 showProgress(false);
@@ -701,7 +701,7 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void showAcceptChildSuccess(ContactModelDTO contactModelDTO) {
-        BaselineApplication.getApplication().getRbtConnector().getChildInfo(new AppBaselineCallback<GetChildInfoResponseDTO>() {
+        AppManager.getInstance().getRbtConnector().getChildInfo(new AppBaselineCallback<GetChildInfoResponseDTO>() {
             @Override
             public void success(GetChildInfoResponseDTO result) {
 
@@ -754,7 +754,7 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
     }
 
     private boolean isShowConsentPopUp(APIRequestParameters.ConfirmationType confirmationType, boolean isUpgrade) {
-        boolean isActiveUser = BaselineApplication.getApplication().getRbtConnector().isActiveUser();
+        boolean isActiveUser = AppManager.getInstance().getRbtConnector().isActiveUser();
         switch (confirmationType) {
             case ALL:
                 return true;
@@ -805,14 +805,14 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
 
         String confirmationPopUpDescription = mPricingSubscriptionDTO.getDescription();
 
-        AppUtilityDTO appUtilityDTO = BaselineApplication.getApplication().getRbtConnector().getAppUtilityDTO();
+        AppUtilityDTO appUtilityDTO = AppManager.getInstance().getRbtConnector().getAppUtilityDTO();
         mNetworkType = appUtilityDTO.getNetworkType();
 
         APIRequestParameters.ConfirmationType confirmationType = null;
         if (mNetworkType.equalsIgnoreCase("opt_network")) {
-            confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationOptNetwork();
+            confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationOptNetwork();
         } else {
-            confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationNonOptNetwork();
+            confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationNonOptNetwork();
         }
 
         if (!isShowConsentPopUp(confirmationType, false)) {
@@ -823,7 +823,7 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
                 @Override
                 public void onContinue() {
                     showProgress(true);
-                    BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(appUtilityDTO);
+                    AppManager.getInstance().getRbtConnector().setAppUtilityDTO(appUtilityDTO);
                     changePlan(extraInfoMap);
                 }
 

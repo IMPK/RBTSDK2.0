@@ -5,15 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RUrlResponseDto;
-import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.UserSubscriptionDTO;
 import com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.PurchaseComboResponseDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.CGWebViewActivity;
-import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
@@ -108,7 +106,7 @@ public class ChangePlanBSFragment extends BaseFragment {
 
     private void populatePlans() {
         mPlanLayout.loading();
-        BaselineApplication.getApplication().getRbtConnector().checkUser(new AppBaselineCallback<Boolean>() {
+        AppManager.getInstance().getRbtConnector().checkUser(new AppBaselineCallback<Boolean>() {
             @Override
             public void success(Boolean result) {
                 fetchPlans();
@@ -131,7 +129,7 @@ public class ChangePlanBSFragment extends BaseFragment {
     }
 
     private void fetchPlans(){
-        BaselineApplication.getApplication().getRbtConnector().getListOfPlans(new AppBaselineCallback<List<PricingSubscriptionDTO>>() {
+        AppManager.getInstance().getRbtConnector().getListOfPlans(new AppBaselineCallback<List<PricingSubscriptionDTO>>() {
             @Override
             public void success(List<PricingSubscriptionDTO> result) {
                 if (!isAdded()) return;
@@ -180,7 +178,7 @@ public class ChangePlanBSFragment extends BaseFragment {
                     return;
                 }
 
-                BaselineApplication.getApplication().getRbtConnector().changePlan(pricingSubscriptionDTO, null,new AppBaselineCallback<UserSubscriptionDTO>() {
+                AppManager.getInstance().getRbtConnector().changePlan(pricingSubscriptionDTO, null,new AppBaselineCallback<UserSubscriptionDTO>() {
                     @Override
                     public void success(UserSubscriptionDTO purchaseComboResponseDTO) {
                         if (!isAdded()) return;
@@ -263,7 +261,7 @@ public class ChangePlanBSFragment extends BaseFragment {
                 }
             } else if (requestCode == RESULT_CONSENT_ACTIVITY) {
                 String cgrUrl = data.getStringExtra(EXTRA_CG_RURL);
-                BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                     @Override
                     public void success(RUrlResponseDto result) {
                         if (!isAdded()) return;

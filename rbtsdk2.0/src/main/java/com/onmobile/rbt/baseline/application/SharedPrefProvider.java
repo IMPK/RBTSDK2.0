@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.Constant;
 import com.onmobile.rbt.baseline.util.AppConstant;
 import com.onmobile.rbt.baseline.util.StringEncrypter;
@@ -129,7 +130,7 @@ public class SharedPrefProvider {
 
     public void setMsisdn(String msisdn) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        String secret = BaselineApplication.getApplication().getRbtConnector().getAppLocalEncryptionSecret();
+        String secret = AppManager.getInstance().getRbtConnector().getAppLocalEncryptionSecret();
         String encryptedMsisdn = msisdn;
         if (secret != null && !secret.isEmpty() && msisdn != null) {
             encryptedMsisdn = StringEncrypter.encrypt(msisdn, secret);
@@ -139,7 +140,7 @@ public class SharedPrefProvider {
     }
 
     public String getMsisdn() {
-        String secret = BaselineApplication.getApplication().getRbtConnector().getAppLocalEncryptionSecret();
+        String secret = AppManager.getInstance().getRbtConnector().getAppLocalEncryptionSecret();
 
         String encryptedMsisdn = sharedPreferences.getString(MSISDN, null);
         if (encryptedMsisdn == null) {

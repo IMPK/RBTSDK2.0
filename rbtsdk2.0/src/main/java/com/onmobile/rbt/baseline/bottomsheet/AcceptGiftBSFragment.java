@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.AppUtilityDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RUrlResponseDto;
 import com.onmobile.rbt.baseline.http.api_action.dtos.UserSubscriptionDTO;
@@ -18,7 +19,6 @@ import com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.Purcha
 import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.CGWebViewActivity;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
 import com.onmobile.rbt.baseline.dialog.custom.PurchaseConfirmDialog;
@@ -129,26 +129,26 @@ public class AcceptGiftBSFragment extends BaseFragment {
     private void activateChild() {
         showProgress(true);
 
-        String confirmationPopUpDescription = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
+        String confirmationPopUpDescription = AppManager.getInstance().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
 
-        BaselineApplication.getApplication().getRbtConnector().getAppUtilityNetworkRequest(new AppBaselineCallback<AppUtilityDTO>() {
+        AppManager.getInstance().getRbtConnector().getAppUtilityNetworkRequest(new AppBaselineCallback<AppUtilityDTO>() {
             @Override
             public void success(AppUtilityDTO result) {
                 if (!isAdded()) return;
 
                 String mNetworkType = result.getNetworkType();
 
-                BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
+                AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
 
-                GetChildInfoResponseDTO dummyChildInfo = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo();
-                BaselineApplication.getApplication().getRbtConnector().dummyChildPurchaseSubscription(dummyChildInfo.getCatalogSubscription().getId(), dummyChildInfo.getParentId());
+                GetChildInfoResponseDTO dummyChildInfo = AppManager.getInstance().getRbtConnector().getCacheChildInfo();
+                AppManager.getInstance().getRbtConnector().dummyChildPurchaseSubscription(dummyChildInfo.getCatalogSubscription().getId(), dummyChildInfo.getParentId());
 
                 APIRequestParameters.ConfirmationType confirmationType= null;
                 if(mNetworkType.equalsIgnoreCase("opt_network")){
-                    confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationOptNetwork();
+                    confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationOptNetwork();
                 }
                 else{
-                    confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationNonOptNetwork();
+                    confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationNonOptNetwork();
                 }
 
                 if (!isShowConsentPopUp(confirmationType, false)) {
@@ -160,7 +160,7 @@ public class AcceptGiftBSFragment extends BaseFragment {
                         public void onContinue() {
                             if (!isAdded()) return;
                             showProgress(true);
-                            BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
+                            AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
                             createChild();
                         }
 
@@ -183,8 +183,8 @@ public class AcceptGiftBSFragment extends BaseFragment {
     }
 
     public void createChild() {
-        GetChildInfoResponseDTO childInfo = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo();
-        BaselineApplication.getApplication().getRbtConnector().createChildUserSubscription(childInfo.getCatalogSubscription().getId(), childInfo.getParentId(), new AppBaselineCallback<UserSubscriptionDTO>() {
+        GetChildInfoResponseDTO childInfo = AppManager.getInstance().getRbtConnector().getCacheChildInfo();
+        AppManager.getInstance().getRbtConnector().createChildUserSubscription(childInfo.getCatalogSubscription().getId(), childInfo.getParentId(), new AppBaselineCallback<UserSubscriptionDTO>() {
             @Override
             public void success(UserSubscriptionDTO result) {
                 if (!isAdded()) return;
@@ -192,8 +192,8 @@ public class AcceptGiftBSFragment extends BaseFragment {
                     PurchaseComboResponseDTO.Thirdpartyconsent thirdPartyConsentDTO = result.getThirdpartyconsent();
                     Intent intent = new Intent();
                     if (thirdPartyConsentDTO != null && (thirdPartyConsentDTO.getThird_party_url() == null || thirdPartyConsentDTO.getThird_party_url().isEmpty())) {
-                        NonNetworkCGDTO nonNetworkCG = BaselineApplication.getApplication().getRbtConnector().getNonNetworkCG();
-                        BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                        NonNetworkCGDTO nonNetworkCG = AppManager.getInstance().getRbtConnector().getNonNetworkCG();
+                        AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                             @Override
                             public void success(RUrlResponseDto result) {
                                 if (!isAdded()) return;
@@ -265,7 +265,7 @@ public class AcceptGiftBSFragment extends BaseFragment {
 ////                }
             } else if (requestCode == RESULT_CONSENT_ACTIVITY) {
                 String cgrUrl = data.getStringExtra(EXTRA_CG_RURL);
-                BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                     @Override
                     public void success(RUrlResponseDto result) {
                         if (!isAdded()) return;
@@ -313,7 +313,7 @@ public class AcceptGiftBSFragment extends BaseFragment {
     }
 
     private boolean isShowConsentPopUp(APIRequestParameters.ConfirmationType confirmationType, boolean isUpgrade) {
-        boolean isActiveUser = BaselineApplication.getApplication().getRbtConnector().isActiveUser();
+        boolean isActiveUser = AppManager.getInstance().getRbtConnector().isActiveUser();
         switch (confirmationType) {
             case ALL:
                 return true;

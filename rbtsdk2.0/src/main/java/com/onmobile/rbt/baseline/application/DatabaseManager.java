@@ -25,12 +25,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     public static DatabaseManager getInstance(Context context) {
-        int version = BaselineApplication.getApplication().getDbVersionFromFile(DATABASE_NAME);
-        if (version > 0)
-            DATABASE_VERSION = version;
-        if (sInstance == null) {
-            sInstance = new DatabaseManager(context);
-        }
+//        int version = BaselineApplication.getApplication().getDbVersionFromFile(DATABASE_NAME);
+//        if (version > 0)
+//            DATABASE_VERSION = version;
+//        if (sInstance == null) {
+//            sInstance = new DatabaseManager(context);
+//        }
         return sInstance;
     }
 

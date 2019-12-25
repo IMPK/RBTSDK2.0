@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.BannerDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.HomeActivity;
@@ -20,7 +21,6 @@ import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.adapter.BannerPagerAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
 import com.onmobile.rbt.baseline.application.AppLocaleHelper;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.fragment.FragmentHomeStore;
 import com.onmobile.rbt.baseline.listener.LifeCycleCallback;
 import com.onmobile.rbt.baseline.util.AppConstant;
@@ -66,7 +66,7 @@ public class BannerStackViewHolder extends StackViewHolder<List<BannerDTO>> impl
 
     @Override
     protected void initViews() {
-        mAppLocaleHelper = BaselineApplication.getApplication().getAppLocaleManager();
+        mAppLocaleHelper = AppManager.getInstance().getAppLocaleManager(mContext);
         if (contentLayout != null) {
             viewFlipperLayout = contentLayout.findViewById(R.id.banner_viewpager_layout);
             bannerBadgeView = contentLayout.findViewById(R.id.banner_bandageView);
@@ -120,7 +120,7 @@ public class BannerStackViewHolder extends StackViewHolder<List<BannerDTO>> impl
                  * Change made by Appolla Sreedhar
                  */
 
-                if ((mAppLocaleHelper.setAppLocalForDeviceLanguage( BaselineApplication.getApplication().getApplicationContext(),true, false)).getLanguage().contains("ar")) {
+                if ((mAppLocaleHelper.setAppLocalForDeviceLanguage( AppManager.getContext(),true, false)).getLanguage().contains("ar")) {
                     defaultSelection = mBannerDtoList.size() - 1;
                 } else {
                     defaultSelection = 1;
@@ -214,7 +214,7 @@ public class BannerStackViewHolder extends StackViewHolder<List<BannerDTO>> impl
                      * Change made by Appolla Sreedhar
                      */
 
-                    if ((mAppLocaleHelper.setAppLocalForDeviceLanguage(BaselineApplication.getApplication().getApplicationContext(),true, false)).getLanguage().contains("ar")) {
+                    if ((mAppLocaleHelper.setAppLocalForDeviceLanguage(AppManager.getContext(),true, false)).getLanguage().contains("ar")) {
                         viewPager.setCurrentItem((0 < currentItemCount) ? currentItemCount - 1 : mBannerDtoList.size(), true);
                     } else {
                         viewPager.setCurrentItem((currentItemCount < mBannerDtoList.size() - 1) ? currentItemCount + 1 : 0, true);

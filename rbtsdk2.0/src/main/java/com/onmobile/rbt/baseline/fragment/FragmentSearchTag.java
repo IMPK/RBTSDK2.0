@@ -5,14 +5,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.search.SearchTagItemDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.SearchSeeAllActivity;
-import com.onmobile.rbt.baseline.activities.StoreContentActivity;
-import com.onmobile.rbt.baseline.activities.StoreSeeAllActivity;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
 import com.onmobile.rbt.baseline.model.ListItem;
@@ -84,7 +82,7 @@ public class FragmentSearchTag extends BaseFragment {
     private void loadTrendingSearches() {
         if (!isAdded()) return;
         showLoading();
-        BaselineApplication.getApplication().getRbtConnector().
+        AppManager.getInstance().getRbtConnector().
                 getSearchTagContent(new AppBaselineCallback<List<SearchTagItemDTO>>() {
                     @Override
                     public void success(List<SearchTagItemDTO> result) {

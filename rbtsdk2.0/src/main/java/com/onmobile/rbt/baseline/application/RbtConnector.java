@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
 import com.google.gson.internal.LinkedTreeMap;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.catalogapis.ChartQueryParameters;
 import com.onmobile.rbt.baseline.http.api_action.catalogapis.DynamicChartQueryParameters;
 import com.onmobile.rbt.baseline.http.api_action.catalogapis.RecommnedQueryParameters;
@@ -106,12 +107,16 @@ public class RbtConnector {
     private static final String TAG = RbtConnector.class.getSimpleName();
 
     public RbtConnector(Context context) {
-        //mContext = context;
+        mContext = context;
         //UserMsisdnHandler.setDomain(UserMsisdnHandler.APP_DOMAIN.PROD);
         //UserMsisdnHandler.setUserSettingMsisdn("8884411498");
     }
 
     public void RbtContext(Context context) {
+        mContext = context;
+    }
+
+    public void setSDKContext(Context context) {
         mContext = context;
     }
 
@@ -131,11 +136,11 @@ public class RbtConnector {
                 //initialize app config cache
 
 
-                String dateHeader = UserSettingsCacheManager.getServerDateHeader();
-                if (dateHeader != null && !dateHeader.isEmpty()) {
-                    String diff = AppUtils.getDeviceAndServerTimeDiff(dateHeader);
-                    SharedPrefProvider.getInstance(mContext).setPrefsServerTimeDiff(diff);
-                }
+//                String dateHeader = UserSettingsCacheManager.getServerDateHeader();
+//                if (dateHeader != null && !dateHeader.isEmpty()) {
+//                    String diff = AppUtils.getDeviceAndServerTimeDiff(dateHeader);
+//                    SharedPrefProvider.getInstance(AppManager.getContext()).setPrefsServerTimeDiff(diff);
+//                }
 
                 AppConstant.MOBILE_NUMBER_LENGTH_MIN_LIMIT = HttpModuleMethodManager.geMinLengthMsisdn();
                 AppConstant.MOBILE_NUMBER_LENGTH_MAX_LIMIT = HttpModuleMethodManager.getMaxLengthMsisdn();
@@ -157,7 +162,7 @@ public class RbtConnector {
 
             @Override
             public void failure(ErrorResponse errMsg) {
-                String message = APIErrorMessageHandler.getErrorMessage(mContext, errMsg);
+                String message = APIErrorMessageHandler.getErrorMessage(AppManager.getContext(), errMsg);
 
 
                 baselineCallback.failure(message);
@@ -236,7 +241,7 @@ public class RbtConnector {
 
     public void getTrending(AppBaselineCallback<DynamicChartsDTO> dynamicContentsCallback) {
         DynamicChartQueryParameters.Builder builder = new DynamicChartQueryParameters.Builder();
-        builder.setChartLanguages(SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode());
+        builder.setChartLanguages(SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode());
         builder.setOffset(0);
         builder.setMax(1);
         builder.setDynamicContentSize(ApiConfig.TRENDING_DYNAMIC_MAX_ITEM_COUNT);
@@ -343,7 +348,7 @@ public class RbtConnector {
         chartQueryParameters.setOffset(offset);
         chartQueryParameters.setImageWidth(ApiConfig.DEFAULT_IMAGE_SIZE);
         chartQueryParameters.setType(APIRequestParameters.EMode.CHART);
-        chartQueryParameters.setChartLanguages(SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode());
+        chartQueryParameters.setChartLanguages(SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode());
         HttpModuleMethodManager.getChartContentsWithParams(HttpModuleMethodManager.getAppConfigStoreChartId(), new BaselineCallback<ChartItemDTO>() {
             @Override
             public void success(ChartItemDTO result) {
@@ -381,7 +386,7 @@ public class RbtConnector {
     public void getSearchTagContent(AppBaselineCallback<List<SearchTagItemDTO>> baselineCallback) {
         List<String> language = null;
         if (AppConfigurationValues.isLanguageInSearchEnabled()) {
-            language = SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode();
+            language = SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode();
         }
         HttpModuleMethodManager.getSearchTagContent(new BaselineCallback<List<SearchTagItemDTO>>() {
             @Override
@@ -730,8 +735,8 @@ public class RbtConnector {
                     purchaseInfo = pricingIndividualDTO.getShortDescription();
                 }
                 if (!TextUtils.isEmpty(purchaseInfo)) {
-                    SharedPrefProvider.getInstance(BaselineApplication.getApplication()).setLastSubscriptionInfo(purchaseInfo);
-                    SharedPrefProvider.getInstance(BaselineApplication.getApplication()).setLastSubscriptionTimeStamp(System.currentTimeMillis());
+                    SharedPrefProvider.getInstance(AppManager.getContext()).setLastSubscriptionInfo(purchaseInfo);
+                    SharedPrefProvider.getInstance(AppManager.getContext()).setLastSubscriptionTimeStamp(System.currentTimeMillis());
                 }
 
                 callback.success(result);
@@ -894,8 +899,8 @@ public class RbtConnector {
                     purchaseInfo = pricingIndividualDTO.getShortDescription();
                 }
                 if (!TextUtils.isEmpty(purchaseInfo)) {
-                    SharedPrefProvider.getInstance(BaselineApplication.getApplication()).setLastSubscriptionInfo(purchaseInfo);
-                    SharedPrefProvider.getInstance(BaselineApplication.getApplication()).setLastSubscriptionTimeStamp(System.currentTimeMillis());
+                    SharedPrefProvider.getInstance(AppManager.getContext()).setLastSubscriptionInfo(purchaseInfo);
+                    SharedPrefProvider.getInstance(AppManager.getContext()).setLastSubscriptionTimeStamp(System.currentTimeMillis());
                 }
             }
 
@@ -1801,7 +1806,7 @@ public class RbtConnector {
 
     public void getDynamicChartGroups(int offset, AppBaselineCallback<DynamicChartsDTO> dynamicContentsCallback) {
         DynamicChartQueryParameters.Builder builder = new DynamicChartQueryParameters.Builder();
-        builder.setChartLanguages(SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode());
+        builder.setChartLanguages(SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode());
         builder.setOffset(offset);
         builder.setMax(ApiConfig.DYNAMIC_CHART_GROUP_ITEM_COUNT);
         builder.setDynamicContentSize(ApiConfig.DYNAMIC_MAX_STORE_PER_CHART_ITEM_COUNT);
@@ -1826,7 +1831,7 @@ public class RbtConnector {
         builder.setOffset(offSet);
         builder.setMax(ApiConfig.MAX_ITEM_COUNT);
         builder.setDynamicContentSize(ApiConfig.DYNAMIC_MAX_STORE_PER_CHART_ITEM_COUNT);
-        builder.setChartLanguages(SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode());
+        builder.setChartLanguages(SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode());
         builder.setShowDynamicContent(false);
         HttpModuleMethodManager.getDynamicChartContentsWithParams(chartId, new BaselineCallback<DynamicChartItemDTO>() {
             @Override
@@ -2128,7 +2133,7 @@ public class RbtConnector {
         HttpModuleMethodManager.getRecommendationContent(new BaselineCallback<RecommendationDTO>() {
             @Override
             public void success(RecommendationDTO result) {
-                SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext())
+                SharedPrefProvider.getInstance(AppManager.getContext())
                         .setRecommendationUpdateTimestamp(System.currentTimeMillis());
                 if (offset == 0) {
                     setRecommendationCache(result);
@@ -2146,7 +2151,7 @@ public class RbtConnector {
     }
 
     public void getBannerContent(final AppBaselineCallback<List<BannerDTO>> listBaselineCallback) {
-        List<String> languageList = SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode();
+        List<String> languageList = SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode();
         HttpModuleMethodManager.getBannerContent(languageList, new BaselineCallback<List<BannerDTO>>() {
             @Override
             public void success(List<BannerDTO> result) {
@@ -2193,7 +2198,7 @@ public class RbtConnector {
 
     public void getDynamicMixedMusicShuffle(AppBaselineCallback<DynamicChartsDTO> callback) {
         DynamicChartQueryParameters.Builder builder = new DynamicChartQueryParameters.Builder();
-        builder.setChartLanguages(SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode());
+        builder.setChartLanguages(SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode());
         builder.setDynamicContentSize(ApiConfig.MAX_UDP_ITEM_COUNT);
         builder.setShowDynamicContent(true);
         HttpModuleMethodManager.getDynamicChart(getDynamicMusicShuffleId(), new BaselineCallback<DynamicChartsDTO>() {
@@ -2244,7 +2249,7 @@ public class RbtConnector {
         builder.setOffset(offset);
         builder.setMax(ApiConfig.MAX_ITEM_COUNT);
         builder.setDynamicContentSize(ApiConfig.DYNAMIC_MAX_ITEM_COUNT);
-        builder.setChartLanguages(SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode());
+        builder.setChartLanguages(SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode());
         builder.setShowDynamicContent(true);
         HttpModuleMethodManager.getDynamicChartContentsWithParams(chartId, new BaselineCallback<DynamicChartItemDTO>() {
             @Override
@@ -2428,34 +2433,6 @@ public class RbtConnector {
                 //NO Action required
             }
         });
-    }
-
-
-
-    public void readOldAppDatabase(ICheckOldAppDbValues iCheckOldAppDbValues) {
-        if (BaselineApplication.getApplication().
-                doesDatabaseExist(DatabaseManager.DATABASE_NAME)) {
-            iCheckOldAppDbValues.ifDatabaseExist(true);
-            if (BaselineApplication.getApplication().isTableExists(DatabaseManager.TABLE_USER_SETTINGS)) {
-                iCheckOldAppDbValues.ifTableExist(true);
-                String msisdn = BaselineApplication.getApplication().getMsisdnFromPreviousApp(DatabaseManager.DATABASE_NAME);
-                if (msisdn != null && !msisdn.isEmpty()) {
-                    iCheckOldAppDbValues.getMsisdnIfExist(msisdn);
-                } else {
-                    iCheckOldAppDbValues.getMsisdnIfExist(null);
-                }
-            } else {
-                iCheckOldAppDbValues.ifTableExist(false);
-            }
-        } else {
-            iCheckOldAppDbValues.ifDatabaseExist(false);
-        }
-       /* Logger.v("check db", "does it exist " + BaselineApplication.getApplication().
-                doesDatabaseExist(DatabaseManager.DATABASE_NAME) + " "
-                + BaselineApplication.getApplication().isTableExists(DatabaseManager.TABLE_USER_SETTINGS)
-                + " " + BaselineApplication.getApplication().
-                getDbVersionFromFile(DatabaseManager.DATABASE_NAME));
-        BaselineApplication.getApplication().getMsisdnFromPreviousApp(DatabaseManager.DATABASE_NAME);*/
     }
 
     public String getAppLocalEncryptionSecret() {
@@ -2829,8 +2806,8 @@ public class RbtConnector {
                     purchaseInfo = pricingIndividualDTO.getShortDescription();
                 }
                 if (!TextUtils.isEmpty(purchaseInfo)) {
-                    SharedPrefProvider.getInstance(BaselineApplication.getApplication()).setLastSubscriptionInfo(purchaseInfo);
-                    SharedPrefProvider.getInstance(BaselineApplication.getApplication()).setLastSubscriptionTimeStamp(System.currentTimeMillis());
+                    SharedPrefProvider.getInstance(AppManager.getContext()).setLastSubscriptionInfo(purchaseInfo);
+                    SharedPrefProvider.getInstance(AppManager.getContext()).setLastSubscriptionTimeStamp(System.currentTimeMillis());
                 }
 
                 callback.success(result);
@@ -2906,7 +2883,7 @@ public class RbtConnector {
         chartQueryParameters.setOffset(0);
         chartQueryParameters.setImageWidth(ApiConfig.DEFAULT_IMAGE_SIZE);
         chartQueryParameters.setType(APIRequestParameters.EMode.CHART);
-        chartQueryParameters.setChartLanguages(SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode());
+        chartQueryParameters.setChartLanguages(SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode());
         HttpModuleMethodManager.getChartContentsWithParams(getAzanChartId(), new BaselineCallback<ChartItemDTO>() {
             @Override
             public void success(ChartItemDTO result) {

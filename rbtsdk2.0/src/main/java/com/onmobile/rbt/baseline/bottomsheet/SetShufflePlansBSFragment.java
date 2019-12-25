@@ -2,7 +2,6 @@ package com.onmobile.rbt.baseline.bottomsheet;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,28 +9,25 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.AppUtilityDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PlayRuleDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RUrlResponseDto;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
-import com.onmobile.rbt.baseline.http.api_action.dtos.UserSubscriptionDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.NonNetworkCGDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.familyandfriends.GetChildInfoResponseDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.pricing.availability.AvailabilityDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.pricing.availability.PricingIndividualDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.udp.UdpAssetDTO;
 import com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.CallingParty;
-import com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.PayTMGetPaymentDTO;
 import com.onmobile.rbt.baseline.http.api_action.storeapis.purchase_combo.PurchaseComboResponseDTO;
 import com.onmobile.rbt.baseline.http.httpmodulemanagers.IPreBuyUDSCheck;
 import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.CGWebViewActivity;
 import com.onmobile.rbt.baseline.activities.ContactViewActivity;
-import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.bottomsheet.base.TuneBottomSheetUtil;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
@@ -49,7 +45,6 @@ import com.onmobile.rbt.baseline.util.AppConstant;
 import com.onmobile.rbt.baseline.util.ContactDetailProvider;
 import com.onmobile.rbt.baseline.util.FunkyAnnotation;
 import com.onmobile.rbt.baseline.util.IContactDetailProvider;
-import com.onmobile.rbt.baseline.util.Logger;
 import com.onmobile.rbt.baseline.util.PurchaseMode;
 import com.onmobile.rbt.baseline.widget.LabeledView;
 import com.onmobile.rbt.baseline.widget.PlanView;
@@ -60,7 +55,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -188,7 +182,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
 
     @Override
     protected void bindViews(View view) {
-        if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
+        if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
             mCallersChoiceLayout.setVisibility(View.VISIBLE);
             mPlayForAllCallersInfoText.setVisibility(View.GONE);
         } else {
@@ -258,7 +252,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
      */
     private void populatePlans() {
         mPlanLayout.loading();
-        BaselineApplication.getApplication().getRbtConnector().checkUser(new AppBaselineCallback<Boolean>() {
+        AppManager.getInstance().getRbtConnector().checkUser(new AppBaselineCallback<Boolean>() {
             @Override
             public void success(Boolean result) {
                 fetchPlans();
@@ -275,7 +269,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
 
     private void fetchPlans(){
         if (mIsSystemShuffle)
-            BaselineApplication.getApplication().getRbtConnector().getShuffleContentAndPrice(mRingBackToneDTO.getId(), new AppBaselineCallback<ChartItemDTO>() {
+            AppManager.getInstance().getRbtConnector().getShuffleContentAndPrice(mRingBackToneDTO.getId(), new AppBaselineCallback<ChartItemDTO>() {
                 @Override
                 public void success(ChartItemDTO result) {
                     if (!isAdded()) return;
@@ -308,7 +302,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                 }
             });
         else
-            BaselineApplication.getApplication().getRbtConnector().getUserDefinedPlaylistPricing(mRingBackToneDTO.getId(), new AppBaselineCallback<List<AvailabilityDTO>>() {
+            AppManager.getInstance().getRbtConnector().getUserDefinedPlaylistPricing(mRingBackToneDTO.getId(), new AppBaselineCallback<List<AvailabilityDTO>>() {
                 @Override
                 public void success(List<AvailabilityDTO> result) {
                     if (!isAdded()) return;
@@ -361,7 +355,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
 
                 //checkAndSetTune();
                 if (!isGiftPresent) {
-                    if (!BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
+                    if (!AppManager.getInstance().getRbtConnector().isActiveUser()) {
                         setTune(GiftnNormalPlanConfirmDialog.PLAN.NORMAL, new AppBaselineCallback<PurchaseComboResponseDTO>() {
                             @Override
                             public void success(PurchaseComboResponseDTO purchaseComboResponseDTO) {
@@ -558,7 +552,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                     }
                 }
                 String cgrUrl = data.getStringExtra(EXTRA_CG_RURL);
-                BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                     @Override
                     public void success(RUrlResponseDto result) {
                         if (!isAdded()) return;
@@ -592,9 +586,9 @@ public class SetShufflePlansBSFragment extends BaseFragment {
     }
 
     private void updateLayout() {
-        isSelected = BaselineApplication.getApplication().getRbtConnector().isRingbackSelected(mRingBackToneDTO.getId()) && !mRingBackToneDTO.isCut();
+        isSelected = AppManager.getInstance().getRbtConnector().isRingbackSelected(mRingBackToneDTO.getId()) && !mRingBackToneDTO.isCut();
         if (isSelected) {
-            mPlayRuleDTOList = BaselineApplication.getApplication().getRbtConnector().getPlayRuleById(mRingBackToneDTO.getId());
+            mPlayRuleDTOList = AppManager.getInstance().getRbtConnector().getPlayRuleById(mRingBackToneDTO.getId());
         }
         mTvSetTune.setEnabled(false);
         if (isSelected) {
@@ -613,13 +607,13 @@ public class SetShufflePlansBSFragment extends BaseFragment {
 
         if (mIsSystemShuffle || !mIsShuffleEditable) {
             //populatePlans();
-            if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
+            if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
                 isGiftPresent = false;
 
-                if (!AppConfigurationValues.isSelectionModel() && BaselineApplication.getApplication().getRbtConnector().isSongPurchased(mRingBackToneDTO.getId()) && mChartItemDTO != null) {
+                if (!AppConfigurationValues.isSelectionModel() && AppManager.getInstance().getRbtConnector().isSongPurchased(mRingBackToneDTO.getId()) && mChartItemDTO != null) {
                     mPlanLayout.setChartItemDTO(mChartItemDTO);
-                    if (BaselineApplication.getApplication().getRbtConnector().getTuneAlreadyPurchasedMessage() != null) {
-                        mPlanLayout.error(BaselineApplication.getApplication().getRbtConnector().getTuneAlreadyPurchasedMessage());
+                    if (AppManager.getInstance().getRbtConnector().getTuneAlreadyPurchasedMessage() != null) {
+                        mPlanLayout.error(AppManager.getInstance().getRbtConnector().getTuneAlreadyPurchasedMessage());
                     } else {
                         mPlanLayout.error("");
                     }
@@ -629,7 +623,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                     populatePlans();
                 }
             } else {
-                BaselineApplication.getApplication().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
+                AppManager.getInstance().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
                     @Override
                     public void isParent(boolean exist) {
                         populatePlans();
@@ -639,7 +633,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                     public void isChild(boolean exist) {
                         isGiftPresent = true;
 
-                        childInfo = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo();
+                        childInfo = AppManager.getInstance().getRbtConnector().getCacheChildInfo();
                         mContactModelDTO = new ContactModelDTO();
                         mContactModelDTO.setName(childInfo.getParentId());
                         mContactModelDTO.setMobileNumber(childInfo.getParentId());
@@ -659,10 +653,10 @@ public class SetShufflePlansBSFragment extends BaseFragment {
 
                     @Override
                     public void isNone(boolean exist) {
-                        if (!AppConfigurationValues.isSelectionModel() && BaselineApplication.getApplication().getRbtConnector().isSongPurchased(mRingBackToneDTO.getId()) && mChartItemDTO != null) {
+                        if (!AppConfigurationValues.isSelectionModel() && AppManager.getInstance().getRbtConnector().isSongPurchased(mRingBackToneDTO.getId()) && mChartItemDTO != null) {
                             mPlanLayout.setChartItemDTO(mChartItemDTO);
-                            if (BaselineApplication.getApplication().getRbtConnector().getTuneAlreadyPurchasedMessage() != null) {
-                                mPlanLayout.error(BaselineApplication.getApplication().getRbtConnector().getTuneAlreadyPurchasedMessage());
+                            if (AppManager.getInstance().getRbtConnector().getTuneAlreadyPurchasedMessage() != null) {
+                                mPlanLayout.error(AppManager.getInstance().getRbtConnector().getTuneAlreadyPurchasedMessage());
                             } else {
                                 mPlanLayout.error("");
                             }
@@ -813,21 +807,21 @@ public class SetShufflePlansBSFragment extends BaseFragment {
         if (mIsSystemShuffle) {
             mChartItemDTO = mPlanLayout.getChartItemDTO();
         }
-        BaselineApplication.getApplication().getRbtConnector().getAppUtilityNetworkRequest(mCallerSource, mChartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, new AppBaselineCallback<AppUtilityDTO>() {
+        AppManager.getInstance().getRbtConnector().getAppUtilityNetworkRequest(mCallerSource, mChartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, new AppBaselineCallback<AppUtilityDTO>() {
             @Override
             public void success(AppUtilityDTO result) {
                 if (!isAdded()) return;
-                BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
+                AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
 
                 String thirdPartyCheckId;
                 if(mIsSystemShuffle){
                     ChartItemDTO chartItemDTO = mPlanLayout.getChartItemDTO();
-                    BaselineApplication.getApplication().getRbtConnector().dummyPurchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, parentRefId);
+                    AppManager.getInstance().getRbtConnector().dummyPurchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, parentRefId);
                     thirdPartyCheckId = chartItemDTO.getId()+"";
                 }
                 else{
                     UdpAssetDTO udpAssetDTO = fragmentHorizontalMusic.getUdpAssetDTO();
-                    BaselineApplication.getApplication().getRbtConnector().dummyPurchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, udpAssetDTO, parentRefId);
+                    AppManager.getInstance().getRbtConnector().dummyPurchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, udpAssetDTO, parentRefId);
                     thirdPartyCheckId = udpAssetDTO.getId();
                 }
 
@@ -835,11 +829,11 @@ public class SetShufflePlansBSFragment extends BaseFragment {
 
                     if (mIsSystemShuffle) {
                         ChartItemDTO chartItemDTO = mPlanLayout.getChartItemDTO();
-                        //BaselineApplication.getApplication().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, parentRefId, callback);
+                        //AppManager.getInstance().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, parentRefId, callback);
                         purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, null, parentRefId, callback);
                     } else {
                         UdpAssetDTO udpAssetDTO = fragmentHorizontalMusic.getUdpAssetDTO();
-                        //BaselineApplication.getApplication().getRbtConnector().purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, udpAssetDTO, parentRefId, callback);
+                        //AppManager.getInstance().getRbtConnector().purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, udpAssetDTO, parentRefId, callback);
                         purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, null, udpAssetDTO, parentRefId, callback);
                     }
 
@@ -880,7 +874,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                 }
             }
         }
-        BaselineApplication.getApplication().getRbtConnector().deletePlayRule(playRuleIds, callback);
+        AppManager.getInstance().getRbtConnector().deletePlayRule(playRuleIds, callback);
     }
 
     private void handleSetTuneSuccess(PurchaseComboResponseDTO purchaseComboResponseDTO) {
@@ -891,8 +885,8 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                 PurchaseComboResponseDTO.Thirdpartyconsent thirdPartyConsentDTO = purchaseComboResponseDTO.getThirdpartyconsent();
                 Intent intent = new Intent();
                 if (thirdPartyConsentDTO != null && (thirdPartyConsentDTO.getThird_party_url() == null || thirdPartyConsentDTO.getThird_party_url().isEmpty())) {
-                    NonNetworkCGDTO nonNetworkCG = BaselineApplication.getApplication().getRbtConnector().getNonNetworkCG();
-                    BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                    NonNetworkCGDTO nonNetworkCG = AppManager.getInstance().getRbtConnector().getNonNetworkCG();
+                    AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                         @Override
                         public void success(RUrlResponseDto result) {
                             if (!isAdded()) return;
@@ -928,8 +922,8 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                 PurchaseComboResponseDTO.Thirdpartyconsent thirdPartyConsentDTO = purchaseComboResponseDTO.getThirdpartyconsent();
                 Intent intent = new Intent();
                 if (thirdPartyConsentDTO != null && (thirdPartyConsentDTO.getThird_party_url() == null || thirdPartyConsentDTO.getThird_party_url().isEmpty())) {
-                    NonNetworkCGDTO nonNetworkCG = BaselineApplication.getApplication().getRbtConnector().getNonNetworkCG();
-                    BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                    NonNetworkCGDTO nonNetworkCG = AppManager.getInstance().getRbtConnector().getNonNetworkCG();
+                    AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                         @Override
                         public void success(RUrlResponseDto result) {
                             if (!isAdded()) return;
@@ -1027,7 +1021,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                 List<PricingIndividualDTO> list = (List<PricingIndividualDTO>) mPlanLayout.getExtras();
                 if (list != null && list.size() > 1) {
                     showProgress(false);
-                    BaselineApplication.getApplication().getRbtConnector().checkPlanUpgrade(list, new IPreBuyUDSCheck() {
+                    AppManager.getInstance().getRbtConnector().checkPlanUpgrade(list, new IPreBuyUDSCheck() {
                         @Override
                         public void showUDSUpdatePopUp(List<PricingIndividualDTO> pricingIndividualDTOS) {
                             AppDialog.showPlanUpgradeDialog(getRootActivity(), pricingIndividualDTOS, new ShuffleUpgradeDialog.ActionCallBack() {
@@ -1053,8 +1047,8 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                         }
                     });
                     return;
-                } else if (list != null && list.size() == 1 && list.get(0).getCatalogSubscriptionId() != null && BaselineApplication.getApplication().getRbtConnector().getCacheUserSubscription() != null
-                        && !list.get(0).getCatalogSubscriptionId().equalsIgnoreCase(BaselineApplication.getApplication().getRbtConnector().getCacheUserSubscription().getCatalog_subscription_id())) {
+                } else if (list != null && list.size() == 1 && list.get(0).getCatalogSubscriptionId() != null && AppManager.getInstance().getRbtConnector().getCacheUserSubscription() != null
+                        && !list.get(0).getCatalogSubscriptionId().equalsIgnoreCase(AppManager.getInstance().getRbtConnector().getCacheUserSubscription().getCatalog_subscription_id())) {
                     if (AppConfigurationValues.IsShowSinglePlanUpgrade()) {
                         AppDialog.showPlanUpgradeDialog(getRootActivity(), list, new ShuffleUpgradeDialog.ActionCallBack() {
                             @Override
@@ -1086,7 +1080,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
 
     public void purchaseShuffle(ChartItemDTO chartItemDTO, PricingSubscriptionDTO pricingSubscriptionDTO, PricingIndividualDTO pricingIndividualDTO, Map<String, String> contactMap, Map<String, String> extraInfoMap, String parentRefId, AppBaselineCallback<PurchaseComboResponseDTO> callback) {
         if (parentRefId != null) {
-            mConfirmationPopUpDescription = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
+            mConfirmationPopUpDescription = AppManager.getInstance().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
         } else {
             if (mPlanLayout.getSelectedPlan() != null) {
                 mConfirmationPopUpDescription = mPlanLayout.getSelectedPlan().getPriceDTO().getDescription();
@@ -1094,20 +1088,20 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                 mConfirmationPopUpDescription = pricingIndividualDTO.getLongDescription();
             }
         }
-        AppUtilityDTO result = BaselineApplication.getApplication().getRbtConnector().getAppUtilityDTO();
+        AppUtilityDTO result = AppManager.getInstance().getRbtConnector().getAppUtilityDTO();
         mNetworkType = result.getNetworkType();
 
         APIRequestParameters.ConfirmationType confirmationType= null;
         if(mNetworkType.equalsIgnoreCase("opt_network")){
-            confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationOptNetwork();
+            confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationOptNetwork();
         }
         else{
-            confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationNonOptNetwork();
+            confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationNonOptNetwork();
         }
 
         if (!isShowConsentPopUp(confirmationType, mIsUpgrade)) {
             //sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-            BaselineApplication.getApplication().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, parentRefId, callback);
+            AppManager.getInstance().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, parentRefId, callback);
         } else {
             showProgress(false);
             AppDialog.PurchaseConfirmDialogFragment(getRootActivity(), mConfirmationPopUpDescription, new PurchaseConfirmDialog.ActionCallBack() {
@@ -1115,8 +1109,8 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                 public void onContinue() {
                     showProgress(true);
                     //sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-                    BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
-                    BaselineApplication.getApplication().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, parentRefId, callback);
+                    AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
+                    AppManager.getInstance().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, parentRefId, callback);
                 }
 
                 @Override
@@ -1127,28 +1121,28 @@ public class SetShufflePlansBSFragment extends BaseFragment {
             });
         }
 
-        /*BaselineApplication.getApplication().getRbtConnector().getAppUtilityNetworkRequest(mCallerSource, chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, new AppBaselineCallback<AppUtilityDTO>() {
+        /*AppManager.getInstance().getRbtConnector().getAppUtilityNetworkRequest(mCallerSource, chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, new AppBaselineCallback<AppUtilityDTO>() {
             @Override
             public void success(AppUtilityDTO result) {
                 if (!isAdded()) return;
-                BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
+                AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
 
-                BaselineApplication.getApplication().getRbtConnector().dummyPurchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, parentRefId);
+                AppManager.getInstance().getRbtConnector().dummyPurchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, parentRefId);
 
                 mNetworkType = result.getNetworkType();
 
 
                 APIRequestParameters.ConfirmationType confirmationType= null;
                 if(mNetworkType.equalsIgnoreCase("opt_network")){
-                    confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationOptNetwork();
+                    confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationOptNetwork();
                 }
                 else{
-                    confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationNonOptNetwork();
+                    confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationNonOptNetwork();
                 }
 
                 if (!isShowConsentPopUp(confirmationType, mIsUpgrade)) {
                     //sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-                    BaselineApplication.getApplication().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, parentRefId, callback);
+                    AppManager.getInstance().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, parentRefId, callback);
                 } else {
                     showProgress(false);
                     AppDialog.PurchaseConfirmDialogFragment(getRootActivity(), mConfirmationPopUpDescription, new PurchaseConfirmDialog.ActionCallBack() {
@@ -1156,8 +1150,8 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                         public void onContinue() {
                             showProgress(true);
                             sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-                            BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
-                            BaselineApplication.getApplication().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, parentRefId, callback);
+                            AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
+                            AppManager.getInstance().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, parentRefId, callback);
                         }
 
                         @Override
@@ -1180,7 +1174,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
 
     public void purchaseUDP(RingBackToneDTO item, PricingSubscriptionDTO pricingSubscriptionDTO, PricingIndividualDTO pricingIndividualDTO, Map<String, String> contactMap, Map<String, String> extraInfoMap, UdpAssetDTO udpAssetDTO, String parentRefId, AppBaselineCallback<PurchaseComboResponseDTO> callback) {
         if (parentRefId != null) {
-            mConfirmationPopUpDescription = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
+            mConfirmationPopUpDescription = AppManager.getInstance().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
         } else {
             if (mPlanLayout.getSelectedPlan() != null) {
                 mConfirmationPopUpDescription = mPlanLayout.getSelectedPlan().getPriceDTO().getDescription();
@@ -1189,22 +1183,22 @@ public class SetShufflePlansBSFragment extends BaseFragment {
             }
         }
 
-        AppUtilityDTO result = BaselineApplication.getApplication().getRbtConnector().getAppUtilityDTO();
+        AppUtilityDTO result = AppManager.getInstance().getRbtConnector().getAppUtilityDTO();
 
         mNetworkType = result.getNetworkType();
 
 
         APIRequestParameters.ConfirmationType confirmationType= null;
         if(mNetworkType.equalsIgnoreCase("opt_network")){
-            confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationOptNetwork();
+            confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationOptNetwork();
         }
         else{
-            confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationNonOptNetwork();
+            confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationNonOptNetwork();
         }
 
         if (!isShowConsentPopUp(confirmationType, mIsUpgrade)) {
             //sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-            BaselineApplication.getApplication().getRbtConnector().purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, udpAssetDTO, parentRefId, callback);
+            AppManager.getInstance().getRbtConnector().purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, udpAssetDTO, parentRefId, callback);
         } else {
             showProgress(false);
             AppDialog.PurchaseConfirmDialogFragment(getRootActivity(), mConfirmationPopUpDescription, new PurchaseConfirmDialog.ActionCallBack() {
@@ -1212,8 +1206,8 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                 public void onContinue() {
                     showProgress(true);
                     //sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-                    BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
-                    BaselineApplication.getApplication().getRbtConnector().purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, udpAssetDTO, parentRefId, callback);
+                    AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
+                    AppManager.getInstance().getRbtConnector().purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, extraInfoMap, udpAssetDTO, parentRefId, callback);
                 }
 
                 @Override
@@ -1252,7 +1246,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
     }
 
     private boolean isShowConsentPopUp(APIRequestParameters.ConfirmationType confirmationType, boolean isUpgrade) {
-        boolean isActiveUser = BaselineApplication.getApplication().getRbtConnector().isActiveUser();
+        boolean isActiveUser = AppManager.getInstance().getRbtConnector().isActiveUser();
         switch (confirmationType) {
             case ALL:
                 return true;
@@ -1284,8 +1278,8 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                 if (!isAdded()) return;
                 //showProgress(true);
                 //sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-                //AppUtilityDTO  result=BaselineApplication.getApplication().getRbtConnector().getAppUtilityDTO();
-                //BaselineApplication.getApplication().getRbtConnector().purchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, mSelectedContacts, null, mPlanLayout.getSelectedPlan().getParentRefId(), callbackPayTM);
+                //AppUtilityDTO  result=AppManager.getInstance().getRbtConnector().getAppUtilityDTO();
+                //AppManager.getInstance().getRbtConnector().purchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, mSelectedContacts, null, mPlanLayout.getSelectedPlan().getParentRefId(), callbackPayTM);
                 if (mPlanLayout.getSelectedPlan() != null) {
                     mConfirmationPopUpDescription = mPlanLayout.getSelectedPlan().getPriceDTO().getDescription();
                 } else {
@@ -1321,11 +1315,11 @@ public class SetShufflePlansBSFragment extends BaseFragment {
 
         if (mIsSystemShuffle) {
             ChartItemDTO chartItemDTO = mPlanLayout.getChartItemDTO();
-            //BaselineApplication.getApplication().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, parentRefId, callback);
+            //AppManager.getInstance().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, parentRefId, callback);
             purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, mSelectedContacts, extraInfoMap, parentRefId, payTmCallBack);
         } else {
             UdpAssetDTO udpAssetDTO = fragmentHorizontalMusic.getUdpAssetDTO();
-            //BaselineApplication.getApplication().getRbtConnector().purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, udpAssetDTO, parentRefId, callback);
+            //AppManager.getInstance().getRbtConnector().purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, udpAssetDTO, parentRefId, callback);
             purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, mSelectedContacts, extraInfoMap, udpAssetDTO, parentRefId, payTmCallBack);
         }
     }
@@ -1336,7 +1330,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
         if (mIsSystemShuffle) {
             ChartItemDTO chartItemDTO = mPlanLayout.getChartItemDTO();
             if (parentRefId != null) {
-                mConfirmationPopUpDescription = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
+                mConfirmationPopUpDescription = AppManager.getInstance().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
             } else {
                 if (mPlanLayout.getSelectedPlan() != null) {
                     mConfirmationPopUpDescription = mPlanLayout.getSelectedPlan().getPriceDTO().getDescription();
@@ -1344,16 +1338,16 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                     mConfirmationPopUpDescription = pricingIndividualDTO.getLongDescription();
                 }
             }
-            AppUtilityDTO result = BaselineApplication.getApplication().getRbtConnector().getAppUtilityDTO();
+            AppUtilityDTO result = AppManager.getInstance().getRbtConnector().getAppUtilityDTO();
             mNetworkType = result.getNetworkType();
 
 
             //sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-            BaselineApplication.getApplication().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, mSelectedContacts, extraInfoMap, parentRefId, payTmCallBack);
+            AppManager.getInstance().getRbtConnector().purchaseShuffle(chartItemDTO, pricingSubscriptionDTO, pricingIndividualDTO, mSelectedContacts, extraInfoMap, parentRefId, payTmCallBack);
 
         } else {
             if (parentRefId != null) {
-                mConfirmationPopUpDescription = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
+                mConfirmationPopUpDescription = AppManager.getInstance().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
             } else {
                 if (mPlanLayout.getSelectedPlan() != null) {
                     mConfirmationPopUpDescription = mPlanLayout.getSelectedPlan().getPriceDTO().getDescription();
@@ -1362,7 +1356,7 @@ public class SetShufflePlansBSFragment extends BaseFragment {
                 }
             }
             UdpAssetDTO udpAssetDTO = fragmentHorizontalMusic.getUdpAssetDTO();
-            BaselineApplication.getApplication().getRbtConnector().purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, mSelectedContacts, extraInfoMap, udpAssetDTO, parentRefId, payTmCallBack);
+            AppManager.getInstance().getRbtConnector().purchaseUDP(mRingBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, mSelectedContacts, extraInfoMap, udpAssetDTO, parentRefId, payTmCallBack);
         }
     }
 

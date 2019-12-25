@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.DynamicChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RecommendationDTO;
@@ -14,7 +15,6 @@ import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.PreBuyActivity;
 import com.onmobile.rbt.baseline.activities.StoreContentActivity;
 import com.onmobile.rbt.baseline.adapter.StoreChildItemRecyclerAdapter;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
 import com.onmobile.rbt.baseline.listener.OnItemClickListener;
@@ -282,7 +282,7 @@ public class FragmentStoreSeeAll extends BaseFragment {
     };
 
     private void loadStoreCategoryItems(String chartId) {
-        BaselineApplication.getApplication().getRbtConnector().getDynamicChartContents(mCurrentOffset, chartId, new AppBaselineCallback<DynamicChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getDynamicChartContents(mCurrentOffset, chartId, new AppBaselineCallback<DynamicChartItemDTO>() {
             @Override
             public void success(DynamicChartItemDTO result) {
                 if (!isAdded()) return;
@@ -315,7 +315,7 @@ public class FragmentStoreSeeAll extends BaseFragment {
     }
 
     private void loadRecommendations() {
-        BaselineApplication.getApplication().getRbtConnector().getRecommendationContent(mCurrentOffset, mRecommendationItem.getId(), new AppBaselineCallback<RecommendationDTO>() {
+        AppManager.getInstance().getRbtConnector().getRecommendationContent(mCurrentOffset, mRecommendationItem.getId(), new AppBaselineCallback<RecommendationDTO>() {
             @Override
             public void success(RecommendationDTO result) {
                 if (!isAdded()) return;

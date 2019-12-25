@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.search.CategoricalSearchItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.search.CategorySearchResultDTO;
@@ -16,7 +17,6 @@ import com.onmobile.rbt.baseline.activities.StoreContentActivity;
 import com.onmobile.rbt.baseline.adapter.ContentSearchAdapter;
 import com.onmobile.rbt.baseline.adapter.StoreChildItemRecyclerAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
@@ -297,11 +297,11 @@ public class FragmentSearchSeeAll extends BaseFragment {
             preferredLanguages.addAll(mDefaultLanguages);
         }
         if (ContentSearchAdapter.TYPE_SONG.equals(mSearchType))
-            BaselineApplication.getApplication().getRbtConnector().getSearchSongContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, preferredLanguages, languageSearchSupported, mSearchQuery, callback);
+            AppManager.getInstance().getRbtConnector().getSearchSongContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, preferredLanguages, languageSearchSupported, mSearchQuery, callback);
         if (ContentSearchAdapter.TYPE_ARTIST.equals(mSearchType))
-            BaselineApplication.getApplication().getRbtConnector().getSearchArtistContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, preferredLanguages, languageSearchSupported, mSearchQuery, callback);
+            AppManager.getInstance().getRbtConnector().getSearchArtistContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, preferredLanguages, languageSearchSupported, mSearchQuery, callback);
         if (ContentSearchAdapter.TYPE_ALBUM.equals(mSearchType))
-            BaselineApplication.getApplication().getRbtConnector().getSearchAlbumContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, preferredLanguages, languageSearchSupported, mSearchQuery, callback);
+            AppManager.getInstance().getRbtConnector().getSearchAlbumContent(mCurrentOffset, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, preferredLanguages, languageSearchSupported, mSearchQuery, callback);
     }
 
     @Override

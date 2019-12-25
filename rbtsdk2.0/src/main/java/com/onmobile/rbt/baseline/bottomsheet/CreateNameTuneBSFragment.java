@@ -9,9 +9,9 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
@@ -78,7 +78,7 @@ public class CreateNameTuneBSFragment extends BaseFragment implements View.OnCli
         mVoiceSelected = mVoiceList.get(mVoiceSelectedIndex);
 
         mLanguageList = new ArrayList<>();
-        mLanguageList.addAll(BaselineApplication.getApplication().getRbtConnector().getCreateNameTuneLanguageList());
+        mLanguageList.addAll(AppManager.getInstance().getRbtConnector().getCreateNameTuneLanguageList());
         mLanguageSelectedIndex = 0;
         mLanguageSelected = mLanguageList.get(mLanguageSelectedIndex);
     }
@@ -195,7 +195,7 @@ public class CreateNameTuneBSFragment extends BaseFragment implements View.OnCli
             mLanguagePickerDialog.show();
         }else if(view.getId() == R.id.create_name_tune_btn) {
             showProgress(true);
-            BaselineApplication.getApplication().getRbtConnector().createNameTune(searchText, mLanguageSelected, new AppBaselineCallback<String>() {
+            AppManager.getInstance().getRbtConnector().createNameTune(searchText, mLanguageSelected, new AppBaselineCallback<String>() {
                 @Override
                 public void success(String result) {
                     if (!isAdded()) return;

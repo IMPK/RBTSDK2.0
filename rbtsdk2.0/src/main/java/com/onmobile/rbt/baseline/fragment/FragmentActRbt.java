@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ListOfSongsResponseDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PlayRuleDTO;
@@ -24,7 +25,6 @@ import com.onmobile.rbt.baseline.activities.HomeActivity;
 import com.onmobile.rbt.baseline.adapter.ActivityRbtAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
 import com.onmobile.rbt.baseline.application.ApiConfig;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.bottomsheet.action.BSLAModel;
 import com.onmobile.rbt.baseline.bottomsheet.action.BottomSheetListActionFragment;
@@ -120,7 +120,7 @@ public class FragmentActRbt extends BaseFragment {
                     }
 
                     if (isCheckRequired && !AppConfigurationValues.isDeleteLastSelection() &&
-                            BaselineApplication.getApplication().getRbtConnector().isLastSelection()) {
+                            AppManager.getInstance().getRbtConnector().isLastSelection()) {
                         reapplyFieldData(position, item);
                         getRootActivity().showLongSnackBar(getString(R.string.delete_last_selection_not_allowed_msg));
                     } else {
@@ -206,7 +206,7 @@ public class FragmentActRbt extends BaseFragment {
         mHistoryListCount = 0;
         if (oldSize > 0)
             mRvContent.post(() -> mActivityRbtAdapter.notifyDataSetChanged());
-        BaselineApplication.getApplication().getRbtConnector().getPlayRules(new AppBaselineCallback<ListOfSongsResponseDTO>() {
+        AppManager.getInstance().getRbtConnector().getPlayRules(new AppBaselineCallback<ListOfSongsResponseDTO>() {
             @Override
             public void success(ListOfSongsResponseDTO result) {
                 if (!isAdded()) return;
@@ -236,7 +236,7 @@ public class FragmentActRbt extends BaseFragment {
     }
 
     private void fetchHistoryContent() {
-        BaselineApplication.getApplication().getRbtConnector().getUserHistory(mHistoryItemOffset, new AppBaselineCallback<ListOfSongsResponseDTO>() {
+        AppManager.getInstance().getRbtConnector().getUserHistory(mHistoryItemOffset, new AppBaselineCallback<ListOfSongsResponseDTO>() {
             @Override
             public void success(ListOfSongsResponseDTO result) {
                 if (result == null) {
@@ -688,7 +688,7 @@ public class FragmentActRbt extends BaseFragment {
             playRuleDTO = chartItemDTO.getPlayRuleDTO();
         }
         if (playRuleDTO != null)
-            BaselineApplication.getApplication().getRbtConnector().deletePlayRule(playRuleDTO.getId(), new AppBaselineCallback<String>() {
+            AppManager.getInstance().getRbtConnector().deletePlayRule(playRuleDTO.getId(), new AppBaselineCallback<String>() {
                 @Override
                 public void success(String result) {
                     if (!isAdded()) return;
@@ -736,7 +736,7 @@ public class FragmentActRbt extends BaseFragment {
                     }
 
                     if (tuneId != null && type != null) {
-                        BaselineApplication.getApplication().getRbtConnector().deletePurchasedRBTRequest(tuneId, type, new AppBaselineCallback<String>() {
+                        AppManager.getInstance().getRbtConnector().deletePurchasedRBTRequest(tuneId, type, new AppBaselineCallback<String>() {
                             @Override
                             public void success(String result) {
                                 mProgressDialog.dismiss();
@@ -997,7 +997,7 @@ public class FragmentActRbt extends BaseFragment {
                 playRuleId = String.valueOf(((ChartItemDTO) obj).getId());
             }
             if (!TextUtils.isEmpty(playRuleId)) {
-                List<PlayRuleDTO> playRuleDTOList = BaselineApplication.getApplication().getRbtConnector().getPlayRuleById(playRuleId);
+                List<PlayRuleDTO> playRuleDTOList = AppManager.getInstance().getRbtConnector().getPlayRuleById(playRuleId);
                 if (playRuleDTOList != null && playRuleDTOList.size() > 0) {
                     for (PlayRuleDTO playRuleDTO :
                             playRuleDTOList) {

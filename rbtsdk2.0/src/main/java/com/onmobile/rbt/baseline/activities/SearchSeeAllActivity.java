@@ -7,11 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.DynamicItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.dialog.AppListPopupWindow;
 import com.onmobile.rbt.baseline.fragment.FragmentSearchSeeAll;
 import com.onmobile.rbt.baseline.fragment.FragmentStoreSeeAll;
@@ -19,8 +19,6 @@ import com.onmobile.rbt.baseline.model.ListItem;
 import com.onmobile.rbt.baseline.util.AppConstant;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -133,7 +131,7 @@ public class SearchSeeAllActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search_see_all, menu);
 
-        Map<String, String> languageMap = BaselineApplication.getApplication().getRbtConnector().getLanguageToDisplay();
+        Map<String, String> languageMap = AppManager.getInstance().getRbtConnector().getLanguageToDisplay();
         MenuItem languageFilterItem = menu.findItem(R.id.action_language_filter);
         if(languageMap != null && languageMap.size() > 1) {
             languageFilterItem.setVisible(true);
@@ -154,8 +152,8 @@ public class SearchSeeAllActivity extends BaseActivity {
             final AppCompatTextView languageFilterTextView = languageFilterLayout.findViewById(R.id.tv_language_filter);
             languageFilterTextView.setVisibility(View.GONE);
 
-           // final LinkedHashMap<String, String> availableLanguages = BaselineApplication.getApplication().getRbtConnector().getContentLanguageToDisplay();
-            final Map<String, String> availableLanguages = BaselineApplication.getApplication().getRbtConnector().getLanguageToDisplay();
+           // final LinkedHashMap<String, String> availableLanguages = AppManager.getInstance().getRbtConnector().getContentLanguageToDisplay();
+            final Map<String, String> availableLanguages = AppManager.getInstance().getRbtConnector().getLanguageToDisplay();
             final AppListPopupWindow.ItemBean allLanguage = new AppListPopupWindow.ItemBean("all", getString(R.string.language_filter_label_default));
             final AppListPopupWindow.ItemBean[] mSelectedLanguage = {allLanguage};
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.Silent;
@@ -13,7 +14,6 @@ import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.HomeActivity;
 import com.onmobile.rbt.baseline.adapter.ProfileTunesAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.custom.AppRatingPopup;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
@@ -144,7 +144,7 @@ public class FragmentProfileTune extends BaseFragment {
 
     private void addExtraProfiles(String trackId) {
         if (!TextUtils.isEmpty(trackId)) {
-            BaselineApplication.getApplication().getRbtConnector().getContent(trackId, new AppBaselineCallback<RingBackToneDTO>() {
+            AppManager.getInstance().getRbtConnector().getContent(trackId, new AppBaselineCallback<RingBackToneDTO>() {
                 @Override
                 public void success(RingBackToneDTO result) {
                     if (result != null) {
@@ -227,7 +227,7 @@ public class FragmentProfileTune extends BaseFragment {
     };
 
     private void loadChart() {
-        BaselineApplication.getApplication().getRbtConnector().getManualProfileTunes(mCurrentOffset, new AppBaselineCallback<ChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getManualProfileTunes(mCurrentOffset, new AppBaselineCallback<ChartItemDTO>() {
             @Override
             public void success(ChartItemDTO result) {
                 if (!isAdded()) return;

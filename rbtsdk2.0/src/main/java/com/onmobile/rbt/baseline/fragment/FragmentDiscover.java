@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.BannerDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.DynamicChartsDTO;
@@ -23,7 +24,6 @@ import com.onmobile.rbt.baseline.activities.ProfileTuneSeeAllActivity;
 import com.onmobile.rbt.baseline.activities.StoreActivity;
 import com.onmobile.rbt.baseline.adapter.StackAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
@@ -193,7 +193,7 @@ public class FragmentDiscover extends BaseFragment {
 
     @Override
     protected void bindViews(View view) {
-        mCardIndexMap = BaselineApplication.getApplication().getRbtConnector().getCardIndexMap();
+        mCardIndexMap = AppManager.getInstance().getRbtConnector().getCardIndexMap();
         if (mCardIndexMap != null && mCardIndexMap.size() > 0) {
             mBackgroundList = new ArrayList<>();
             setupOnHomePage();
@@ -428,7 +428,7 @@ public class FragmentDiscover extends BaseFragment {
     }
 
     private void pullData() {
-        boolean isRecommendationAvailable = BaselineApplication.getApplication().getRbtConnector().isRecommendationIdsAvailable();
+        boolean isRecommendationAvailable = AppManager.getInstance().getRbtConnector().isRecommendationIdsAvailable();
 
         mRecommendationIndex = -1;
         mTrendingIndex = -1;
@@ -482,7 +482,7 @@ public class FragmentDiscover extends BaseFragment {
     private void loadTrending(int cardIndex, int recommendationCardIndex, boolean isLoadRecommendations) {
         final int position = mStackAdapter.getItemCount() - cardIndex;
         showLoading(position);
-        BaselineApplication.getApplication().getRbtConnector().getTrending(new AppBaselineCallback<DynamicChartsDTO>() {
+        AppManager.getInstance().getRbtConnector().getTrending(new AppBaselineCallback<DynamicChartsDTO>() {
             @Override
             public void success(DynamicChartsDTO result) {
                 if (!isAdded()) return;
@@ -491,11 +491,11 @@ public class FragmentDiscover extends BaseFragment {
                         List<RingBackToneDTO> items = result.getItems().get(0).getItems();
                         showContent(position, items);
 
-                        boolean isRecommendationAvailable = BaselineApplication.getApplication().getRbtConnector().isRecommendationIdsAvailable();
+                        boolean isRecommendationAvailable = AppManager.getInstance().getRbtConnector().isRecommendationIdsAvailable();
                         if (!isRecommendationAvailable && items != null && items.size() > 0 && recommendationCardIndex > 0) {
                             int counter = 0;
                             for (RingBackToneDTO ringBackToneDTO : items) {
-                                BaselineApplication.getApplication().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
+                                AppManager.getInstance().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
                                 if (++counter >= AppConstant.RECOMMENDATION_MIN_VISIT_DATA_STORAGE)
                                     break;
                             }
@@ -535,7 +535,7 @@ public class FragmentDiscover extends BaseFragment {
     }
 
     private void loadAutoProfileTunes(final int position, final String trackId) {
-        BaselineApplication.getApplication().getRbtConnector().getContent(trackId, new AppBaselineCallback<RingBackToneDTO>() {
+        AppManager.getInstance().getRbtConnector().getContent(trackId, new AppBaselineCallback<RingBackToneDTO>() {
             @Override
             public void success(RingBackToneDTO result) {
                 if (!isAdded()) return;
@@ -555,7 +555,7 @@ public class FragmentDiscover extends BaseFragment {
 
     private void loadProfileManualShuffle(int position, List<RingBackToneDTO> autoProfileList) {
         final List<RingBackToneDTO> ringBackToneDTOList = new ArrayList<>();
-        BaselineApplication.getApplication().getRbtConnector().getManualProfileTunes(0, new AppBaselineCallback<ChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getManualProfileTunes(0, new AppBaselineCallback<ChartItemDTO>() {
             @Override
             public void success(ChartItemDTO result) {
                 if (!isAdded()) return;
@@ -582,7 +582,7 @@ public class FragmentDiscover extends BaseFragment {
         final int position = mStackAdapter.getItemCount() - cardIndex;
         showLoading(position);
 
-        BaselineApplication.getApplication().getRbtConnector().getDynamicMixedMusicShuffle(new AppBaselineCallback<DynamicChartsDTO>() {
+        AppManager.getInstance().getRbtConnector().getDynamicMixedMusicShuffle(new AppBaselineCallback<DynamicChartsDTO>() {
             @Override
             public void success(DynamicChartsDTO result) {
                 if (!isAdded()) return;
@@ -613,7 +613,7 @@ public class FragmentDiscover extends BaseFragment {
         mRecommendationInProgress = true;
         final int position = mStackAdapter.getItemCount() - cardIndex;
         showLoading(position);
-        BaselineApplication.getApplication().getRbtConnector().getRecommendationContent(0, null, new AppBaselineCallback<RecommendationDTO>() {
+        AppManager.getInstance().getRbtConnector().getRecommendationContent(0, null, new AppBaselineCallback<RecommendationDTO>() {
             @Override
             public void success(RecommendationDTO result) {
                 if (!isAdded()) return;
@@ -637,7 +637,7 @@ public class FragmentDiscover extends BaseFragment {
     private void loadBanners(int cardIndex) {
         final int position = mStackAdapter.getItemCount() - cardIndex;
         showLoading(position);
-        BaselineApplication.getApplication().getRbtConnector().getBannerContent(new AppBaselineCallback<List<BannerDTO>>() {
+        AppManager.getInstance().getRbtConnector().getBannerContent(new AppBaselineCallback<List<BannerDTO>>() {
             @Override
             public void success(List<BannerDTO> result) {
                 if (!isAdded()) return;
@@ -663,7 +663,7 @@ public class FragmentDiscover extends BaseFragment {
     private void loadAzan(int cardIndex) {
         final int position = mStackAdapter.getItemCount() - cardIndex;
         showLoading(position);
-        BaselineApplication.getApplication().getRbtConnector().getAzanContent(new AppBaselineCallback<ChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getAzanContent(new AppBaselineCallback<ChartItemDTO>() {
             @Override
             public void success(ChartItemDTO result) {
                 if (!isAdded()) return;

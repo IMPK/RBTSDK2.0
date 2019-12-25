@@ -18,11 +18,11 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.FAQDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.TnCDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.util.AppConstant;
 
@@ -95,7 +95,7 @@ public class WebViewActivity extends BaseActivity {
         switch (mValue) {
             case FAQ:
                 mProgressBar.setVisibility(View.VISIBLE);
-                BaselineApplication.getApplication().getRbtConnector().getFAQRequest(new AppBaselineCallback<FAQDTO>() {
+                AppManager.getInstance().getRbtConnector().getFAQRequest(new AppBaselineCallback<FAQDTO>() {
                     @Override
                     public void success(FAQDTO result) {
 
@@ -125,7 +125,7 @@ public class WebViewActivity extends BaseActivity {
                 break;
             case TNC:
                 mProgressBar.setVisibility(View.VISIBLE);
-                BaselineApplication.getApplication().getRbtConnector().getTnCRequest(new AppBaselineCallback<TnCDTO>() {
+                AppManager.getInstance().getRbtConnector().getTnCRequest(new AppBaselineCallback<TnCDTO>() {
                     @Override
                     public void success(TnCDTO result) {
                         mErrorTextView.setVisibility(View.GONE);

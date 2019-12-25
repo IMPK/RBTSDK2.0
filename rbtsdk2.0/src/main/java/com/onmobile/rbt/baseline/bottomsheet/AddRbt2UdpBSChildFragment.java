@@ -5,13 +5,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.udp.ListOfUserDefinedPlaylistDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.udp.UdpAssetDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.udp.UdpDetailDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.adapter.Add2UdpRecyclerAdapter;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
 import com.onmobile.rbt.baseline.listener.BottomSheetFragmentListener;
@@ -205,7 +205,7 @@ public class AddRbt2UdpBSChildFragment extends BaseFragment {
     }
 
     private void loadUDP() {
-        BaselineApplication.getApplication().getRbtConnector().getUserDefinedPlaylist(mCurrentOffset, new AppBaselineCallback<ListOfUserDefinedPlaylistDTO>() {
+        AppManager.getInstance().getRbtConnector().getUserDefinedPlaylist(mCurrentOffset, new AppBaselineCallback<ListOfUserDefinedPlaylistDTO>() {
             @Override
             public void success(ListOfUserDefinedPlaylistDTO result) {
                 if (!isAdded()) return;
@@ -216,7 +216,7 @@ public class AddRbt2UdpBSChildFragment extends BaseFragment {
                     final int itemSize = items.size();
                     if (itemSize > 0) {
                         for (UdpAssetDTO udpAssetDTO : items)
-                            if (!BaselineApplication.getApplication().getRbtConnector().isRingbackSelected(udpAssetDTO.getId()))
+                            if (!AppManager.getInstance().getRbtConnector().isRingbackSelected(udpAssetDTO.getId()))
                                 mList.add(udpAssetDTO);
                         mCurrentOffset += itemSize;
                         mRVAddToUdp.post(() -> mAdapter.notifyItemInserted(mList.size() - 1));
@@ -288,7 +288,7 @@ public class AddRbt2UdpBSChildFragment extends BaseFragment {
     private void addToUdp(final UdpAssetDTO dto) {
         if (mRingBackToneDTO != null && dto != null) {
             showProcessing(getString(R.string.add_to_udp_process_msg, dto.getName()));
-            BaselineApplication.getApplication().getRbtConnector().getUserDefinedPlaylist(dto.getId(), new AppBaselineCallback<UdpDetailDTO>() {
+            AppManager.getInstance().getRbtConnector().getUserDefinedPlaylist(dto.getId(), new AppBaselineCallback<UdpDetailDTO>() {
                 @Override
                 public void success(UdpDetailDTO result) {
                     if (!isAdded()) return;
@@ -301,7 +301,7 @@ public class AddRbt2UdpBSChildFragment extends BaseFragment {
                     addToUdpWithCover(dto, Integer.parseInt(dto.getCount()));
                 }
             });
-            /*BaselineApplication.getApplication().getRbtConnector().addSongToUserDefinedPlaylist(dto.getId(), mRingBackToneDTO.getId(), new BaselineCallback<String>() {
+            /*AppManager.getInstance().getRbtConnector().addSongToUserDefinedPlaylist(dto.getId(), mRingBackToneDTO.getId(), new BaselineCallback<String>() {
                 @Override
                 public void success(String result) {
                     if (!isAdded()) return;
@@ -321,7 +321,7 @@ public class AddRbt2UdpBSChildFragment extends BaseFragment {
     }
 
     private void addToUdpWithCover(UdpAssetDTO dto, int udpItemCount) {
-        BaselineApplication.getApplication().getRbtConnector().addSongWithCoverToUserDefinedPlaylist(dto.getId(), dto.getName(), udpItemCount, mRingBackToneDTO.getId(), mRingBackToneDTO.getPrimaryImage(), new AppBaselineCallback<String>() {
+        AppManager.getInstance().getRbtConnector().addSongWithCoverToUserDefinedPlaylist(dto.getId(), dto.getName(), udpItemCount, mRingBackToneDTO.getId(), mRingBackToneDTO.getPrimaryImage(), new AppBaselineCallback<String>() {
             @Override
             public void success(String result) {
                 if (!isAdded()) return;

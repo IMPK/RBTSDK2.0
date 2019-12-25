@@ -4,9 +4,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.bottomsheet.base.BaseBottomSheetFragment;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
@@ -165,7 +165,7 @@ public class SetCallerTuneMainBSFragment extends BaseBottomSheetFragment<SetCall
     public void done(BaseFragment fragment, RingBackToneDTO data) {
         if (!isAdded()) return;
         if (fragment instanceof SetCallerTunePlansBSFragment) {
-            mSuccess = BaselineApplication.getApplication().getRbtConnector().isActiveUser();
+            mSuccess = AppManager.getInstance().getRbtConnector().isActiveUser();
         }
         dismissAllowingStateLoss();
     }

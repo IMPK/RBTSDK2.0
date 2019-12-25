@@ -7,12 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.onmobile.rbt.baseline.http.api_action.dtos.familyandfriends.ChildOperationResponseDTO;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.familyandfriends.GetParentInfoResponseDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.adapter.GiftRbtChildAdapter;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
-import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
 import com.onmobile.rbt.baseline.model.ContactModelDTO;
@@ -62,7 +60,7 @@ public class FragmentGiftRbtChild extends BaseFragment implements View.OnClickLi
     protected void initViews(View view) {
         mGiftRbtChildRecyclerView = view.findViewById(R.id.gift_child_recycler_view);
         mAddFriends = view.findViewById(R.id.tv_add_friends);
-        if(BaselineApplication.getApplication().getRbtConnector().isFriendsAndFamilyActiveUser()) {
+        if(AppManager.getInstance().getRbtConnector().isFriendsAndFamilyActiveUser()) {
             mAddFriends.setEnabled(true);
             mAddFriends.setOnClickListener(this);
         }
@@ -79,7 +77,7 @@ public class FragmentGiftRbtChild extends BaseFragment implements View.OnClickLi
     protected void bindViews(View view) {
         List<GiftChildInfo> childList = new ArrayList<>();
 
-        GetParentInfoResponseDTO parentInfo = BaselineApplication.getApplication().getRbtConnector().getCacheParentInfo();
+        GetParentInfoResponseDTO parentInfo = AppManager.getInstance().getRbtConnector().getCacheParentInfo();
         if(parentInfo.getCountLeft() > 0 && parentInfo.getCountLeft() <= parentInfo.getTotalCount()){
             String childCountInfoString = String.format(getString(R.string.child_added_count_info),
                     (parentInfo.getTotalCount()-parentInfo.getCountLeft())+"",

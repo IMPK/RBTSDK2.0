@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.AppUtilityDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PlayRuleDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
@@ -29,7 +30,6 @@ import com.onmobile.rbt.baseline.activities.CGWebViewActivity;
 import com.onmobile.rbt.baseline.activities.ContactViewActivity;
 import com.onmobile.rbt.baseline.activities.HomeActivity;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.bottomsheet.base.TuneBottomSheetUtil;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
@@ -150,7 +150,7 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
     }
 
     public void loadView() {
-        if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
+        if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
             mCallersChoiceLayout.setVisibility(View.VISIBLE);
             mPlayForAllCallersInfoText.setVisibility(View.GONE);
         } else {
@@ -158,9 +158,9 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
             mPlayForAllCallersInfoText.setVisibility(View.VISIBLE);
         }
 
-        isSelected = BaselineApplication.getApplication().getRbtConnector().isRingbackSelected(mRingBackToneDTO.getId()) && !mRingBackToneDTO.isCut();
+        isSelected = AppManager.getInstance().getRbtConnector().isRingbackSelected(mRingBackToneDTO.getId()) && !mRingBackToneDTO.isCut();
         if (isSelected) {
-            mPlayRuleDTOList = BaselineApplication.getApplication().getRbtConnector().getPlayRuleById(mRingBackToneDTO.getId());
+            mPlayRuleDTOList = AppManager.getInstance().getRbtConnector().getPlayRuleById(mRingBackToneDTO.getId());
         }
 
         mAllCallerLabeledView.setListener(mLabeledListener);
@@ -192,7 +192,7 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
             mAllCallerLabeledView.enableSwitchStatusSilently();
         }
 
-        BaselineApplication.getApplication().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
+        AppManager.getInstance().getRbtConnector().isFamilyAndFriends(new IAppFriendsAndFamily() {
             @Override
             public void isParent(boolean exist) {
                 populatePlans();
@@ -206,10 +206,10 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
 
             @Override
             public void isNone(boolean exist) {
-                if (!AppConfigurationValues.isSelectionModel() && BaselineApplication.getApplication().getRbtConnector().isSongPurchased(mRingBackToneDTO.getId())) {
+                if (!AppConfigurationValues.isSelectionModel() && AppManager.getInstance().getRbtConnector().isSongPurchased(mRingBackToneDTO.getId())) {
                     mPlanLayout.setRingBackToneDTO(mRingBackToneDTO);
-                    if (BaselineApplication.getApplication().getRbtConnector().getTuneAlreadyPurchasedMessage() != null) {
-                        mPlanLayout.error(BaselineApplication.getApplication().getRbtConnector().getTuneAlreadyPurchasedMessage());
+                    if (AppManager.getInstance().getRbtConnector().getTuneAlreadyPurchasedMessage() != null) {
+                        mPlanLayout.error(AppManager.getInstance().getRbtConnector().getTuneAlreadyPurchasedMessage());
                     } else {
                         mPlanLayout.error("");
                     }
@@ -238,7 +238,7 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
 
     private void populatePlans() {
         mPlanLayout.loading();
-        BaselineApplication.getApplication().getRbtConnector().getContent(mRingBackToneDTO.getId(), new AppBaselineCallback<RingBackToneDTO>() {
+        AppManager.getInstance().getRbtConnector().getContent(mRingBackToneDTO.getId(), new AppBaselineCallback<RingBackToneDTO>() {
             @Override
             public void success(RingBackToneDTO result) {
                 if (!isAdded()) return;
@@ -252,8 +252,8 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
                     if (isGiftPresent) {
                         PlanView giftPlan = new PlanView(getFragmentContext());
                         giftPlan.setGift(true);
-                        giftPlan.setParentRefId(BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getParentId());
-                        mPlanLayout.addPlan(giftPlan, BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getCatalogSubscription());
+                        giftPlan.setParentRefId(AppManager.getInstance().getRbtConnector().getCacheChildInfo().getParentId());
+                        mPlanLayout.addPlan(giftPlan, AppManager.getInstance().getRbtConnector().getCacheChildInfo().getCatalogSubscription());
                         if (mPlanLayout.getPlanCount() == 1)
                             giftPlan.setChecked(true);
                     }
@@ -321,7 +321,7 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
             updateConfirmationButton();
             if (plan.isGift()) {
                 try {
-                    mPlanLayout.setFooterText(BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription());
+                    mPlanLayout.setFooterText(AppManager.getInstance().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription());
                 } catch (Exception e) {
                     mPlanLayout.setFooterText("");
                 }
@@ -472,7 +472,7 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
                     }
                 }
                 String cgrUrl = data.getStringExtra(EXTRA_CG_RURL);
-                BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                     @Override
                     public void success(RUrlResponseDto result) {
                         if (!isAdded()) return;
@@ -659,10 +659,10 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
 
         if (mPlanLayout.getSelectedPlan() != null && mPlanLayout.getSelectedPlan().isGift()) {
             purchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, mPlanLayout.getSelectedPlan().getParentRefId(), callback);
-            //BaselineApplication.getApplication().getRbtConnector().purchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, mPlanLayout.getSelectedPlan().getParentRefId(), callback);
+            //AppManager.getInstance().getRbtConnector().purchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, mPlanLayout.getSelectedPlan().getParentRefId(), callback);
         } else {
             purchase(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, callback);
-            //BaselineApplication.getApplication().getRbtConnector().purchase(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, callback);
+            //AppManager.getInstance().getRbtConnector().purchase(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, callback);
         }
     }
 
@@ -687,7 +687,7 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
                 }
             }
         }
-        BaselineApplication.getApplication().getRbtConnector().deletePlayRule(playRuleIds, callback);
+        AppManager.getInstance().getRbtConnector().deletePlayRule(playRuleIds, callback);
     }
 
     private void handleSetTuneSuccess(PurchaseComboResponseDTO purchaseComboResponseDTO) {
@@ -696,8 +696,8 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
             PurchaseComboResponseDTO.Thirdpartyconsent thirdPartyConsentDTO = purchaseComboResponseDTO.getThirdpartyconsent();
             Intent intent = new Intent();
             if (thirdPartyConsentDTO != null && (thirdPartyConsentDTO.getThird_party_url() == null || thirdPartyConsentDTO.getThird_party_url().isEmpty())) {
-                NonNetworkCGDTO nonNetworkCG = BaselineApplication.getApplication().getRbtConnector().getNonNetworkCG();
-                BaselineApplication.getApplication().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
+                NonNetworkCGDTO nonNetworkCG = AppManager.getInstance().getRbtConnector().getNonNetworkCG();
+                AppManager.getInstance().getRbtConnector().getRurlResponse(new AppBaselineCallback<RUrlResponseDto>() {
                     @Override
                     public void success(RUrlResponseDto result) {
                         if (!isAdded()) return;
@@ -805,7 +805,7 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
                 List<PricingIndividualDTO> list = (List<PricingIndividualDTO>) mPlanLayout.getExtras();
                 if (list != null && list.size() > 1) {
                     showProgress(false);
-                    BaselineApplication.getApplication().getRbtConnector().checkPlanUpgrade(list, new IPreBuyUDSCheck() {
+                    AppManager.getInstance().getRbtConnector().checkPlanUpgrade(list, new IPreBuyUDSCheck() {
                         @Override
                         public void showUDSUpdatePopUp(List<PricingIndividualDTO> pricingIndividualDTOS) {
                             AppDialog.showPlanUpgradeDialog(getRootActivity(), pricingIndividualDTOS, new ShuffleUpgradeDialog.ActionCallBack() {
@@ -832,8 +832,8 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
                         }
                     });
                     return;
-                } else if (list != null && list.size() == 1 && list.get(0).getCatalogSubscriptionId() != null && BaselineApplication.getApplication().getRbtConnector().getCacheUserSubscription() != null
-                        && !list.get(0).getCatalogSubscriptionId().equalsIgnoreCase(BaselineApplication.getApplication().getRbtConnector().getCacheUserSubscription().getCatalog_subscription_id())) {
+                } else if (list != null && list.size() == 1 && list.get(0).getCatalogSubscriptionId() != null && AppManager.getInstance().getRbtConnector().getCacheUserSubscription() != null
+                        && !list.get(0).getCatalogSubscriptionId().equalsIgnoreCase(AppManager.getInstance().getRbtConnector().getCacheUserSubscription().getCatalog_subscription_id())) {
                     if (AppConfigurationValues.IsShowSinglePlanUpgrade()) {
                         AppDialog.showPlanUpgradeDialog(getRootActivity(), list, new ShuffleUpgradeDialog.ActionCallBack() {
                             @Override
@@ -863,7 +863,7 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
     }
 
     private void updateChildInfo() {
-        BaselineApplication.getApplication().getRbtConnector().getChildInfo(new AppBaselineCallback<GetChildInfoResponseDTO>() {
+        AppManager.getInstance().getRbtConnector().getChildInfo(new AppBaselineCallback<GetChildInfoResponseDTO>() {
             @Override
             public void success(GetChildInfoResponseDTO result) {
                 if (!isAdded()) return;
@@ -883,26 +883,26 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
             mConfirmationPopUpDescription = pricingIndividualDTO.getLongDescription();
         }
 
-        BaselineApplication.getApplication().getRbtConnector().getAppUtilityNetworkRequest(mCallerSource, ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, new AppBaselineCallback<AppUtilityDTO>() {
+        AppManager.getInstance().getRbtConnector().getAppUtilityNetworkRequest(mCallerSource, ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, new AppBaselineCallback<AppUtilityDTO>() {
             @Override
             public void success(AppUtilityDTO result) {
                 if (!isAdded()) return;
-                BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
+                AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
 
-                BaselineApplication.getApplication().getRbtConnector().dummyPurchase(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap);
+                AppManager.getInstance().getRbtConnector().dummyPurchase(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap);
 
                 mNetworkType = result.getNetworkType();
 
 
                 APIRequestParameters.ConfirmationType confirmationType = null;
                 if (mNetworkType.equalsIgnoreCase("opt_network")) {
-                    confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationOptNetwork();
+                    confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationOptNetwork();
                 } else {
-                    confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationNonOptNetwork();
+                    confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationNonOptNetwork();
                 }
 
                 if (!isShowConsentPopUp(confirmationType, mIsUpgrade)) {
-                    BaselineApplication.getApplication().getRbtConnector().purchase(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, null, callback);
+                    AppManager.getInstance().getRbtConnector().purchase(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, null, callback);
                 } else {
                     showProgress(false);
                     AppDialog.PurchaseConfirmDialogFragment(getRootActivity(), mConfirmationPopUpDescription, new PurchaseConfirmDialog.ActionCallBack() {
@@ -911,8 +911,8 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
                             if (!isAdded()) return;
                             showProgress(true);
                             sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-                            BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
-                            BaselineApplication.getApplication().getRbtConnector().purchase(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, null, callback);
+                            AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
+                            AppManager.getInstance().getRbtConnector().purchase(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, null, callback);
                         }
 
                         @Override
@@ -934,29 +934,29 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
     }
 
     private void purchaseGift(RingBackToneDTO ringBackToneDTO, PricingSubscriptionDTO pricingSubscriptionDTO, PricingIndividualDTO pricingIndividualDTO, Map<String, String> contactMap, String parentRefId, AppBaselineCallback<PurchaseComboResponseDTO> callback) {
-        mConfirmationPopUpDescription = BaselineApplication.getApplication().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
+        mConfirmationPopUpDescription = AppManager.getInstance().getRbtConnector().getCacheChildInfo().getCatalogSubscription().getDescription();
 
-        BaselineApplication.getApplication().getRbtConnector().getAppUtilityNetworkRequest(mCallerSource, ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, new AppBaselineCallback<AppUtilityDTO>() {
+        AppManager.getInstance().getRbtConnector().getAppUtilityNetworkRequest(mCallerSource, ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, new AppBaselineCallback<AppUtilityDTO>() {
             @Override
             public void success(AppUtilityDTO result) {
                 if (!isAdded()) return;
-                BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
+                AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
 
-                BaselineApplication.getApplication().getRbtConnector().dummyPurchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, mPlanLayout.getSelectedPlan().getParentRefId());
+                AppManager.getInstance().getRbtConnector().dummyPurchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, mPlanLayout.getSelectedPlan().getParentRefId());
 
                 mNetworkType = result.getNetworkType();
 
 
                 APIRequestParameters.ConfirmationType confirmationType = null;
                 if (mNetworkType.equalsIgnoreCase("opt_network")) {
-                    confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationOptNetwork();
+                    confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationOptNetwork();
                 } else {
-                    confirmationType = BaselineApplication.getApplication().getRbtConnector().getConfirmationNonOptNetwork();
+                    confirmationType = AppManager.getInstance().getRbtConnector().getConfirmationNonOptNetwork();
                 }
 
                 if (!isShowConsentPopUp(confirmationType, mIsUpgrade)) {
                     //sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-                    BaselineApplication.getApplication().getRbtConnector().purchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, null, mPlanLayout.getSelectedPlan().getParentRefId(), callback);
+                    AppManager.getInstance().getRbtConnector().purchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, null, mPlanLayout.getSelectedPlan().getParentRefId(), callback);
                 } else {
                     showProgress(false);
                     AppDialog.PurchaseConfirmDialogFragment(getRootActivity(), mConfirmationPopUpDescription, new PurchaseConfirmDialog.ActionCallBack() {
@@ -965,8 +965,8 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
                             if (!isAdded()) return;
                             showProgress(true);
                             sendConsentAnalytics(AnalyticsConstants.EVENT_PV_USER_CONSENT_TYPE_INLINE, AnalyticsConstants.EVENT_PV_USER_CONSENT_RESULT_YES);
-                            BaselineApplication.getApplication().getRbtConnector().setAppUtilityDTO(result);
-                            BaselineApplication.getApplication().getRbtConnector().purchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, null, mPlanLayout.getSelectedPlan().getParentRefId(), callback);
+                            AppManager.getInstance().getRbtConnector().setAppUtilityDTO(result);
+                            AppManager.getInstance().getRbtConnector().purchaseGift(ringBackToneDTO, pricingSubscriptionDTO, pricingIndividualDTO, contactMap, null, mPlanLayout.getSelectedPlan().getParentRefId(), callback);
                         }
 
                         @Override
@@ -1058,7 +1058,7 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
     /*Analytics*/
     private void sendUpgradeAnalytics(String toPlanId, boolean confirm) {
         String fromPlanId = null;
-        UserSubscriptionDTO userSubscriptionDTO = BaselineApplication.getApplication().getRbtConnector().getCacheUserSubscription();
+        UserSubscriptionDTO userSubscriptionDTO = AppManager.getInstance().getRbtConnector().getCacheUserSubscription();
         RingBackToneDTO item = mPlanLayout.getRingBackToneDTO();
         if (userSubscriptionDTO != null) {
             fromPlanId = userSubscriptionDTO.getCatalog_subscription_id();
@@ -1080,7 +1080,7 @@ public class SetAzaanPlansBSFragment extends BaseFragment {
     }
 
     private boolean isShowConsentPopUp(APIRequestParameters.ConfirmationType confirmationType, boolean isUpgrade) {
-        boolean isActiveUser = BaselineApplication.getApplication().getRbtConnector().isActiveUser();
+        boolean isActiveUser = AppManager.getInstance().getRbtConnector().isActiveUser();
         switch (confirmationType) {
             case ALL:
                 return true;

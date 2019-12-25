@@ -3,7 +3,6 @@ package com.onmobile.rbt.baseline.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -11,8 +10,6 @@ import com.onmobile.rbt.baseline.http.api_action.dtos.DynamicItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
-import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.fragment.FragmentProfileTune;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
 import com.onmobile.rbt.baseline.model.ListItem;
@@ -100,7 +97,7 @@ public class ProfileTuneSeeAllActivity extends BaseActivity implements BaseFragm
     }
 
     /*private void showDeepLinkedContent() {
-        BaselineApplication.getApplication().getRbtConnector().getContent(mContentId, new AppBaselineCallback<RingBackToneDTO>() {
+        AppManager.getInstance().getRbtConnector().getContent(mContentId, new AppBaselineCallback<RingBackToneDTO>() {
             @Override
             public void success(RingBackToneDTO result) {
                 if (!isFinishing() && mFragmentProfileTune != null)

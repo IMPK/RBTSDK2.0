@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
@@ -11,7 +12,6 @@ import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.HomeActivity;
 import com.onmobile.rbt.baseline.adapter.NameTunesAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.custom.AppRatingPopup;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
@@ -166,7 +166,7 @@ public class FragmentNameTune extends BaseFragment {
     };
 
     private void loadChart() {
-        BaselineApplication.getApplication().getRbtConnector().getNametunes(mCurrentOffset, searchQuery, searchLanguage, new AppBaselineCallback<ChartItemDTO>() {
+        AppManager.getInstance().getRbtConnector().getNametunes(mCurrentOffset, searchQuery, searchLanguage, new AppBaselineCallback<ChartItemDTO>() {
             @Override
             public void success(ChartItemDTO result) {
                 if (!isAdded()) return;
@@ -198,7 +198,7 @@ public class FragmentNameTune extends BaseFragment {
         });
 
 
-//        BaselineApplication.getApplication().getRbtConnector().getManualProfileTunes(mCurrentOffset, new BaselineCallback<ChartItemDTO>() {
+//        AppManager.getInstance().getRbtConnector().getManualProfileTunes(mCurrentOffset, new BaselineCallback<ChartItemDTO>() {
 //            @Override
 //            public void success(ChartItemDTO result) {
 //                if(!isAdded()) return;

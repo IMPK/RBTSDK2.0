@@ -9,9 +9,9 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,7 @@ public class LanguagePickerDialog extends Dialog implements View.OnClickListener
         List<String> languages = new ArrayList<>();
         for(RingBackToneDTO ringBackToneDTO : mRingBackToneDTOList){
             String language = ringBackToneDTO.getLanguage();
-            String languageName = BaselineApplication.getApplication().getRbtConnector().getContentLanguageToDisplay().get(language);
+            String languageName = AppManager.getInstance().getRbtConnector().getContentLanguageToDisplay().get(language);
             if(languageName != null){
                 language = languageName;
             }

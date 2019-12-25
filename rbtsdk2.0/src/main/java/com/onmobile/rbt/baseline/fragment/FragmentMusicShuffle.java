@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.DynamicChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
@@ -16,7 +17,6 @@ import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.HomeActivity;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.adapter.MusicShuffleRecyclerAdapter;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.custom.AppRatingPopup;
 import com.onmobile.rbt.baseline.exception.IllegalFragmentBindingException;
@@ -275,7 +275,7 @@ public class FragmentMusicShuffle extends BaseFragment {
             showLoading();
         if (!TextUtils.isEmpty(mChartId)) {
             if (mIsSystemShuffle)
-                BaselineApplication.getApplication().getRbtConnector().getAllDynamicMusicShuffle(mCurrentOffset, mChartId, new AppBaselineCallback<DynamicChartItemDTO>() {
+                AppManager.getInstance().getRbtConnector().getAllDynamicMusicShuffle(mCurrentOffset, mChartId, new AppBaselineCallback<DynamicChartItemDTO>() {
                     @Override
                     public void success(DynamicChartItemDTO result) {
                         if (!isAdded()) return;
@@ -301,7 +301,7 @@ public class FragmentMusicShuffle extends BaseFragment {
                     }
                 });
             else
-                BaselineApplication.getApplication().getRbtConnector().getUserDefinedPlaylist(mChartId, new AppBaselineCallback<UdpDetailDTO>() {
+                AppManager.getInstance().getRbtConnector().getUserDefinedPlaylist(mChartId, new AppBaselineCallback<UdpDetailDTO>() {
                     @Override
                     public void success(UdpDetailDTO result) {
                         if (!isAdded()) return;
@@ -335,7 +335,7 @@ public class FragmentMusicShuffle extends BaseFragment {
                 });
         } else {
             if (mIsSystemShuffle)
-                BaselineApplication.getApplication().getRbtConnector().getMusicShuffle(mCurrentOffset, new AppBaselineCallback<ChartItemDTO>() {
+                AppManager.getInstance().getRbtConnector().getMusicShuffle(mCurrentOffset, new AppBaselineCallback<ChartItemDTO>() {
                     @Override
                     public void success(ChartItemDTO result) {
                         if (!isAdded()) return;
@@ -361,7 +361,7 @@ public class FragmentMusicShuffle extends BaseFragment {
                     }
                 });
             else
-                BaselineApplication.getApplication().getRbtConnector().getUserDefinedPlaylist(mCurrentOffset, new AppBaselineCallback<ListOfUserDefinedPlaylistDTO>() {
+                AppManager.getInstance().getRbtConnector().getUserDefinedPlaylist(mCurrentOffset, new AppBaselineCallback<ListOfUserDefinedPlaylistDTO>() {
                     @Override
                     public void success(ListOfUserDefinedPlaylistDTO result) {
                         if (!isAdded()) return;
@@ -473,7 +473,7 @@ public class FragmentMusicShuffle extends BaseFragment {
                         if (mProgressDialog == null)
                             mProgressDialog = AppDialog.getProgressDialog((Activity) getFragmentContext(), getString(R.string.deleting_shuffle_message));
                         mProgressDialog.show();
-                        BaselineApplication.getApplication().getRbtConnector().deleteUserDefinedPlaylist(udpAssetDTO.getId(), new BaselineCallback<String>() {
+                        AppManager.getInstance().getRbtConnector().deleteUserDefinedPlaylist(udpAssetDTO.getId(), new BaselineCallback<String>() {
                             @Override
                             public void success(String result) {
                                 mProgressDialog.dismiss();

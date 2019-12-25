@@ -19,16 +19,15 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PlayRuleDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.UpdateUserDefinedShuffleResponseDTO;
 import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
-import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
 import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
@@ -119,8 +118,8 @@ public class ActivityRbtAdapter extends RecyclerView.Adapter<RootViewHolder> {
         super.onBindViewHolder(holder, position, payloads);
         if (holder instanceof PersonalizedShuffleHolder) {
             PersonalizedShuffleHolder personalizedShuffleHolder = (PersonalizedShuffleHolder) holder;
-            if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
-                if (BaselineApplication.getApplication().getRbtConnector().isUserUDPEnabled()) {
+            if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
+                if (AppManager.getInstance().getRbtConnector().isUserUDPEnabled()) {
                     personalizedShuffleHolder.mLabelView.enableSwitchStatusSilently();
                 } else {
                     personalizedShuffleHolder.mLabelView.disableSwitchStatusSilently();
@@ -228,8 +227,8 @@ public class ActivityRbtAdapter extends RecyclerView.Adapter<RootViewHolder> {
         @Override
         protected void bindViews() {
             //layoutRoot.setOnClickListener(this);
-            if (BaselineApplication.getApplication().getRbtConnector().isActiveUser()) {
-                if (BaselineApplication.getApplication().getRbtConnector().isUserUDPEnabled()) {
+            if (AppManager.getInstance().getRbtConnector().isActiveUser()) {
+                if (AppManager.getInstance().getRbtConnector().isUserUDPEnabled()) {
                     mLabelView.enableSwitchStatusSilently();
                 } else {
                     mLabelView.disableSwitchStatusSilently();
@@ -266,7 +265,7 @@ public class ActivityRbtAdapter extends RecyclerView.Adapter<RootViewHolder> {
 
         private void updatePersonalizedShuffle(boolean status) {
             showProgress(true);
-            BaselineApplication.getApplication().getRbtConnector().updateUSerDefinedShuffleStatus(AnalyticsConstants.EVENT_PV_PERSONALIZED_SHUFFLE_SOURCE_ACTIVITY, status, new AppBaselineCallback<UpdateUserDefinedShuffleResponseDTO>() {
+            AppManager.getInstance().getRbtConnector().updateUSerDefinedShuffleStatus(AnalyticsConstants.EVENT_PV_PERSONALIZED_SHUFFLE_SOURCE_ACTIVITY, status, new AppBaselineCallback<UpdateUserDefinedShuffleResponseDTO>() {
                 @Override
                 public void success(UpdateUserDefinedShuffleResponseDTO result) {
                     showProgress(false);
@@ -357,7 +356,7 @@ public class ActivityRbtAdapter extends RecyclerView.Adapter<RootViewHolder> {
                                 mList.get(mLastPlayedPosition).getUserActivityItemDTO().getData() instanceof RingBackToneDTO) {
                             RingBackToneDTO ringBackToneDTO = (RingBackToneDTO) mList.get(mLastPlayedPosition).getUserActivityItemDTO().getData();
                             if (ringBackToneDTO != null && ringBackToneDTO.isRingBackMusic())
-                                BaselineApplication.getApplication().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
+                                AppManager.getInstance().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
                         }
                     }
                 }
@@ -633,7 +632,7 @@ public class ActivityRbtAdapter extends RecyclerView.Adapter<RootViewHolder> {
                 playRuleId = String.valueOf(((ChartItemDTO) obj).getId());
             }
             if (!TextUtils.isEmpty(playRuleId)) {
-                List<PlayRuleDTO> playRuleDTOList = BaselineApplication.getApplication().getRbtConnector().getPlayRuleById(playRuleId);
+                List<PlayRuleDTO> playRuleDTOList = AppManager.getInstance().getRbtConnector().getPlayRuleById(playRuleId);
                 if (playRuleDTOList != null && playRuleDTOList.size() > 0) {
                     for (PlayRuleDTO playRuleDTO :
                             playRuleDTOList) {

@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 
+import com.onmobile.rbt.baseline.http.Configuration;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ErrorDTO;
 import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
 import com.onmobile.rbt.baseline.http.retrofit_io.IBaseAPIRequest;
@@ -41,27 +42,33 @@ public class BaseAPIRequestAction implements IBaseAPIRequest {
     }
 
     protected String getCatalog() {
-        return APIRequestParameters.APIURLEndPoints.CATALOG;
+        return Configuration.getServerNameCatalog();
+        //return APIRequestParameters.APIURLEndPoints.CATALOG;
     }
 
     protected String getStore() {
-        return APIRequestParameters.APIURLEndPoints.STORE;
+        return Configuration.getServerNameStore();
+        //return APIRequestParameters.APIURLEndPoints.STORE;
     }
 
     protected String getNotification() {
-        return APIRequestParameters.APIURLEndPoints.NOTIFICATION;
+        return Configuration.getServerNameNotification();
+        //return APIRequestParameters.APIURLEndPoints.NOTIFICATION;
     }
 
     protected String getStoreId() {
-        return APIRequestParameters.APIURLEndPoints.STORE_ID;
+        return Configuration.getStore_id();
+        //return APIRequestParameters.APIURLEndPoints.STORE_ID;
     }
 
     protected String getVersion() {
-        return APIRequestParameters.APIURLEndPoints.VERSION;
+        return Configuration.getVersion();
+        //return APIRequestParameters.APIURLEndPoints.VERSION;
     }
 
     protected String getResponseType() {
-        return APIRequestParameters.APIURLEndPoints.RESPONSE_TYPE;
+        return Configuration.getResponse_type();
+        //return APIRequestParameters.APIURLEndPoints.RESPONSE_TYPE;
     }
 
     @Override

@@ -15,10 +15,10 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.PricingSubscriptionDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.UserSubscriptionDTO;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.model.PlanBean;
 
 import androidx.appcompat.widget.AppCompatRadioButton;
@@ -134,7 +134,7 @@ public class PlanView extends AppCompatRadioButton {
         if(isGift){
             String freeGiftPlanString = null;
             try{
-                freeGiftPlanString = BaselineApplication.getApplication().getRbtConnector().getFriendsAndFamilyConfigDTO().getChild().getGiftTitle();
+                freeGiftPlanString = AppManager.getInstance().getRbtConnector().getFriendsAndFamilyConfigDTO().getChild().getGiftTitle();
             }
             catch (Exception e){
                 freeGiftPlanString = getContext().getString(R.string.free_gift_plan);

@@ -15,18 +15,18 @@ import java.util.ArrayList;
 
 public class RbtSdkClient/* implements IExposedContent */{
 
-    private Context mContext;
-    private String mMsisdn;
-    private MsisdnType mMsisdnType;
-    private String mOperator;
+    private static Context mContext;
+    private static String mMsisdn;
+    private static MsisdnType mMsisdnType;
+    private static String mOperator;
     //private SharedPreferences.Editor RbtSdkClienteditor;
-    private SharedPrefProvider mSharedPrefProvider;
+    private static SharedPrefProvider mSharedPrefProvider;
 
     private ArrayList<String> songPreviewedList;
 
     //private IRbtSdkManager mRbtSdkManager;
     //private final ArrayList<ContentDTO> exposedContentDTOArrayList = new ArrayList<>();
-    private IRBTSDKEventlistener mIRBTSDKEventlistener;
+    private static IRBTSDKEventlistener mIRBTSDKEventlistener;
 
 
     public RbtSdkClient(Context context, String msisdn, MsisdnType msisdnType, String mOperator, IRBTSDKEventlistener aIRBTSDKEventlistener) {
@@ -48,8 +48,7 @@ public class RbtSdkClient/* implements IExposedContent */{
         songPreviewedList = new ArrayList<>();
     }
 
-    public void startSDK() {
-        //RetrofitProvider.reset();
+    private static void initializeSDK() {
         if (isValidated()) {
             String decodedOperator = decodeOperatorValue();
             String dynamicPackageName = mContext.getPackageName();
@@ -61,31 +60,37 @@ public class RbtSdkClient/* implements IExposedContent */{
             if (decodedOperator.equalsIgnoreCase(Constant.operatorName(decodedOperator))) {
                 if (Constant.isPackageVerificationRequired) {
                     if (dynamicPackageName.equalsIgnoreCase(packageNameProvided(decodedOperator))) {
+
+                        AppManager.getInstance().setSdkMsisdn(mMsisdn);
+                        AppManager.getInstance().setSdkMsidnType(mMsisdnType);
+                        AppManager.getInstance().setSdkOperator(decodedOperator);
+                        AppManager.getInstance().setmIRbtsdkEventlistener(mIRBTSDKEventlistener);
+                        AppManager.getInstance().init(mContext);
                         //AppManager.getInstance(mMsisdn,mMsisdnType,decodedOperator).init(mContext);
 
-                        android.content.Intent intent = new android.content.Intent(mContext, SplashActivity.class);
-                        intent.putExtra(Constant.Intent.EXTRA_MSISDN_SDK, mMsisdn);
-                        intent.putExtra(Constant.Intent.EXTRA_MSISDN_TYPE_SDK, mMsisdnType);
-                        intent.putExtra(Constant.Intent.EXTRA_OPERATOR_SDK, decodedOperator);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        mContext.startActivity(intent);
-                        if (mIRBTSDKEventlistener != null)
-                            mIRBTSDKEventlistener.onEventListener(0, null);
+//                        android.content.Intent intent = new android.content.Intent(mContext, SplashActivity.class);
+//                        intent.putExtra(Constant.Intent.EXTRA_MSISDN_SDK, mMsisdn);
+//                        intent.putExtra(Constant.Intent.EXTRA_MSISDN_TYPE_SDK, mMsisdnType);
+//                        intent.putExtra(Constant.Intent.EXTRA_OPERATOR_SDK, decodedOperator);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        mContext.startActivity(intent);
                     } else {
                         Toast.makeText(mContext, mContext.getString(R.string.not_authorised_access), Toast.LENGTH_LONG).show();
                     }
                 } else {
+                    AppManager.getInstance().setSdkMsisdn(mMsisdn);
+                    AppManager.getInstance().setSdkMsidnType(mMsisdnType);
+                    AppManager.getInstance().setSdkOperator(decodedOperator);
+                    AppManager.getInstance().setmIRbtsdkEventlistener(mIRBTSDKEventlistener);
+                    AppManager.getInstance().init(mContext);
                     //AppManager.getInstance(mMsisdn,mMsisdnType,decodedOperator).init(mContext);
 
-                    android.content.Intent intent = new android.content.Intent(mContext, SplashActivity.class);
-                    intent.putExtra(Constant.Intent.EXTRA_MSISDN_SDK, mMsisdn);
-                    intent.putExtra(Constant.Intent.EXTRA_MSISDN_TYPE_SDK, mMsisdnType);
-                    intent.putExtra(Constant.Intent.EXTRA_OPERATOR_SDK, decodedOperator);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    mContext.startActivity(intent);
-                    if (mIRBTSDKEventlistener != null)
-                        mIRBTSDKEventlistener.onEventListener(0, null);
-
+//                    android.content.Intent intent = new android.content.Intent(mContext, SplashActivity.class);
+//                    intent.putExtra(Constant.Intent.EXTRA_MSISDN_SDK, mMsisdn);
+//                    intent.putExtra(Constant.Intent.EXTRA_MSISDN_TYPE_SDK, mMsisdnType);
+//                    intent.putExtra(Constant.Intent.EXTRA_OPERATOR_SDK, decodedOperator);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    mContext.startActivity(intent);
                 }
 
                 // listener rigister for events
@@ -96,7 +101,13 @@ public class RbtSdkClient/* implements IExposedContent */{
         }
     }
 
-    private String decodeOperatorValue() {
+    public void startSDK() {
+        //RetrofitProvider.reset();
+        AppManager.getInstance().redirectToSDK();
+
+    }
+
+    private static String decodeOperatorValue() {
         String decodedOperator = "";
         try {
             byte[] data = Base64.decode(mOperator, Base64.DEFAULT);
@@ -122,7 +133,7 @@ public class RbtSdkClient/* implements IExposedContent */{
         public Builder init(Context context) {
             this.context = context;
             sharedPrefProvider = SharedPrefProvider.getInstance(context);
-            sharedPrefProvider.clear();
+            //sharedPrefProvider.clear();
             pref = this.context.getSharedPreferences("MyPref", 0);
             editor = pref.edit();
             return this;
@@ -158,6 +169,7 @@ public class RbtSdkClient/* implements IExposedContent */{
         }
 
         public RbtSdkClient build() throws RbtSdkInitialisationException {
+
             if (context == null) {
                 throw new RbtSdkInitialisationException(context, context.getString(R.string.context_cannot_null), ExceptionConstants.CONTEXT_NULL);
             }
@@ -173,9 +185,11 @@ public class RbtSdkClient/* implements IExposedContent */{
             if (mOperator == null) {
                 throw new RbtSdkInitialisationException(context, context.getString(R.string.operator_type), ExceptionConstants.OPERATOR_INVALID);
             }
-            if (mRBTSDKEventlistener != null)
-                return new RbtSdkClient(context, msisdn, msisdnType, mOperator, mRBTSDKEventlistener);
-            else
+            if (mRBTSDKEventlistener != null){
+                RbtSdkClient rbtSdkClient = new RbtSdkClient(context, msisdn, msisdnType, mOperator, mRBTSDKEventlistener);
+                initializeSDK();
+                return rbtSdkClient;
+            } else
                 return new RbtSdkClient(context, msisdn, msisdnType, mOperator);
 
         }
@@ -185,8 +199,7 @@ public class RbtSdkClient/* implements IExposedContent */{
         }
     }
 
-    private boolean isValidated() {
-
+    private static boolean isValidated() {
         if (mMsisdn.equalsIgnoreCase("")) {
             Toast.makeText(mContext, mContext.getString(R.string.enter_msisdn), Toast.LENGTH_LONG).show();
             return false;
@@ -209,7 +222,7 @@ public class RbtSdkClient/* implements IExposedContent */{
 
     }
 
-    private String packageNameProvided(String operator) {
+    private static String packageNameProvided(String operator) {
         String packageNameFromOperator = "";
 
         if (operator.equalsIgnoreCase(Constant.operator.IDEA_OPERATOR)) {
@@ -227,7 +240,7 @@ public class RbtSdkClient/* implements IExposedContent */{
         return packageNameFromOperator;
     }
 
-    private void persistOperatorCode(String operatorName) {
+    private static void persistOperatorCode(String operatorName) {
         if (operatorName.equalsIgnoreCase(Constant.operator.IDEA_OPERATOR)) {
             mSharedPrefProvider.setSelectedSDKOperator("it");
         }

@@ -8,10 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.util.AppConstant;
 import com.onmobile.rbt.baseline.widget.LabeledView;
@@ -157,13 +157,13 @@ public class MusicLanguageActivity extends BaseActivity {
     }
 
     private void displayAvailableLanguages() {
-        Map<String, String> languages = BaselineApplication.getApplication().getRbtConnector().getLanguageToDisplay();
+        Map<String, String> languages = AppManager.getInstance().getRbtConnector().getLanguageToDisplay();
 
-        //UserLanguageSettingDTO languageSettings = BaselineApplication.getApplication().getRbtConnector().getUserLanguageSettings();
+        //UserLanguageSettingDTO languageSettings = AppManager.getInstance().getRbtConnector().getUserLanguageSettings();
         //boolean languageSelected = languageSettings != null && languageSettings.getLanguageDTO() != null;
 
         //TODO temporary solution
-        /*UserLanguageSettingDTO tempLanguageSettings = BaselineApplication.getApplication().getRbtConnector().getUserLanguageSettings();
+        /*UserLanguageSettingDTO tempLanguageSettings = AppManager.getInstance().getRbtConnector().getUserLanguageSettings();
         String languageSettings = SharedPrrrefProvider.getInstance(getApplicationContext()).getUserLanguageCode();
         if (TextUtils.isEmpty(languageSettings) && languageSettings != null && tempLanguageSettings.getLanguageDTO() != null) {
             languageSettings = tempLanguageSettings.getLanguageDTO().getLanguageCode();

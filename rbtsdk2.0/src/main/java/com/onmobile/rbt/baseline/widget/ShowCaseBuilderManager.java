@@ -14,11 +14,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
 import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.util.AppConstant;
 import com.onmobile.rbt.baseline.util.AppUtils;
 import com.onmobile.rbt.baseline.util.FunkyAnnotation;
@@ -149,7 +149,7 @@ public class ShowCaseBuilderManager {
         public void onPreviewPlaying(int progressStatus) {
             updatePlayerStatus(true, false);
             if (mType == FunkyAnnotation.TYPE_BS_REG_SET_TUNES && AppUtils.isRecommendationQueueDelayLapsed(getPlayer().getMediaPlayedInSeconds()))
-                BaselineApplication.getApplication().getRbtConnector().addRecommendationId(mRingBackToneDTO.getId());
+                AppManager.getInstance().getRbtConnector().addRecommendationId(mRingBackToneDTO.getId());
         }
 
         @Override

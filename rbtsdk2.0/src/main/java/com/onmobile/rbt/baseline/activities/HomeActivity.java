@@ -7,7 +7,6 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.familyandfriends.GetChildInfoResponseDTO;
 import com.onmobile.rbt.baseline.http.httpmodulemanagers.HttpModuleMethodManager;
 import com.onmobile.rbt.baseline.R;
@@ -23,7 +23,6 @@ import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.adapter.base.SimpleFragmentPagerAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
 import com.onmobile.rbt.baseline.application.ApiConfig;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.bottomsheet.SetCallerTunePlansBSFragment;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
@@ -34,13 +33,11 @@ import com.onmobile.rbt.baseline.fragment.FragmentHomeProfile;
 import com.onmobile.rbt.baseline.fragment.FragmentHomeStore;
 import com.onmobile.rbt.baseline.fragment.FragmentHomeTrending;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
-import com.onmobile.rbt.baseline.listener.IAppFriendsAndFamily;
 import com.onmobile.rbt.baseline.listener.IDataLoadedCoachMarks;
 import com.onmobile.rbt.baseline.listener.OnBottomSheetChangeListener;
 import com.onmobile.rbt.baseline.model.ContactModelDTO;
 import com.onmobile.rbt.baseline.util.AppConstant;
 import com.onmobile.rbt.baseline.util.BottomNavigationViewHelper;
-import com.onmobile.rbt.baseline.util.ContactDetailProvider;
 import com.onmobile.rbt.baseline.util.FunkyAnnotation;
 import com.onmobile.rbt.baseline.util.LocalBroadcaster;
 import com.onmobile.rbt.baseline.util.Logger;
@@ -69,7 +66,7 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
     public static final int TAB_STORE = 1;
     public static final int TAB_ACTIVITY = 2;
     public static final int TAB_PROFILE = 3;
-    private int DEFAULT_TAB = TAB_STORE;
+    private int DEFAULT_TAB = TAB_HOME;
     private boolean mDiscoverDataLoaded = false, mStoreDataLoaded = false;
     private ViewPager mViewPager;
     private BottomNavigationView mBottomNavigationView;
@@ -85,8 +82,8 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
     private int homePosition = -1, storePosition = -1;
     private Menu mMenu;
 
-    private int mDefaultStackItem = FunkyAnnotation.TYPE_TRENDING;
 
+    private int mDefaultStackItem = FunkyAnnotation.TYPE_TRENDING;
 //    private BottomNavigationView.OnNavigationItemSelectedListener mBottomItemSelectedListener = item -> {
 //        updateViewPager(item);
 //        //broadcastTabSwitch(item);
@@ -245,6 +242,7 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
     @Override
     protected void unbindExtras(Intent intent) {
         DEFAULT_TAB = getServerConfigDefaultTab();
+        DEFAULT_TAB = TAB_HOME;
         if (intent != null) {
             DEFAULT_TAB = intent.getIntExtra(AppConstant.KEY_HOME_DEFAULT_TAB, DEFAULT_TAB);
             mDefaultStackItem = intent.getIntExtra(AppConstant.KEY_DISCOVER_STACK_ITEM_TYPE, mDefaultStackItem);
@@ -333,12 +331,14 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
         mViewPager.setAdapter(adapter);
         //handleDiscoverCoachMark();
         mViewPager.addOnPageChangeListener(mViewPagerPageChangeListener);
-        mViewPager.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mViewPager.setCurrentItem(DEFAULT_TAB,false);
-            }
-        },100);
+
+//        mViewPager.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                mViewPager.setCurrentItem(DEFAULT_TAB,false);
+//            }
+//        },100);
+        mViewPager.setCurrentItem(DEFAULT_TAB,false);
         //mViewPager.postDelayed(() -> mViewPager.setCurrentItem(DEFAULT_TAB, false), 100);
     }
 
@@ -346,7 +346,7 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
         BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
         if (mBottomNavigationView != null) {
             Menu menu = mBottomNavigationView.getMenu();
-            updateViewPager(menu.getItem(0));
+            updateViewPager(menu.getItem(DEFAULT_TAB));
             mBottomNavigationView.setOnNavigationItemSelectedListener(mBottomItemSelectedListener);
         }
     }
@@ -412,7 +412,7 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
 
     private void updateMenu(int position) {
         if (mMenu == null) return;
-        Map<String, String> languageMap = BaselineApplication.getApplication().getRbtConnector().getLanguageToDisplay();
+        Map<String, String> languageMap = AppManager.getInstance().getRbtConnector().getLanguageToDisplay();
         switch (position) {
             case TAB_HOME:
                 mMenu.findItem(R.id.action_search).setVisible(true);
@@ -427,6 +427,8 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
                 mMenu.findItem(R.id.action_search).setVisible(true);
                 if (languageMap != null && languageMap.size() > 1) {
                     mMenu.findItem(R.id.action_music_language).setVisible(true);
+                }else {
+                    mMenu.findItem(R.id.action_music_language).setVisible(false);
                 }
                 break;
         }
@@ -489,7 +491,7 @@ public class HomeActivity extends BaseActivity implements BaseFragment.InternalC
 
     private void callUserJourney() {
         if (SharedPrefProvider.getInstance(this).isLoggedIn()) {
-            BaselineApplication.getApplication().getRbtConnector().syncAppIdsWithServer(false, null);
+            //AppManager.getInstance().getRbtConnector().syncAppIdsWithServer(false, null);
         }
     }
 

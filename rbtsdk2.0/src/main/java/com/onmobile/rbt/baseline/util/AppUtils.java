@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RecommendationDTO;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 
 import java.text.DateFormat;
@@ -143,7 +143,7 @@ public class AppUtils {
 
     public static boolean isInternetAvailable() {
         if (mConnectivityManager == null)
-            mConnectivityManager = (ConnectivityManager) BaselineApplication.getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+            mConnectivityManager = (ConnectivityManager) AppManager.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         return mConnectivityManager != null && mConnectivityManager.getActiveNetworkInfo() != null && mConnectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
@@ -165,7 +165,7 @@ public class AppUtils {
     }
 
     public static boolean isRecommendationChanged(Context context) {
-        return isRecommendationChanged(context, BaselineApplication.getApplication().getRbtConnector().getRecommendationCache());
+        return isRecommendationChanged(context, AppManager.getInstance().getRbtConnector().getRecommendationCache());
     }
 
 }

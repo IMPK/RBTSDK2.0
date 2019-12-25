@@ -8,8 +8,8 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.PersistentSharedPrefProvider;
 import com.onmobile.rbt.baseline.listener.AppLanguageSelectionListener;
 
@@ -37,7 +37,7 @@ public class AppLanguageAdapter extends RecyclerView.Adapter<AppLanguageAdapter.
         mListener = listener;
         mAppLocaleCode = PersistentSharedPrefProvider.getInstance(context).getAppLocal();
         if (mAppLocaleCode==null){
-            mAppLocaleCode= BaselineApplication.getApplication().getAppLocaleManager().setAppLocalForDeviceLanguage(BaselineApplication.getApplication().getApplicationContext(),true,false).getLanguage();
+            mAppLocaleCode= AppManager.getInstance().getAppLocaleManager(mContext).setAppLocalForDeviceLanguage(AppManager.getContext(),true,false).getLanguage();
         }
         mSelectedLocaleCode = mAppLocaleCode;
     }

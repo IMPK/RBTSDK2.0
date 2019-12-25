@@ -16,7 +16,6 @@
     <uses-permission android:name="android.permission.READ_SYNC_STATS" />
 
     <application
-        android:name=".application.BaselineApplication"
         android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"

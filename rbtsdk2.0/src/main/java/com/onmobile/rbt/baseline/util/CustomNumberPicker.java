@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.R;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 
 import java.lang.reflect.Field;
 
@@ -43,12 +43,12 @@ public class CustomNumberPicker extends NumberPicker {
         updateView(child);
     }
     private void updateView(View view) {
-        setDividerColor(BaselineApplication.getApplication().getResources().getColor(R.color.colorAccent));
+        setDividerColor(AppManager.getContext().getResources().getColor(R.color.colorAccent));
         if(view instanceof EditText){
             ((EditText) view).setTextSize(AppUtils.dpToPx(6));
             ((EditText) view).setTextColor(Color.parseColor("#707271"));
             ((EditText) view).setIncludeFontPadding(true);
-            Typeface typeface = Typeface.createFromAsset(BaselineApplication.getApplication().getAssets(), "fonts/" + AppConstant.Font.FONT_REGULAR);
+            Typeface typeface = Typeface.createFromAsset(AppManager.getContext().getAssets(), "fonts/" + AppConstant.Font.FONT_REGULAR);
             ((EditText) view).setTypeface(typeface);
             ((EditText) view).setIncludeFontPadding(true);
             view.setEnabled(false);

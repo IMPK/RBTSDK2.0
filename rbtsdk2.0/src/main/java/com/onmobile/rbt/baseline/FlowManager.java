@@ -71,7 +71,7 @@ public class FlowManager {
                     }
                     if (clazz != null) {
                         if (!HomeActivity.class.getName().equals(clazz.getName()) && !DiscoverActivity.class.getName().equals(clazz.getName())) {
-                            if (/*BaselineApplication.getApplication().getRbtConnector().isActiveUser()*/mSharedPrefProvider.isLoggedIn())
+                            if (/*AppManager.getInstance().getRbtConnector().isActiveUser()*/mSharedPrefProvider.isLoggedIn())
                                 bundle.putString(AppConstant.KEY_CLASS_REDIRECT_ACTIVITY, HomeActivity.class.getName());
                             else
                                 bundle.putString(AppConstant.KEY_CLASS_REDIRECT_ACTIVITY, DiscoverActivity.class.getName());
@@ -89,7 +89,7 @@ public class FlowManager {
     public static void redirectInFlow(Context context) {
 
         if (!SharedPrefProvider.getInstance(context).isLanguageSelected()) {
-            Map<String, String> languageMap = AppManager.getRbtConnector(context).getLanguageToDisplay();
+            Map<String, String> languageMap = AppManager.getRbtConnector().getLanguageToDisplay();
             if (languageMap.size() == 1) {
                 List<String> mSelectedLanguageList = new ArrayList<>();
                 for (Map.Entry<String, String> entry : languageMap.entrySet()) {

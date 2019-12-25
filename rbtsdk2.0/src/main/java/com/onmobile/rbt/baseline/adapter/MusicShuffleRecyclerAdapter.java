@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.udp.UdpAssetDTO;
 import com.onmobile.rbt.baseline.R;
@@ -21,7 +22,6 @@ import com.onmobile.rbt.baseline.activities.StoreActivity;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.adapter.base.SimpleRecyclerAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.bottomsheet.SetShuffleMainBSFragment;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
@@ -214,7 +214,7 @@ public class MusicShuffleRecyclerAdapter extends SimpleRecyclerAdapter<RootViewH
                 } else if (id == R.id.ib_option_shuffle_item_child) {
                     if (data instanceof UdpAssetDTO) {
                         UdpAssetDTO udpAssetDTO = (UdpAssetDTO) data;
-                        boolean editRequired = !BaselineApplication.getApplication().getRbtConnector().isRingbackSelected(udpAssetDTO.getId())
+                        boolean editRequired = !AppManager.getInstance().getRbtConnector().isRingbackSelected(udpAssetDTO.getId())
                                 && (Integer.parseInt(udpAssetDTO.getCount()) > 0);
                         AppDialog.showUserShuffleContextOptionMenu(view, editRequired, false, item -> {
                             if(item.getItemId() == R.id.menu_udp_delete) {
@@ -235,7 +235,7 @@ public class MusicShuffleRecyclerAdapter extends SimpleRecyclerAdapter<RootViewH
         private void updateCommonFields(boolean system, String id) {
             if (TextUtils.isEmpty(id))
                 return;
-            boolean rbtStatus = BaselineApplication.getApplication().getRbtConnector().isRingbackSelected(id);
+            boolean rbtStatus = AppManager.getInstance().getRbtConnector().isRingbackSelected(id);
             ibOption.setVisibility(system ? View.GONE : (!rbtStatus ? View.VISIBLE : View.GONE));
             imgRbtSeleted.setVisibility(rbtStatus ? View.VISIBLE : View.GONE);
             if (!system && rbtStatus) {
@@ -337,7 +337,7 @@ public class MusicShuffleRecyclerAdapter extends SimpleRecyclerAdapter<RootViewH
                             mProgressDialog.setCancelable(false);
                         }
                         mProgressDialog.show();
-                        BaselineApplication.getApplication().getRbtConnector().deleteUserDefinedPlaylist(udpAssetDTO.getId(), new AppBaselineCallback<String>() {
+                        AppManager.getInstance().getRbtConnector().deleteUserDefinedPlaylist(udpAssetDTO.getId(), new AppBaselineCallback<String>() {
                             @Override
                             public void success(String result) {
                                 mProgressDialog.dismiss();

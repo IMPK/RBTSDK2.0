@@ -258,6 +258,7 @@
                     android:layout_height="wrap_content"
                     app:bottomDivider="true"
                     app:label="@string/label_change_app_language"
+                    android:visibility="gone"
                     app:valueTextColor="@color/colorAccent" />
 
                 <!-- <com.onmobile.rbt.baseline.widget.LabeledView

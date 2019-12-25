@@ -1,11 +1,6 @@
 package com.onmobile.rbt.baseline.bottomsheet;
 
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.IntentSender;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
@@ -21,6 +16,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.errormodule.ErrorResponse;
 import com.onmobile.rbt.baseline.http.basecallback.BaselineCallback;
@@ -30,7 +26,6 @@ import com.onmobile.rbt.baseline.BuildConfig;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.WebViewActivity;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
@@ -49,8 +44,6 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.ContentLoadingProgressBar;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by Shahbaz Akhtar on 31/10/2018.
@@ -225,7 +218,7 @@ public class RegistrationBSFragment extends BaseFragment {
         FontUtils.setLightFont(getFragmentContext(), mMobileTextInputLayout);
         mOtpTextInputLayout = view.findViewById(R.id.otp_text_input_layout);
         FontUtils.setLightFont(getFragmentContext(), mOtpTextInputLayout);
-        mResendOTPLimit = BaselineApplication.getApplication().getRbtConnector().resendOTPLimit();
+        mResendOTPLimit = AppManager.getInstance().getRbtConnector().resendOTPLimit();
 
         mEtMobile.addTextChangedListener(mMobileTextWatcher);
         mEtOTP.addTextChangedListener(mOTPTextWatcher);
@@ -314,7 +307,7 @@ public class RegistrationBSFragment extends BaseFragment {
             SharedPrefProvider.getInstance(getActivity()).writeRecentClickedCount(++recentClickedCount);
             SharedPrefProvider.getInstance(getActivity()).writeLastRecentClickedTime(System.currentTimeMillis());
             mOtpResendCount++;
-            BaselineApplication.getApplication().getRbtConnector().validateMobileNumber(mEtMobile.getText().toString(), new AppBaselineCallback<String>() {
+            AppManager.getInstance().getRbtConnector().validateMobileNumber(mEtMobile.getText().toString(), new AppBaselineCallback<String>() {
                 @Override
                 public void success(String result) {
                     if (!isAdded()) return;
@@ -393,7 +386,7 @@ public class RegistrationBSFragment extends BaseFragment {
         showLoading(mEtMobile, mProgressMobile, mIvCheckMobile);
         mMobileTextInputLayout.setErrorEnabled(false);
         mOtpRequestAttemptCount++;
-        BaselineApplication.getApplication().getRbtConnector().validateMobileNumber(mobileNumber, new AppBaselineCallback<String>() {
+        AppManager.getInstance().getRbtConnector().validateMobileNumber(mobileNumber, new AppBaselineCallback<String>() {
             @Override
             public void success(String result) {
                 if (!isAdded()) return;
@@ -421,7 +414,7 @@ public class RegistrationBSFragment extends BaseFragment {
         Util.hideKeyboard(getFragmentContext(), mEtOTP);
         showLoading(mEtOTP, mProgressOTP, mIvCheckOTP);
         mOtpTextInputLayout.setErrorEnabled(false);
-        BaselineApplication.getApplication().getRbtConnector().validateOTP(mRequestedMSISDN, otp, new AppBaselineCallback<String>() {
+        AppManager.getInstance().getRbtConnector().validateOTP(mRequestedMSISDN, otp, new AppBaselineCallback<String>() {
             @Override
             public void success(String result) {
                 if (!isAdded()) return;
@@ -445,7 +438,7 @@ public class RegistrationBSFragment extends BaseFragment {
 
                 //below FunkyAnnotation.LOGIN_FLOW_NORMAL/FunkyAnnotation.LOGIN_FLOW_LOGIN_CLICK
                 LocalCacheManager.getInstance().setUserMsisdn(mRequestedMSISDN);
-                BaselineApplication.getApplication().getRbtConnector().initializeUserSetting(new AppBaselineCallback<String>() {
+                AppManager.getInstance().getRbtConnector().initializeUserSetting(new AppBaselineCallback<String>() {
                     @Override
                     public void success(String result) {
                         if (!isAdded()) return;
@@ -478,7 +471,7 @@ public class RegistrationBSFragment extends BaseFragment {
                 /*right now made configurable because we need authentication token for digital star*/
                 if (AppConfigurationValues.skipOtpValidation() && BuildConfig.DEBUG) {
                     success("Success");
-                    BaselineApplication.getApplication().getRbtConnector().getAuthTokenRequest(new BaselineCallback<String>() {
+                    AppManager.getInstance().getRbtConnector().getAuthTokenRequest(new BaselineCallback<String>() {
                         @Override
                         public void success(String result) {
                             if (!isAdded()) return;

@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.BannerDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.DynamicChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.fragment.FragmentHomeStore;
 import com.onmobile.rbt.baseline.fragment.FragmentStoreSeeAll;
@@ -172,7 +172,7 @@ public class StoreContentActivity extends BaseActivity implements BaseFragment.I
             enableContent();
             attachFragment(mReceivedListItem, isChart);
         } else {
-            BaselineApplication.getApplication().getRbtConnector().getDynamicChartContents(0, id, new AppBaselineCallback<DynamicChartItemDTO>() {
+            AppManager.getInstance().getRbtConnector().getDynamicChartContents(0, id, new AppBaselineCallback<DynamicChartItemDTO>() {
                 @Override
                 public void success(DynamicChartItemDTO result) {
                     boolean isChart = false;

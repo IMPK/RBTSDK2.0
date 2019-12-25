@@ -11,8 +11,8 @@
     </module>
     <module name="MainApp">
         <parameter name="IsAutoPlayEnabled" value="true" />
-        <parameter name="IsDigitalStarToCopyEnabled" value="true" />
-        <parameter name="IsServerKeySyncRequired" value="true" />
+        <parameter name="IsDigitalStarToCopyEnabled" value="false" />
+        <parameter name="IsServerKeySyncRequired" value="false" />
         <parameter name="FamilyAndFriendsEnabled" value="false" />
         <parameter name="IsContactSyncEnabled" value="false" />
         <parameter name="PlanUpgrade" value="true" />
@@ -21,7 +21,7 @@
         <parameter name="IsShowBannerInStore" value="true" />
         <parameter name="IsShowSinglePlanUpgrade" value="true" />
         <parameter name="IsShownConfirmationForProfileTune" value="false" />
-        <parameter name="IsShowRatingDialogFeature" value="true" />
+        <parameter name="IsShowRatingDialogFeature" value="false" />
         <parameter name="StoreMaxItemPerChart" value="32" />
         <parameter name="isUDPEnabled" value="true" />
         <parameter name="PrebuyVisualizerEnabled" value="false" />
@@ -32,7 +32,7 @@
         <parameter name="isShowMyAccount" value="true" />
         <parameter name="isShowExitPopup" value="true" />
         <parameter name="isDummyPurchaseEnabled" value="true" />
-        <parameter name="IsPayTMEnabled" value="true" />
+        <parameter name="IsPayTMEnabled" value="false" />
         <parameter name="SecureAuthenticationFlow" value="false"/>
         <parameter name="isMultiAppLanguageSupport" value="false"/>
     </module>

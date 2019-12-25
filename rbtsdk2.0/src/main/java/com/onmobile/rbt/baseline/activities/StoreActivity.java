@@ -6,12 +6,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.DynamicItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.fragment.FragmentHomeStore;
 import com.onmobile.rbt.baseline.fragment.base.BaseFragment;
 import com.onmobile.rbt.baseline.listener.IDataLoadedCoachMarks;
@@ -111,7 +111,7 @@ public class StoreActivity extends BaseActivity implements BaseFragment.Internal
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
 
-        Map<String, String> languageMap = BaselineApplication.getApplication().getRbtConnector().getLanguageToDisplay();
+        Map<String, String> languageMap = AppManager.getInstance().getRbtConnector().getLanguageToDisplay();
         MenuItem languageItem = menu.findItem(R.id.action_music_language);
         if (languageMap != null && languageMap.size() > 1) {
             languageItem.setVisible(true);

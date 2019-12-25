@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.udp.UserDefinedPlaylistDTO;
 import com.onmobile.rbt.baseline.http.retrofit_io.APIRequestParameters;
@@ -19,7 +20,6 @@ import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.HomeActivity;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.bottomsheet.AddRbt2UdpBSChildFragment;
@@ -211,7 +211,7 @@ public class StoreChildItemRecyclerAdapter extends RecyclerView.Adapter<RootView
                 }*/
                 setTune.setVisibility(View.GONE);
             }
-            updateRBTStatus(BaselineApplication.getApplication().getRbtConnector().isRingbackSelected(data.getId()));
+            updateRBTStatus(AppManager.getInstance().getRbtConnector().isRingbackSelected(data.getId()));
         }
 
         private void updateRBTStatus(boolean status) {
@@ -398,7 +398,7 @@ public class StoreChildItemRecyclerAdapter extends RecyclerView.Adapter<RootView
                     public void PositiveButton(DialogInterface dialog, int id, final String data) {
                         dialog.dismiss();
                         mProgressDialog.show();
-                        BaselineApplication.getApplication().getRbtConnector().createUserDefinedPlaylist(data, new AppBaselineCallback<UserDefinedPlaylistDTO>() {
+                        AppManager.getInstance().getRbtConnector().createUserDefinedPlaylist(data, new AppBaselineCallback<UserDefinedPlaylistDTO>() {
                             @Override
                             public void success(UserDefinedPlaylistDTO result) {
                                 mProgressDialog.dismiss();

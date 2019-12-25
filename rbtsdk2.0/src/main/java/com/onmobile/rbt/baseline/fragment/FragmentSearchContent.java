@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.search.CategoricalSearchItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.search.CategorySearchResultDTO;
@@ -15,7 +16,6 @@ import com.onmobile.rbt.baseline.activities.PreBuyActivity;
 import com.onmobile.rbt.baseline.activities.SearchSeeAllActivity;
 import com.onmobile.rbt.baseline.adapter.ContentSearchAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.exception.IllegalFragmentBindingException;
@@ -157,11 +157,11 @@ public class FragmentSearchContent extends BaseFragment {
      * @param query Search query string
      */
     private void submitQuery(String query) {
-        List<String> language = SharedPrefProvider.getInstance(BaselineApplication.getApplication().getApplicationContext()).getUserLanguageCode();
+        List<String> language = SharedPrefProvider.getInstance(AppManager.getContext()).getUserLanguageCode();
         showLoading();
         cancelPendingRequests();
         mRequestInProgress = true;
-        mNetworkRequest = BaselineApplication.getApplication().getRbtConnector().getSearchAllCategoryContent(0, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, language, query, new AppBaselineCallback<CategorySearchResultDTO>() {
+        mNetworkRequest = AppManager.getInstance().getRbtConnector().getSearchAllCategoryContent(0, AppConstant.QUERY_SEARCH_ITEM_PER_REQUEST, language, query, new AppBaselineCallback<CategorySearchResultDTO>() {
             @Override
             public void success(CategorySearchResultDTO result) {
                 if (!isAdded()) return;

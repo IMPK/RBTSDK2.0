@@ -9,11 +9,11 @@ import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.musicplayback.BaselineMusicPlayer;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.adapter.base.SimpleRecyclerAdapter;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
 import com.onmobile.rbt.baseline.event.ContentCountChangeEvent;
@@ -160,7 +160,7 @@ public class HorizontalMusicAdapter extends SimpleRecyclerAdapter<RootViewHolder
             }
             track.setText(data.getTrackName());
 
-            ivRbtSelected.setVisibility(BaselineApplication.getApplication().getRbtConnector().isRingbackSelected(data.getId()) ? View.VISIBLE : View.GONE);
+            ivRbtSelected.setVisibility(AppManager.getInstance().getRbtConnector().isRingbackSelected(data.getId()) ? View.VISIBLE : View.GONE);
         }
 
         @Override
@@ -193,7 +193,7 @@ public class HorizontalMusicAdapter extends SimpleRecyclerAdapter<RootViewHolder
                     if (mPlayer != null && AppUtils.isRecommendationQueueDelayLapsed(mPlayer.getMediaPlayedInSeconds())) {
                         RingBackToneDTO ringBackToneDTO = getList().get(mLastPlayedPosition);
                         if (ringBackToneDTO != null)
-                            BaselineApplication.getApplication().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
+                            AppManager.getInstance().getRbtConnector().addRecommendationId(ringBackToneDTO.getId());
                     }
                 }
 
@@ -281,7 +281,7 @@ public class HorizontalMusicAdapter extends SimpleRecyclerAdapter<RootViewHolder
     private void deleteSong(int position, RingBackToneDTO ringBackToneDTO) {
         if (!TextUtils.isEmpty(mShuffleId) && ringBackToneDTO != null) {
             showTranslucentDialog();
-            BaselineApplication.getApplication().getRbtConnector().deleteContentFromUserDefinedPlaylist(mShuffleId, ringBackToneDTO.getId(), new AppBaselineCallback<String>() {
+            AppManager.getInstance().getRbtConnector().deleteContentFromUserDefinedPlaylist(mShuffleId, ringBackToneDTO.getId(), new AppBaselineCallback<String>() {
                 @Override
                 public void success(String result) {
                     boolean ack = getList().remove(ringBackToneDTO);

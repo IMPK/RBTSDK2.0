@@ -2,32 +2,23 @@ package com.onmobile.rbt.baseline.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 
-import com.onmobile.rbt.baseline.http.api_action.dtos.HeaderResponseDTO;
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ListOfSongsResponseDTO;
-import com.onmobile.rbt.baseline.http.api_action.dtos.appconfigdtos.AppConfigDataManipulator;
-import com.onmobile.rbt.baseline.http.api_action.dtos.userjourneynotifi.ServerSyncResponseDto;
 import com.onmobile.rbt.baseline.http.cache.LocalCacheManager;
 import com.onmobile.rbt.baseline.http.cache.UserSettingsCacheManager;
-import com.onmobile.rbt.baseline.http.httpmodulemanagers.HttpModuleMethodManager;
-import com.onmobile.rbt.baseline.http.httpmodulemanagers.IAppUpgradeHandler;
 import com.onmobile.rbt.baseline.Constant;
 import com.onmobile.rbt.baseline.MsisdnType;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.dialog.AppDialog;
@@ -35,9 +26,6 @@ import com.onmobile.rbt.baseline.dialog.listeners.DialogListener;
 import com.onmobile.rbt.baseline.notification.NotificationHelper;
 import com.onmobile.rbt.baseline.util.AppConstant;
 import com.onmobile.rbt.baseline.util.PermissionUtil;
-import com.onmobile.rbt.baseline.util.Util;
-
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -171,7 +159,7 @@ public class SplashActivity extends BaseActivity {
                     }
                     if (clazz != null) {
                         if (!HomeActivity.class.getName().equals(clazz.getName()) && !DiscoverActivity.class.getName().equals(clazz.getName())) {
-                            if (/*BaselineApplication.getApplication().getRbtConnector().isActiveUser()*/mSharedPrefProvider.isLoggedIn())
+                            if (/*AppManager.getInstance().getRbtConnector().isActiveUser()*/mSharedPrefProvider.isLoggedIn())
                                 bundle.putString(AppConstant.KEY_CLASS_REDIRECT_ACTIVITY, HomeActivity.class.getName());
                             else
                                 bundle.putString(AppConstant.KEY_CLASS_REDIRECT_ACTIVITY, DiscoverActivity.class.getName());
@@ -192,7 +180,7 @@ public class SplashActivity extends BaseActivity {
             LocalCacheManager.getInstance().setUserMsisdn(mSharedPrefProvider.getMsisdn());
         }
 
-        BaselineApplication.getApplication().getRbtConnector().initializeUserSetting(new AppBaselineCallback<String>() {
+        AppManager.getInstance().getRbtConnector().initializeUserSetting(new AppBaselineCallback<String>() {
             @Override
             public void success(String result) {
                 updateProgress();
@@ -220,7 +208,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void updatePlayRule() {
-        BaselineApplication.getApplication().getRbtConnector().getPlayRules(new AppBaselineCallback<ListOfSongsResponseDTO>() {
+        AppManager.getInstance().getRbtConnector().getPlayRules(new AppBaselineCallback<ListOfSongsResponseDTO>() {
             @Override
             public void success(ListOfSongsResponseDTO result) {
 //                updateProgress();
@@ -238,7 +226,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     public void initUserForAutoReg() {
-        BaselineApplication.getApplication().getRbtConnector().initializeUserSettingForAutoReg(new AppBaselineCallback<String>() {
+        AppManager.getInstance().getRbtConnector().initializeUserSettingForAutoReg(new AppBaselineCallback<String>() {
             @Override
             public void success(String result) {
                 updateProgress();
@@ -283,7 +271,7 @@ public class SplashActivity extends BaseActivity {
     public void startApp() {
         mCallProcessed = 0;
         mProgressBar.setProgress(0);
-        BaselineApplication.getApplication().getRbtConnector().initializeApp(new AppBaselineCallback<String>() {
+        AppManager.getInstance().getRbtConnector().initializeApp(new AppBaselineCallback<String>() {
             @Override
             public void success(String result) {
                 updateProgress();
@@ -298,7 +286,7 @@ public class SplashActivity extends BaseActivity {
 
     private void attemptAutoRegistration() {
 
-        BaselineApplication.getApplication().getRbtConnector().attemptAutoRegistration(new AppBaselineCallback<String>() {
+        AppManager.getInstance().getRbtConnector().attemptAutoRegistration(new AppBaselineCallback<String>() {
             @Override
             public void success(String result) {
                 updateProgress();
@@ -314,10 +302,10 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void getRecommendations() {
-        BaselineApplication.getApplication().getRbtConnector().setRecommendationCache(null);
+        AppManager.getInstance().getRbtConnector().setRecommendationCache(null);
         updateProgress();
         initUser();
-        /*BaselineApplication.getApplication().getRbtConnector().getRecommendationContent(0, null, new AppBaselineCallback<RecommendationDTO>() {
+        /*AppManager.getInstance().getRbtConnector().getRecommendationContent(0, null, new AppBaselineCallback<RecommendationDTO>() {
             @Override
             public void success(RecommendationDTO result) {
                 updateProgress();

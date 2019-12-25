@@ -9,9 +9,9 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.R;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.util.AppConstant;
 
 import java.util.ArrayList;
@@ -146,7 +146,7 @@ public class PermissionActivity extends BaseActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        Context context = BaselineApplication.getApplication().getAppLocaleManager().setLocale(newBase);
+        Context context = AppManager.getAppLocaleManager(newBase).setLocale(newBase);
         super.attachBaseContext(context);
     }
 }

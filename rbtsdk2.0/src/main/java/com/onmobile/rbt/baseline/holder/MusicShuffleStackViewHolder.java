@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
 
+import com.onmobile.rbt.baseline.AppManager;
 import com.onmobile.rbt.baseline.http.api_action.dtos.ChartItemDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.RingBackToneDTO;
 import com.onmobile.rbt.baseline.http.api_action.dtos.udp.UserDefinedPlaylistDTO;
@@ -15,7 +16,6 @@ import com.onmobile.rbt.baseline.activities.StoreActivity;
 import com.onmobile.rbt.baseline.activities.base.BaseActivity;
 import com.onmobile.rbt.baseline.adapter.MusicShuffleRecyclerAdapter;
 import com.onmobile.rbt.baseline.analytics.AnalyticsConstants;
-import com.onmobile.rbt.baseline.application.BaselineApplication;
 import com.onmobile.rbt.baseline.application.SharedPrefProvider;
 import com.onmobile.rbt.baseline.basecallback.AppBaselineCallback;
 import com.onmobile.rbt.baseline.configuration.AppConfigurationValues;
@@ -220,7 +220,7 @@ public class MusicShuffleStackViewHolder extends StackViewHolder<ChartItemDTO> {
                         mCreateShuffleDialogNegativeClick = false;
                         dialog.dismiss();
                         mProgressDialog.show();
-                        BaselineApplication.getApplication().getRbtConnector().createUserDefinedPlaylist(data, new AppBaselineCallback<UserDefinedPlaylistDTO>() {
+                        AppManager.getInstance().getRbtConnector().createUserDefinedPlaylist(data, new AppBaselineCallback<UserDefinedPlaylistDTO>() {
                             @Override
                             public void success(UserDefinedPlaylistDTO result) {
                                 mProgressDialog.dismiss();
